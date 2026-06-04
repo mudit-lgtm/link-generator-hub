@@ -9,8 +9,76 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhatsappLinkGeneratorRouteImport } from './routes/whatsapp-link-generator'
+import { Route as SlugGeneratorRouteImport } from './routes/slug-generator'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RickrollLinkGeneratorRouteImport } from './routes/rickroll-link-generator'
+import { Route as ReferralLinkGeneratorRouteImport } from './routes/referral-link-generator'
+import { Route as PremiumLinkGeneratorRouteImport } from './routes/premium-link-generator'
+import { Route as MailtoLinkGeneratorRouteImport } from './routes/mailto-link-generator'
+import { Route as GoogleReviewLinkGeneratorRouteImport } from './routes/google-review-link-generator'
+import { Route as GoogleMapsLinkGeneratorRouteImport } from './routes/google-maps-link-generator'
+import { Route as AffiliateLinkGeneratorRouteImport } from './routes/affiliate-link-generator'
+import { Route as AddToCalendarLinkGeneratorRouteImport } from './routes/add-to-calendar-link-generator'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WhatsappLinkGeneratorRoute = WhatsappLinkGeneratorRouteImport.update({
+  id: '/whatsapp-link-generator',
+  path: '/whatsapp-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SlugGeneratorRoute = SlugGeneratorRouteImport.update({
+  id: '/slug-generator',
+  path: '/slug-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RickrollLinkGeneratorRoute = RickrollLinkGeneratorRouteImport.update({
+  id: '/rickroll-link-generator',
+  path: '/rickroll-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralLinkGeneratorRoute = ReferralLinkGeneratorRouteImport.update({
+  id: '/referral-link-generator',
+  path: '/referral-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumLinkGeneratorRoute = PremiumLinkGeneratorRouteImport.update({
+  id: '/premium-link-generator',
+  path: '/premium-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MailtoLinkGeneratorRoute = MailtoLinkGeneratorRouteImport.update({
+  id: '/mailto-link-generator',
+  path: '/mailto-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoogleReviewLinkGeneratorRoute =
+  GoogleReviewLinkGeneratorRouteImport.update({
+    id: '/google-review-link-generator',
+    path: '/google-review-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GoogleMapsLinkGeneratorRoute = GoogleMapsLinkGeneratorRouteImport.update({
+  id: '/google-maps-link-generator',
+  path: '/google-maps-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffiliateLinkGeneratorRoute = AffiliateLinkGeneratorRouteImport.update({
+  id: '/affiliate-link-generator',
+  path: '/affiliate-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddToCalendarLinkGeneratorRoute =
+  AddToCalendarLinkGeneratorRouteImport.update({
+    id: '/add-to-calendar-link-generator',
+    path: '/add-to-calendar-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +87,186 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
+  '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
+  '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
+  '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
+  '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/referral-link-generator': typeof ReferralLinkGeneratorRoute
+  '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/slug-generator': typeof SlugGeneratorRoute
+  '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
+  '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
+  '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
+  '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
+  '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/referral-link-generator': typeof ReferralLinkGeneratorRoute
+  '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/slug-generator': typeof SlugGeneratorRoute
+  '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
+  '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
+  '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
+  '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
+  '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/referral-link-generator': typeof ReferralLinkGeneratorRoute
+  '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/slug-generator': typeof SlugGeneratorRoute
+  '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/add-to-calendar-link-generator'
+    | '/affiliate-link-generator'
+    | '/google-maps-link-generator'
+    | '/google-review-link-generator'
+    | '/mailto-link-generator'
+    | '/premium-link-generator'
+    | '/referral-link-generator'
+    | '/rickroll-link-generator'
+    | '/sitemap.xml'
+    | '/slug-generator'
+    | '/whatsapp-link-generator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/add-to-calendar-link-generator'
+    | '/affiliate-link-generator'
+    | '/google-maps-link-generator'
+    | '/google-review-link-generator'
+    | '/mailto-link-generator'
+    | '/premium-link-generator'
+    | '/referral-link-generator'
+    | '/rickroll-link-generator'
+    | '/sitemap.xml'
+    | '/slug-generator'
+    | '/whatsapp-link-generator'
+  id:
+    | '__root__'
+    | '/'
+    | '/add-to-calendar-link-generator'
+    | '/affiliate-link-generator'
+    | '/google-maps-link-generator'
+    | '/google-review-link-generator'
+    | '/mailto-link-generator'
+    | '/premium-link-generator'
+    | '/referral-link-generator'
+    | '/rickroll-link-generator'
+    | '/sitemap.xml'
+    | '/slug-generator'
+    | '/whatsapp-link-generator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AddToCalendarLinkGeneratorRoute: typeof AddToCalendarLinkGeneratorRoute
+  AffiliateLinkGeneratorRoute: typeof AffiliateLinkGeneratorRoute
+  GoogleMapsLinkGeneratorRoute: typeof GoogleMapsLinkGeneratorRoute
+  GoogleReviewLinkGeneratorRoute: typeof GoogleReviewLinkGeneratorRoute
+  MailtoLinkGeneratorRoute: typeof MailtoLinkGeneratorRoute
+  PremiumLinkGeneratorRoute: typeof PremiumLinkGeneratorRoute
+  ReferralLinkGeneratorRoute: typeof ReferralLinkGeneratorRoute
+  RickrollLinkGeneratorRoute: typeof RickrollLinkGeneratorRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SlugGeneratorRoute: typeof SlugGeneratorRoute
+  WhatsappLinkGeneratorRoute: typeof WhatsappLinkGeneratorRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/whatsapp-link-generator': {
+      id: '/whatsapp-link-generator'
+      path: '/whatsapp-link-generator'
+      fullPath: '/whatsapp-link-generator'
+      preLoaderRoute: typeof WhatsappLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/slug-generator': {
+      id: '/slug-generator'
+      path: '/slug-generator'
+      fullPath: '/slug-generator'
+      preLoaderRoute: typeof SlugGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rickroll-link-generator': {
+      id: '/rickroll-link-generator'
+      path: '/rickroll-link-generator'
+      fullPath: '/rickroll-link-generator'
+      preLoaderRoute: typeof RickrollLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referral-link-generator': {
+      id: '/referral-link-generator'
+      path: '/referral-link-generator'
+      fullPath: '/referral-link-generator'
+      preLoaderRoute: typeof ReferralLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium-link-generator': {
+      id: '/premium-link-generator'
+      path: '/premium-link-generator'
+      fullPath: '/premium-link-generator'
+      preLoaderRoute: typeof PremiumLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mailto-link-generator': {
+      id: '/mailto-link-generator'
+      path: '/mailto-link-generator'
+      fullPath: '/mailto-link-generator'
+      preLoaderRoute: typeof MailtoLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/google-review-link-generator': {
+      id: '/google-review-link-generator'
+      path: '/google-review-link-generator'
+      fullPath: '/google-review-link-generator'
+      preLoaderRoute: typeof GoogleReviewLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/google-maps-link-generator': {
+      id: '/google-maps-link-generator'
+      path: '/google-maps-link-generator'
+      fullPath: '/google-maps-link-generator'
+      preLoaderRoute: typeof GoogleMapsLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affiliate-link-generator': {
+      id: '/affiliate-link-generator'
+      path: '/affiliate-link-generator'
+      fullPath: '/affiliate-link-generator'
+      preLoaderRoute: typeof AffiliateLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/add-to-calendar-link-generator': {
+      id: '/add-to-calendar-link-generator'
+      path: '/add-to-calendar-link-generator'
+      fullPath: '/add-to-calendar-link-generator'
+      preLoaderRoute: typeof AddToCalendarLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +279,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AddToCalendarLinkGeneratorRoute: AddToCalendarLinkGeneratorRoute,
+  AffiliateLinkGeneratorRoute: AffiliateLinkGeneratorRoute,
+  GoogleMapsLinkGeneratorRoute: GoogleMapsLinkGeneratorRoute,
+  GoogleReviewLinkGeneratorRoute: GoogleReviewLinkGeneratorRoute,
+  MailtoLinkGeneratorRoute: MailtoLinkGeneratorRoute,
+  PremiumLinkGeneratorRoute: PremiumLinkGeneratorRoute,
+  ReferralLinkGeneratorRoute: ReferralLinkGeneratorRoute,
+  RickrollLinkGeneratorRoute: RickrollLinkGeneratorRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SlugGeneratorRoute: SlugGeneratorRoute,
+  WhatsappLinkGeneratorRoute: WhatsappLinkGeneratorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
