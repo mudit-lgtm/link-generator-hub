@@ -5,17 +5,16 @@ import type {} from "@tanstack/react-start";
 const BASE_URL = "";
 
 const PATHS = [
-  "/",
-  "/premium-link-generator",
-  "/add-to-calendar-link-generator",
-  "/rickroll-link-generator",
-  "/mailto-link-generator",
-  "/google-maps-link-generator",
-  "/whatsapp-link-generator",
-  "/slug-generator",
-  "/affiliate-link-generator",
-  "/referral-link-generator",
-  "/google-review-link-generator",
+  { p: "/", priority: "1.0" },
+  { p: "/whatsapp-link-generator", priority: "0.9" },
+  { p: "/google-review-link-generator", priority: "0.9" },
+  { p: "/mailto-link-generator", priority: "0.9" },
+  { p: "/google-maps-link-generator", priority: "0.9" },
+  { p: "/add-to-calendar-link-generator", priority: "0.9" },
+  { p: "/affiliate-link-generator", priority: "0.8" },
+  { p: "/referral-link-generator", priority: "0.8" },
+  { p: "/slug-generator", priority: "0.8" },
+  { p: "/rickroll-link-generator", priority: "0.7" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
@@ -23,8 +22,8 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const urls = PATHS.map(
-          (p) =>
-            `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${p === "/" ? "1.0" : "0.8"}</priority>\n  </url>`,
+          ({ p, priority }) =>
+            `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`,
         ).join("\n");
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
         return new Response(xml, {
