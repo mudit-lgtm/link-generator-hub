@@ -1,94 +1,89 @@
-# 10 Utility Tool Pages — SEO-Optimized with Keyword Targeting
+I will rebuild the site around your exact SEO structure instead of the thin random pages.
 
-Build 10 dedicated tool pages, each as its own TanStack Start route with unique SEO metadata, H1, on-page copy, FAQ, and JSON-LD. Server-rendered so Google indexes the HTML. Keyword targets below come from your attached spreadsheet.
+## What I will change
 
-## Routes & keyword targets per page
+1. **Homepage becomes the Premium Link Generator page**
+   - Move the Premium Link Generator tool and content to `/`.
+   - Target the homepage to: `premium link generator`, `turbobit premium link generator`, `rapidgator premium link generator`, `filejoker premium link generator`, `hitfile premium link generator`, `fastfile.cc premium link generator`, `keep2share premium link generator`, `ddownload premium link generator`, `k2s premium link generator`, `uploadhaven premium link generator`, `filesfly premium link generator`, `katfile premium link generator`, `nitroflare premium link generator`.
+   - Keep `/premium-link-generator` as a redirect-style/secondary route only if needed for existing links, but the primary SEO page will be `/`.
 
-### 1. `/premium-link-generator`
-- **Primary:** premium link generator (720)
-- **Secondary:** turbobit (590), rapidgator (590), filejoker (480), hitfile (320), fastfile.cc (260), keep2share (260), ddownload (210), k2s (210), uploadhaven (210), nitroflare (170), katfile (170), filesfly (170) premium link generator
-- **Tool:** input link → generate formatted premium link; tabbed UI per host
+2. **Design the homepage properly**
+   - Create a stronger utility-tool design, not plain cards.
+   - Add a first-screen hero with the Premium Link Generator form visible immediately.
+   - Add icon boxes linking to every inner link generator page.
+   - Each icon box will use keyword-rich anchors, for example:
+     - `WhatsApp Link Generator`
+     - `Mailto Link Generator`
+     - `Google Review Link Generator`
+     - `Google Maps Link Generator`
+     - `Add to Calendar Link Generator`
+     - `Affiliate Link Generator`
+     - `Referral Link Generator`
+     - `Rick Roll Link Generator`
+     - `SEO URL Generator`
 
-### 2. `/add-to-calendar-link-generator`
-- **Primary:** add to calendar link generator
-- **Secondary:** google calendar link generator, outlook calendar link generator, event link generator, meeting link generator, ics link generator, add event to calendar link
-- **Tool:** event form (title/date/time/location/description) → Google, Outlook, Yahoo, .ics links
+3. **Inner pages for all other generators**
+   - Keep the other tools as dedicated inner pages:
+     - `/add-to-calendar-link-generator`
+     - `/rickroll-link-generator`
+     - `/mailto-link-generator`
+     - `/google-maps-link-generator`
+     - `/whatsapp-link-generator`
+     - `/slug-generator`
+     - `/affiliate-link-generator`
+     - `/referral-link-generator`
+     - `/google-review-link-generator`
+   - Each page will link back to the homepage using `Premium Link Generator` as the anchor text.
+   - Each page will include contextual internal links to related tools using matching keyword anchors.
 
-### 3. `/rickroll-link-generator`
-- **Primary:** rick roll link generator (1,300)
-- **Secondary:** rickroll (720), rickrolled (480), rickrolling (480), fake link (390), prank link (90), troll link (50), custom rick roll, discord fake link, roblox fake link
-- **Tool:** custom label/preview → shareable disguised link
+4. **Add page-wise keyword targeting from the spreadsheet**
+   - I will add the target keywords into each page’s:
+     - H1/H2/H3 headings
+     - intro paragraph
+     - tool labels/supporting text
+     - “how to use” section
+     - AEO question headings
+     - FAQ questions and answers
+     - contextual internal link anchors
+   - I will avoid keyword stuffing, but each page will clearly map to its attached keyword set.
 
-### 4. `/mailto-link-generator`
-- **Primary:** mailto link generator (1,000)
-- **Secondary:** generate mailto link (390), email link generator (90), free mailto, html email link generator, gmail link generator, email link with subject and body
-- **Tool:** to/cc/bcc/subject/body → mailto: string + `<a>` HTML snippet
+5. **Add 1000-word SEO/AEO/GEO optimized content per page**
+   - Each tool page will get a long-form content section around 1000 words, including:
+     - what the tool does
+     - who it is for
+     - step-by-step use cases
+     - platform-specific keyword sections
+     - USA/local/business-oriented examples where relevant
+     - AEO-style direct answers for AI search engines
+     - GEO-style local/business context for Google review/maps/WhatsApp pages
+   - The content will remain server-rendered HTML so Google can crawl it.
 
-### 5. `/google-maps-link-generator`
-- **Primary:** google maps link generator
-- **Secondary:** google maps direction link generator, directions link generator, map link generator, google business map link generator, google place id generator
-- **Tool:** address or lat/lng or place ID → Maps + Directions URLs
+6. **Add SEO FAQ section on every page**
+   - Each page will include keyword-led FAQs based on the spreadsheet plus common user questions.
+   - FAQ copy will be visible on the page and mirrored in JSON-LD FAQ schema.
 
-### 6. `/whatsapp-link-generator`
-- **Primary:** whatsapp link generate (720), whatsapp link generator (590)
-- **Secondary:** generate whatsapp link (170), free whatsapp link generator, generate whatsapp link with number, generate whatsapp link qr code
-- **Tool:** phone + prefilled message → wa.me link + QR code
+7. **Add full schema coverage**
+   - Homepage and tool pages will include:
+     - `SoftwareApplication`
+     - `FAQPage`
+     - `BreadcrumbList`
+     - `WebPage`
+   - Homepage will also include site-level `WebSite`/`Organization` where appropriate.
+   - Metadata will stay per-route using TanStack Start `head()` so pages render SEO HTML correctly.
 
-### 7. `/slug-generator`
-- **Primary:** seo url generator, url slug generator
-- **Secondary:** seo friendly url generator, permalink generator, clean url generator, wordpress slug generator, slugify url generator
-- **Tool:** title → lowercase dashed slug (stopword strip toggle, max length)
+8. **Update navigation, sitemap, and internal linking**
+   - Update the sitemap so `/` is the Premium Link Generator page and all inner generator pages are listed.
+   - Update headers/footer and icon boxes so the crawl path is clear from homepage to every inner page.
+   - Add contextual related links inside body content, not only footer links.
 
-### 8. `/affiliate-link-generator`
-- **Primary:** affiliate link generator (210), amazon affiliate link generator (210)
-- **Secondary:** how to generate amazon affiliate link (480), how to generate affiliate links (170), aliexpress affiliate link generator, amazon affiliate program link generator, free affiliate link generator
-- **Tool:** product URL + affiliate tag → final link; Amazon tag preset section
+## Technical implementation
 
-### 9. `/referral-link-generator`
-- **Primary:** referral link generator (140)
-- **Secondary:** referral code generator, create referral link, custom referral link generator, referral tracking link generator, invite link generator, free referral link generator (50)
-- **Tool:** base URL + code/param + optional UTM → final referral link
-
-### 10. `/google-review-link-generator`
-- **Primary:** google review link generator (720)
-- **Secondary:** how to generate google review link (140), generate google review link (90), google my business review link generator (70), google business review link generator, free google review link generator, google review link generator 5 stars
-- **Tool:** Place ID input → review URL + 5-star prefilled variant; helper text for finding Place ID
-
-## Plus
-
-- **`/` (hub)** — H1 + 10 tool cards with the primary keyword in each card title, descriptive copy, internal links
-- **`public/robots.txt`** — `User-agent: *` / `Allow: /`
-- **`src/routes/sitemap[.]xml.ts`** — server route listing all 11 URLs (BASE_URL placeholder until domain is set, per Lovable SEO rule)
-
-## SEO implementation (Lovable rules)
-
-Per leaf route, in `head()`:
-- `title` (<60 chars, primary keyword first)
-- `description` (<160 chars, primary + 1 secondary)
-- `og:title`, `og:description`, `og:url` (relative), `og:type: website`
-- `<link rel="canonical">` (leaf only, relative href)
-- JSON-LD scripts: `SoftwareApplication` (name, applicationCategory: "UtilitiesApplication") + `FAQPage`
-
-Root (`__root.tsx`): sitewide defaults only (viewport, charSet, og:site_name, Organization JSON-LD). No canonical, no og:image, no page-specific copy.
-
-## Page structure (each tool, server-rendered)
-
-1. `<h1>` containing primary keyword
-2. 1–2 paragraph intro
-3. Interactive tool UI (hydrates client-side)
-4. "How to use" `<ol>`
-5. "Supported [hosts/calendars/platforms]" list — naturally seeds secondary keywords
-6. FAQ section (4–6 Q&A) mirrored in FAQPage JSON-LD
-7. "Related tools" internal links to 3 other tools
-
-## Technical
-
-- Pure client-side computation — no backend, no Cloud
-- Shared `ToolLayout` (nav listing all 10 tools → strong internal linking)
-- Shared `CopyButton`, `CodeBlock`, `FaqAccordion`
-- `qrcode` npm package for WhatsApp QR (Worker-safe)
-- Tailwind + tokens in `src/styles.css`; clean utility-tool aesthetic
-
-## Open question
-
-Want me to propose 2–3 visual design directions first (e.g. minimal Swiss, dark dev-tool, playful pastel), or pick a clean default and ship all 10 immediately?
+- Refactor shared components to support:
+  - SEO content blocks
+  - icon tool cards
+  - breadcrumb schema
+  - richer schema generation
+  - contextual internal link sections
+- Update each route file with its own keyword-specific content, meta title, meta description, headings, FAQs, and schemas.
+- Keep everything static/client-side for the generators; no backend needed.
+- Verify rendered HTML contains the H1, keyword content, JSON-LD, and internal links.
