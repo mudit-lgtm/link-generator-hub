@@ -127,7 +127,7 @@ function Page() {
       <ContextualLinks
         heading="Related local-business link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/google-review-link-generator", anchor: "Google Review Link Generator", blurb: "5-star Google My Business review link for the same Place ID." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "click-to-chat link to share alongside your directions link." },
           { to: "/add-to-calendar-link-generator", anchor: "Add to Calendar Link Generator", blurb: "attach event details with the venue directions link inline." },

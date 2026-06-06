@@ -120,7 +120,7 @@ function Page() {
       <ContextualLinks
         heading="Related link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "build serious-looking slugs to disguise your prank URL." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "send the rickroll over WhatsApp click-to-chat." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "build the email link that hides the rickroll inside a serious subject." },

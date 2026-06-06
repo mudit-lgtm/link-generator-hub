@@ -144,7 +144,7 @@ function Page() {
       <ContextualLinks
         heading="Related growth link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/affiliate-link-generator", anchor: "Affiliate Link Generator", blurb: "for product-commission links rather than referral credits." },
           { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "create short branded slugs (/r/john) for your referral link." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "share the referral link 1:1 via WhatsApp click-to-chat." },

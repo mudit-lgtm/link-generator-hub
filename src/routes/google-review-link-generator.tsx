@@ -126,7 +126,7 @@ function Page() {
       <ContextualLinks
         heading="Related local-SEO link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit & Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit & Nitroflare premium link generator on the home page." },
           { to: "/google-maps-link-generator", anchor: "Google Maps Link Generator", blurb: "directions and Place ID links for your business profile." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "send the review link via WhatsApp click-to-chat." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "build an email link to ask happy customers for a review." },

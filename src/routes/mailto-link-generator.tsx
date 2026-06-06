@@ -142,7 +142,7 @@ function Page() {
       <ContextualLinks
         heading="Related link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "click-to-chat wa.me link as an alternative to email." },
           { to: "/google-review-link-generator", anchor: "Google Review Link Generator", blurb: "include a 5-star Google review link in your email signature." },
           { to: "/add-to-calendar-link-generator", anchor: "Add to Calendar Link Generator", blurb: "embed event links inside your mailto link body." },

@@ -131,7 +131,7 @@ function Page() {
       <ContextualLinks
         heading="Related marketer link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/referral-link-generator", anchor: "Referral Link Generator", blurb: "create branded referral links with UTM tracking for SaaS." },
           { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "build clean cloaked slugs (e.g. /go/product) for your affiliate links." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "share affiliate links via email signatures and newsletters." },
