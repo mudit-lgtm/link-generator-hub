@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/referral-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a referral link generator?", a: "A referral link generator is a free utility that builds a branded referral or invite link with your personal referral code, optional UTM tracking and custom landing path — for SaaS programs, e-commerce loyalty programs and creator invite schemes." },
@@ -93,7 +95,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a referral link generator?",
           paragraphs: [
@@ -139,7 +141,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Referral link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Referral link generator FAQ" />
 
       <ContextualLinks
         heading="Related growth link generators"

@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/slug-generator"].keywords;
 
 const STOPWORDS = new Set(["a","an","the","and","or","but","of","on","in","at","to","for","with","by","is","it","this","that","from"]);
 
@@ -87,7 +89,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a slug generator and why does it matter for SEO?",
           paragraphs: [
@@ -132,7 +134,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="SEO URL slug generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="SEO URL slug generator FAQ" />
 
       <ContextualLinks
         heading="Related developer & SEO link generators"

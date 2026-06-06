@@ -4,8 +4,10 @@ import QRCode from "qrcode";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/whatsapp-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a WhatsApp link generator?", a: "A WhatsApp link generator creates a wa.me click-to-chat link that opens a WhatsApp conversation with your number — optionally with a prefilled message — without the sender having to save your contact first. It's the easiest way to add WhatsApp click-to-chat to a website, email signature, Instagram bio or business card." },
@@ -85,7 +87,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a WhatsApp link generator?",
           paragraphs: [
@@ -131,7 +133,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="WhatsApp link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="WhatsApp link generator FAQ" />
 
       <ContextualLinks
         heading="Related free link generators"

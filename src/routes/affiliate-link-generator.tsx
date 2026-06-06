@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/affiliate-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is an affiliate link generator?", a: "An affiliate link generator is a free tool that appends your unique tracking tag to a product URL, so any purchase made via that link is credited to your affiliate account. It works with Amazon Associates, AliExpress affiliate program, ShareASale, Impact, CJ and most major affiliate networks." },
@@ -79,7 +81,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is an affiliate link generator?",
           paragraphs: [
@@ -126,7 +128,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Affiliate link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Affiliate link generator FAQ" />
 
       <ContextualLinks
         heading="Related marketer link generators"

@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/google-review-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a Google review link generator?", a: "A Google review link generator is a free tool that builds a short URL that opens the Google review form for your Google Business Profile in one tap — no scrolling, no searching, no extra clicks." },
@@ -75,7 +77,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a Google review link generator?",
           paragraphs: [
@@ -121,7 +123,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Google review link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Google review link generator FAQ" />
 
       <ContextualLinks
         heading="Related local-SEO link generators"

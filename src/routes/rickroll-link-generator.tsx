@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/rickroll-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a rick roll link generator?", a: "A rick roll link generator (or rickroll link generator) is a free prank tool that creates a disguised URL — friends think they're clicking a normal link, but it redirects to Rick Astley's 'Never Gonna Give You Up' on YouTube." },
@@ -70,7 +72,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a rick roll link generator?",
           paragraphs: [
@@ -115,7 +117,7 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Rick roll link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Rick roll link generator FAQ" />
 
       <ContextualLinks
         heading="Related link generators"
