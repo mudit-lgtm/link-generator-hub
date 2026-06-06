@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/mailto-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a mailto link generator?", a: "A mailto link generator is a free tool that builds an HTML mailto: link with optional subject, body, CC and BCC fields. Clicking the link opens the visitor's default email client with the message ready to send." },
@@ -90,7 +92,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a mailto link generator and why use one?",
           paragraphs: [
@@ -137,12 +139,12 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Mailto link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Mailto link generator FAQ" />
 
       <ContextualLinks
         heading="Related link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "click-to-chat wa.me link as an alternative to email." },
           { to: "/google-review-link-generator", anchor: "Google Review Link Generator", blurb: "include a 5-star Google review link in your email signature." },
           { to: "/add-to-calendar-link-generator", anchor: "Add to Calendar Link Generator", blurb: "embed event links inside your mailto link body." },

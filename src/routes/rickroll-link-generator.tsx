@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/rickroll-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a rick roll link generator?", a: "A rick roll link generator (or rickroll link generator) is a free prank tool that creates a disguised URL — friends think they're clicking a normal link, but it redirects to Rick Astley's 'Never Gonna Give You Up' on YouTube." },
@@ -70,7 +72,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a rick roll link generator?",
           paragraphs: [
@@ -115,12 +117,12 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Rick roll link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Rick roll link generator FAQ" />
 
       <ContextualLinks
         heading="Related link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "build serious-looking slugs to disguise your prank URL." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "send the rickroll over WhatsApp click-to-chat." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "build the email link that hides the rickroll inside a serious subject." },

@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/google-maps-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is a Google Maps link generator?", a: "A Google Maps link generator is a free online tool that creates a shareable Google Maps URL from any address, latitude/longitude pair or Google Place ID. The generated map link generator URL works on iOS, Android and desktop." },
@@ -76,7 +78,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is a Google Maps link generator?",
           paragraphs: [
@@ -122,12 +124,12 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Google Maps link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Google Maps link generator FAQ" />
 
       <ContextualLinks
         heading="Related local-business link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/google-review-link-generator", anchor: "Google Review Link Generator", blurb: "5-star Google My Business review link for the same Place ID." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "click-to-chat link to share alongside your directions link." },
           { to: "/add-to-calendar-link-generator", anchor: "Add to Calendar Link Generator", blurb: "attach event details with the venue directions link inline." },

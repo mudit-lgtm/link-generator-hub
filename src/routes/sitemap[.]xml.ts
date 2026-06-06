@@ -1,30 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { ALL_PATHS } from "@/lib/seo-keywords";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
 
-const PATHS = [
-  { p: "/", priority: "1.0" },
-  { p: "/whatsapp-link-generator", priority: "0.9" },
-  { p: "/google-review-link-generator", priority: "0.9" },
-  { p: "/mailto-link-generator", priority: "0.9" },
-  { p: "/google-maps-link-generator", priority: "0.9" },
-  { p: "/add-to-calendar-link-generator", priority: "0.9" },
-  { p: "/affiliate-link-generator", priority: "0.8" },
-  { p: "/referral-link-generator", priority: "0.8" },
-  { p: "/slug-generator", priority: "0.8" },
-  { p: "/rickroll-link-generator", priority: "0.7" },
-];
+const PRIORITY: Record<string, string> = {
+  "/": "1.0",
+  "/premium-link-generator": "0.9",
+};
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const urls = PATHS.map(
-          ({ p, priority }) =>
-            `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`,
-        ).join("\n");
+        const lastmod = new Date().toISOString().slice(0, 10);
+        const urls = ALL_PATHS.map((p) => {
+          const priority = PRIORITY[p] ?? "0.8";
+          return `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+        }).join("\n");
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
         return new Response(xml, {
           headers: {

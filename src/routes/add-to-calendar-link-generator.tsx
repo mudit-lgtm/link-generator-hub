@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/add-to-calendar-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is an add to calendar link generator?", a: "An add to calendar link generator is a free tool that creates one-click links to add an event to Google Calendar, Outlook Calendar, Yahoo Calendar or download an .ics file — without requiring an event-management platform." },
@@ -88,7 +90,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is an add to calendar link generator?",
           paragraphs: [
@@ -133,12 +135,12 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Add to calendar link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Add to calendar link generator FAQ" />
 
       <ContextualLinks
         heading="Related link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "build the email link that delivers your calendar links." },
           { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "send the event reminder via WhatsApp click-to-chat." },
           { to: "/google-maps-link-generator", anchor: "Google Maps Link Generator", blurb: "add a directions link to the venue location." },

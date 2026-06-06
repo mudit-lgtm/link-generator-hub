@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead,
+  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
 } from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
+const KW = SEO["/affiliate-link-generator"].keywords;
 
 const FAQS = [
   { q: "What is an affiliate link generator?", a: "An affiliate link generator is a free tool that appends your unique tracking tag to a product URL, so any purchase made via that link is credited to your affiliate account. It works with Amazon Associates, AliExpress affiliate program, ShareASale, Impact, CJ and most major affiliate networks." },
@@ -79,7 +81,7 @@ function Page() {
         ]}
       />
 
-      <SeoLongform sections={[
+      <SeoLongform keywords={KW} sections={[
         {
           h2: "What is an affiliate link generator?",
           paragraphs: [
@@ -126,12 +128,12 @@ function Page() {
         },
       ]} />
 
-      <FaqSection items={FAQS} heading="Affiliate link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading="Affiliate link generator FAQ" />
 
       <ContextualLinks
         heading="Related marketer link generators"
         links={[
-          { to: "/", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
           { to: "/referral-link-generator", anchor: "Referral Link Generator", blurb: "create branded referral links with UTM tracking for SaaS." },
           { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "build clean cloaked slugs (e.g. /go/product) for your affiliate links." },
           { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "share affiliate links via email signatures and newsletters." },
