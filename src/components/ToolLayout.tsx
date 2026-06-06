@@ -7,106 +7,119 @@ export type Tool = {
   short: string;
   icon: string;
   blurb: string;
+  accent?: string; // tailwind class for icon chip tint
 };
 
-// Homepage = Premium Link Generator (highest volume / lowest KD)
-// Inner pages = the other 9 generators
-export const HOME: Tool = {
+// Homepage = General Link Generator hub (pillar page).
+export const HUB: Tool = {
   to: "/",
-  label: "Premium Link Generator",
-  short: "Premium Link",
-  icon: "★",
-  blurb:
-    "Free Rapidgator, Turbobit, Nitroflare, Filejoker, K2S & 8 more premium link generator.",
+  label: "Link Generator",
+  short: "Link Generator Hub",
+  icon: "🔗",
+  blurb: "Free link generator hub — every utility URL tool in one place.",
+  accent: "from-orange-400 to-pink-500",
 };
 
 export const TOOLS: Tool[] = [
+  {
+    to: "/premium-link-generator",
+    label: "Premium Link Generator",
+    short: "Premium Link",
+    icon: "★",
+    blurb: "Rapidgator, Turbobit, Nitroflare, Filejoker, K2S & 8 more hosts.",
+    accent: "from-amber-400 to-orange-500",
+  },
   {
     to: "/whatsapp-link-generator",
     label: "WhatsApp Link Generator",
     short: "WhatsApp Link",
     icon: "💬",
-    blurb: "wa.me click-to-chat link + free QR code with prefilled message.",
+    blurb: "wa.me click-to-chat link with prefilled message & QR code.",
+    accent: "from-green-400 to-emerald-500",
   },
   {
     to: "/google-review-link-generator",
     label: "Google Review Link Generator",
-    short: "Google Review Link",
+    short: "Google Review",
     icon: "⭐",
-    blurb: "Google My Business review link with 5-star prefill for local SEO.",
+    blurb: "Google Business 5-star review link for local SEO.",
+    accent: "from-yellow-400 to-amber-500",
   },
   {
     to: "/mailto-link-generator",
     label: "Mailto Link Generator",
-    short: "Mailto Link",
+    short: "Mailto",
     icon: "✉️",
     blurb: "HTML mailto link with subject, body, CC and BCC.",
+    accent: "from-sky-400 to-blue-500",
   },
   {
     to: "/google-maps-link-generator",
     label: "Google Maps Link Generator",
-    short: "Google Maps Link",
+    short: "Maps",
     icon: "📍",
-    blurb: "Google Maps & directions link from address, lat/lng or Place ID.",
+    blurb: "Maps & directions link from address, lat/lng or Place ID.",
+    accent: "from-rose-400 to-red-500",
   },
   {
     to: "/add-to-calendar-link-generator",
     label: "Add to Calendar Link Generator",
-    short: "Calendar Link",
+    short: "Calendar",
     icon: "📅",
-    blurb: "Google, Outlook, Yahoo & .ics add-to-calendar event links.",
+    blurb: "Google, Outlook, Yahoo & .ics add-to-calendar links.",
+    accent: "from-purple-400 to-fuchsia-500",
   },
   {
     to: "/affiliate-link-generator",
     label: "Affiliate Link Generator",
-    short: "Affiliate Link",
+    short: "Affiliate",
     icon: "🔗",
-    blurb: "Amazon, AliExpress & custom affiliate link generator with your tag.",
+    blurb: "Amazon, AliExpress & custom affiliate links with your tag.",
+    accent: "from-orange-400 to-rose-500",
   },
   {
     to: "/referral-link-generator",
     label: "Referral Link Generator",
-    short: "Referral Link",
+    short: "Referral",
     icon: "🎁",
-    blurb: "Custom referral & invite link generator with tracking codes.",
+    blurb: "Custom referral & invite links with tracking codes.",
+    accent: "from-pink-400 to-fuchsia-500",
   },
   {
     to: "/slug-generator",
     label: "SEO URL Slug Generator",
     short: "SEO Slug",
     icon: "🔡",
-    blurb: "Clean WordPress-friendly permalink and SEO URL slug generator.",
+    blurb: "Clean WordPress-friendly permalinks & SEO URL slugs.",
+    accent: "from-teal-400 to-cyan-500",
   },
   {
     to: "/rickroll-link-generator",
     label: "Rick Roll Link Generator",
-    short: "Rickroll Link",
+    short: "Rickroll",
     icon: "🎵",
-    blurb: "Custom rickroll, prank and fake link generator for friends.",
+    blurb: "Custom rickroll, prank and fake link generator.",
+    accent: "from-indigo-400 to-purple-500",
   },
 ];
 
-export const ALL_TOOLS: Tool[] = [HOME, ...TOOLS];
+export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
 
 export function ToolLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border bg-card/70 backdrop-blur sticky top-0 z-10">
+      <header className="border-b border-border/60 bg-card/80 backdrop-blur sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Link to="/" className="font-bold tracking-tight text-lg">
-            LinkKit<span className="text-primary">.</span>
+          <Link to="/" className="font-display font-extrabold tracking-tight text-xl">
+            <span className="text-gradient-sunset">LinkKit</span>
           </Link>
-          <nav className="hidden lg:flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors" activeOptions={{ exact: true }} activeProps={{ className: "text-foreground font-medium" }}>
-              Premium Link Generator
+          <nav className="hidden lg:flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-muted-foreground">
+            <Link to="/" activeOptions={{ exact: true }} className="hover:text-primary transition" activeProps={{ className: "text-primary font-semibold" }}>
+              Link Generator Hub
             </Link>
-            {TOOLS.slice(0, 5).map((t) => (
-              <Link
-                key={t.to}
-                to={t.to}
-                className="hover:text-foreground transition-colors"
-                activeProps={{ className: "text-foreground font-medium" }}
-              >
+            {TOOLS.slice(0, 6).map((t) => (
+              <Link key={t.to} to={t.to} className="hover:text-primary transition"
+                activeProps={{ className: "text-primary font-semibold" }}>
                 {t.short}
               </Link>
             ))}
@@ -114,24 +127,25 @@ export function ToolLayout({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main className="max-w-3xl mx-auto px-4 py-10">{children}</main>
-      <footer className="border-t border-border mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-10">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+      <footer className="border-t border-border/60 mt-20 bg-card/50">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="font-display font-extrabold text-lg text-gradient-sunset">LinkKit</span>
+            <span className="text-xs text-muted-foreground">— free link generators for the web</span>
+          </div>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
             All free link generators
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
             {ALL_TOOLS.map((t) => (
-              <Link
-                key={t.to}
-                to={t.to}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {t.icon} {t.label}
+              <Link key={t.to} to={t.to} className="text-foreground/70 hover:text-primary transition flex items-center gap-2">
+                <span aria-hidden>{t.icon}</span>
+                {t.label}
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} LinkKit — Free utility link generators for marketers, developers and businesses in the USA and worldwide.
+          <p className="mt-8 text-xs text-muted-foreground">
+            © {new Date().getFullYear()} LinkKit — Free utility link generators for marketers, developers and businesses across the USA.
           </p>
         </div>
       </footer>
@@ -142,21 +156,27 @@ export function ToolLayout({ children }: { children: ReactNode }) {
 export function IconToolGrid({ tools = TOOLS, heading }: { tools?: Tool[]; heading?: string }) {
   return (
     <section className="mt-12">
-      {heading && <h2 className="text-2xl font-bold mb-4">{heading}</h2>}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tools.map((t) => (
+      {heading && <h2 className="text-2xl md:text-3xl font-bold mb-5">{heading}</h2>}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {tools.map((t, i) => (
           <Link
             key={t.to}
             to={t.to}
-            className="group block rounded-xl border border-border bg-card p-5 hover:border-primary/60 hover:shadow-md transition-all"
+            style={{ animationDelay: `${i * 40}ms` }}
+            className="animate-fade-up group block rounded-2xl border border-border bg-card p-4 hover:border-primary hover:shadow-warm transition-all"
           >
             <div className="flex items-start gap-3">
-              <span className="text-2xl leading-none" aria-hidden="true">{t.icon}</span>
+              <span
+                className={`flex-shrink-0 w-11 h-11 rounded-xl grid place-items-center text-xl bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white shadow-card`}
+                aria-hidden="true"
+              >
+                {t.icon}
+              </span>
               <div className="min-w-0">
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm md:text-base">
+                <h3 className="font-semibold text-foreground group-hover:text-primary transition text-sm md:text-base leading-tight">
                   {t.label}
                 </h3>
-                <p className="text-xs text-muted-foreground leading-snug mt-1">{t.blurb}</p>
+                <p className="text-xs md:text-sm text-muted-foreground leading-snug mt-1">{t.blurb}</p>
               </div>
             </div>
           </Link>
@@ -166,14 +186,19 @@ export function IconToolGrid({ tools = TOOLS, heading }: { tools?: Tool[]; headi
   );
 }
 
+/* Backwards-compatible export used by existing tool pages.
+   Anchors point to the new homepage (Link Generator hub) AND to
+   /premium-link-generator using the exact keyword anchor text. */
 export function BackToHomeLink() {
   return (
-    <p className="mt-10 text-sm text-muted-foreground">
-      Looking for a{" "}
-      <Link to="/" className="text-primary font-medium hover:underline">
+    <p className="mt-10 text-sm text-foreground/80">
+      Need more URL tools? Explore the full{" "}
+      <Link to="/" className="text-primary font-semibold hover:underline">Link Generator</Link>{" "}
+      hub, or grab a free{" "}
+      <Link to="/premium-link-generator" className="text-primary font-semibold hover:underline">
         Premium Link Generator
       </Link>{" "}
-      for Rapidgator, Turbobit, Nitroflare, Filejoker, Keep2Share and more? It's our flagship free tool on the home page.
+      for Rapidgator, Turbobit, Nitroflare, Filejoker, Keep2Share and 8 more file hosts.
     </p>
   );
 }
