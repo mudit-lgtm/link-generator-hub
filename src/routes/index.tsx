@@ -107,7 +107,22 @@ function Page() {
         </p>
       </ToolCard>
 
+      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { k: "14+", v: "Free generators" },
+          { k: "0", v: "Signup required" },
+          { k: "100%", v: "Client-side" },
+          { k: "USA", v: "Optimised" },
+        ].map((s) => (
+          <div key={s.v} className="rounded-2xl border border-border bg-card p-4 text-center shadow-card">
+            <div className="text-2xl md:text-3xl font-display font-extrabold text-gradient-sunset">{s.k}</div>
+            <div className="text-xs text-muted-foreground mt-1">{s.v}</div>
+          </div>
+        ))}
+      </div>
+
       <IconToolGrid heading="All free link generators" tools={TOOLS} />
+
 
       <HowToUse
         heading="How to use the link generator hub"
