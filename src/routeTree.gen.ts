@@ -9,11 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YoutubeLinkGeneratorRouteImport } from './routes/youtube-link-generator'
 import { Route as WhatsappLinkGeneratorRouteImport } from './routes/whatsapp-link-generator'
+import { Route as UtmLinkGeneratorRouteImport } from './routes/utm-link-generator'
 import { Route as SlugGeneratorRouteImport } from './routes/slug-generator'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ShortLinkGeneratorRouteImport } from './routes/short-link-generator'
 import { Route as RickrollLinkGeneratorRouteImport } from './routes/rickroll-link-generator'
 import { Route as ReferralLinkGeneratorRouteImport } from './routes/referral-link-generator'
+import { Route as QrCodeLinkGeneratorRouteImport } from './routes/qr-code-link-generator'
 import { Route as PremiumLinkGeneratorRouteImport } from './routes/premium-link-generator'
 import { Route as MailtoLinkGeneratorRouteImport } from './routes/mailto-link-generator'
 import { Route as GoogleReviewLinkGeneratorRouteImport } from './routes/google-review-link-generator'
@@ -22,9 +26,19 @@ import { Route as AffiliateLinkGeneratorRouteImport } from './routes/affiliate-l
 import { Route as AddToCalendarLinkGeneratorRouteImport } from './routes/add-to-calendar-link-generator'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YoutubeLinkGeneratorRoute = YoutubeLinkGeneratorRouteImport.update({
+  id: '/youtube-link-generator',
+  path: '/youtube-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhatsappLinkGeneratorRoute = WhatsappLinkGeneratorRouteImport.update({
   id: '/whatsapp-link-generator',
   path: '/whatsapp-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UtmLinkGeneratorRoute = UtmLinkGeneratorRouteImport.update({
+  id: '/utm-link-generator',
+  path: '/utm-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SlugGeneratorRoute = SlugGeneratorRouteImport.update({
@@ -37,6 +51,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShortLinkGeneratorRoute = ShortLinkGeneratorRouteImport.update({
+  id: '/short-link-generator',
+  path: '/short-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RickrollLinkGeneratorRoute = RickrollLinkGeneratorRouteImport.update({
   id: '/rickroll-link-generator',
   path: '/rickroll-link-generator',
@@ -45,6 +64,11 @@ const RickrollLinkGeneratorRoute = RickrollLinkGeneratorRouteImport.update({
 const ReferralLinkGeneratorRoute = ReferralLinkGeneratorRouteImport.update({
   id: '/referral-link-generator',
   path: '/referral-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrCodeLinkGeneratorRoute = QrCodeLinkGeneratorRouteImport.update({
+  id: '/qr-code-link-generator',
+  path: '/qr-code-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PremiumLinkGeneratorRoute = PremiumLinkGeneratorRouteImport.update({
@@ -93,11 +117,15 @@ export interface FileRoutesByFullPath {
   '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
   '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/utm-link-generator': typeof UtmLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
+  '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,11 +135,15 @@ export interface FileRoutesByTo {
   '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
   '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/utm-link-generator': typeof UtmLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
+  '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,11 +154,15 @@ export interface FileRoutesById {
   '/google-review-link-generator': typeof GoogleReviewLinkGeneratorRoute
   '/mailto-link-generator': typeof MailtoLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
+  '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/utm-link-generator': typeof UtmLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
+  '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,11 +174,15 @@ export interface FileRouteTypes {
     | '/google-review-link-generator'
     | '/mailto-link-generator'
     | '/premium-link-generator'
+    | '/qr-code-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
+    | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/utm-link-generator'
     | '/whatsapp-link-generator'
+    | '/youtube-link-generator'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,11 +192,15 @@ export interface FileRouteTypes {
     | '/google-review-link-generator'
     | '/mailto-link-generator'
     | '/premium-link-generator'
+    | '/qr-code-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
+    | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/utm-link-generator'
     | '/whatsapp-link-generator'
+    | '/youtube-link-generator'
   id:
     | '__root__'
     | '/'
@@ -166,11 +210,15 @@ export interface FileRouteTypes {
     | '/google-review-link-generator'
     | '/mailto-link-generator'
     | '/premium-link-generator'
+    | '/qr-code-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
+    | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/utm-link-generator'
     | '/whatsapp-link-generator'
+    | '/youtube-link-generator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -181,20 +229,38 @@ export interface RootRouteChildren {
   GoogleReviewLinkGeneratorRoute: typeof GoogleReviewLinkGeneratorRoute
   MailtoLinkGeneratorRoute: typeof MailtoLinkGeneratorRoute
   PremiumLinkGeneratorRoute: typeof PremiumLinkGeneratorRoute
+  QrCodeLinkGeneratorRoute: typeof QrCodeLinkGeneratorRoute
   ReferralLinkGeneratorRoute: typeof ReferralLinkGeneratorRoute
   RickrollLinkGeneratorRoute: typeof RickrollLinkGeneratorRoute
+  ShortLinkGeneratorRoute: typeof ShortLinkGeneratorRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlugGeneratorRoute: typeof SlugGeneratorRoute
+  UtmLinkGeneratorRoute: typeof UtmLinkGeneratorRoute
   WhatsappLinkGeneratorRoute: typeof WhatsappLinkGeneratorRoute
+  YoutubeLinkGeneratorRoute: typeof YoutubeLinkGeneratorRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/youtube-link-generator': {
+      id: '/youtube-link-generator'
+      path: '/youtube-link-generator'
+      fullPath: '/youtube-link-generator'
+      preLoaderRoute: typeof YoutubeLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/whatsapp-link-generator': {
       id: '/whatsapp-link-generator'
       path: '/whatsapp-link-generator'
       fullPath: '/whatsapp-link-generator'
       preLoaderRoute: typeof WhatsappLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/utm-link-generator': {
+      id: '/utm-link-generator'
+      path: '/utm-link-generator'
+      fullPath: '/utm-link-generator'
+      preLoaderRoute: typeof UtmLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/slug-generator': {
@@ -211,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/short-link-generator': {
+      id: '/short-link-generator'
+      path: '/short-link-generator'
+      fullPath: '/short-link-generator'
+      preLoaderRoute: typeof ShortLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rickroll-link-generator': {
       id: '/rickroll-link-generator'
       path: '/rickroll-link-generator'
@@ -223,6 +296,13 @@ declare module '@tanstack/react-router' {
       path: '/referral-link-generator'
       fullPath: '/referral-link-generator'
       preLoaderRoute: typeof ReferralLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr-code-link-generator': {
+      id: '/qr-code-link-generator'
+      path: '/qr-code-link-generator'
+      fullPath: '/qr-code-link-generator'
+      preLoaderRoute: typeof QrCodeLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/premium-link-generator': {
@@ -285,22 +365,16 @@ const rootRouteChildren: RootRouteChildren = {
   GoogleReviewLinkGeneratorRoute: GoogleReviewLinkGeneratorRoute,
   MailtoLinkGeneratorRoute: MailtoLinkGeneratorRoute,
   PremiumLinkGeneratorRoute: PremiumLinkGeneratorRoute,
+  QrCodeLinkGeneratorRoute: QrCodeLinkGeneratorRoute,
   ReferralLinkGeneratorRoute: ReferralLinkGeneratorRoute,
   RickrollLinkGeneratorRoute: RickrollLinkGeneratorRoute,
+  ShortLinkGeneratorRoute: ShortLinkGeneratorRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlugGeneratorRoute: SlugGeneratorRoute,
+  UtmLinkGeneratorRoute: UtmLinkGeneratorRoute,
   WhatsappLinkGeneratorRoute: WhatsappLinkGeneratorRoute,
+  YoutubeLinkGeneratorRoute: YoutubeLinkGeneratorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

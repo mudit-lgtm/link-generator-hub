@@ -133,6 +133,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is an SEO URL slug generator?"
+        answer="An SEO URL slug generator turns any blog title into a clean, lowercase, hyphen-separated URL slug optimized for WordPress permalinks, Webflow CMS items and Next.js routes. It strips diacritics, removes stop-words optionally and keeps the slug under search-engine-friendly length limits."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="SEO URL slug generator — USA publisher use cases"
+        keywords={KW}
+        items={[
+          { who: "News site in Washington, DC", how: "Generates SEO friendly URLs for every breaking story without touching the CMS." },
+          { who: "Wellness blogger in Austin, TX", how: "Uses the clean URL generator before publishing to Webflow to keep slugs crawlable." },
+          { who: "Shopify store in Brooklyn, NY", how: "Pairs the slug generator with the affiliate link generator for shareable product redirects." },
+          { who: "Agency in San Francisco, CA", how: "Standardises WordPress permalinks across 40 client sites with the slug generator." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="SEO URL slug generator FAQ" />
 
