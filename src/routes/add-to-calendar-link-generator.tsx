@@ -134,6 +134,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is an add to calendar link generator?"
+        answer="An add to calendar link generator builds one-click 'Add to Google Calendar / Outlook / Yahoo / Apple .ics' URLs from an event title, time and location. Recipients save the event with a single tap — perfect for webinars, sales calls, launches and RSVP emails."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="Add to calendar link generator — USA use cases"
+        keywords={KW}
+        items={[
+          { who: "SaaS marketer in San Francisco, CA", how: "Pastes Google Calendar + Outlook calendar add-to-calendar links in webinar reminder emails — show-up rate +18%." },
+          { who: "Course creator in Austin, TX", how: "Generates a .ics file link for cohort kickoffs that lands in any calendar app." },
+          { who: "Event organizer in Las Vegas, NV", how: "Shares a Yahoo + Google calendar link on the event landing page to handle every audience." },
+          { who: "HR team in Atlanta, GA", how: "Drops an add to calendar link generator URL in interview confirmation emails to reduce no-shows." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="Add to calendar link generator FAQ" />
 

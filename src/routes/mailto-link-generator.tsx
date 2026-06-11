@@ -138,6 +138,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is a mailto link generator?"
+        answer="A mailto link generator builds an HTML mailto: URL with subject, body, CC and BCC pre-filled. When clicked, it opens the visitor's default email client (Gmail, Outlook, Apple Mail) with a draft ready to send — perfect for support pages, footers and email signature buttons."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="Mailto link generator — USA use cases"
+        keywords={KW}
+        items={[
+          { who: "E-commerce store in Los Angeles, CA", how: "Uses a mailto link with subject 'Order #' so customers' first reply already contains their order number." },
+          { who: "SaaS founder in Seattle, WA", how: "Drops a 'Talk to founder' mailto link with prefilled body in onboarding emails — 22% reply rate." },
+          { who: "Non-profit in Washington, DC", how: "Adds a mailto link with CC to grants@ and BCC to board@ for one-click introductions." },
+          { who: "Solo consultant in Boston, MA", how: "Replaces a Typeform with a mailto link generator URL on her contact page to skip form fatigue." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="Mailto link generator FAQ" />
 

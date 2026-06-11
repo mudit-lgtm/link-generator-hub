@@ -140,6 +140,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is a referral link generator?"
+        answer="A referral link generator creates a unique invite URL that includes a tracking code so credit lands with the right referrer. SaaS, fintech and e-commerce brands use the custom referral link generator to power give-$10-get-$10 programs and influencer campaigns."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="Referral link generator — USA SaaS & DTC use cases"
+        keywords={KW}
+        items={[
+          { who: "Fintech startup in NYC", how: "Issues a custom referral link per user — referred signups account for 28% of MRR." },
+          { who: "DTC brand in Los Angeles, CA", how: "Combines the referral link generator with the SEO URL slug generator for branded share URLs." },
+          { who: "Crypto exchange in Miami, FL", how: "Tracks campaign sources with the referral URL generator's tracking code parameter." },
+          { who: "Course community in Denver, CO", how: "Drops a SaaS referral link in onboarding so members invite peers in one tap." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="Referral link generator FAQ" />
 

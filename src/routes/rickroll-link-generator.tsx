@@ -116,6 +116,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is a rick roll link generator?"
+        answer="A rick roll link generator builds a disguised URL with a custom title that redirects to Rick Astley's 'Never Gonna Give You Up' video on YouTube. It's a free, harmless prank link generator used on Discord, Roblox, WhatsApp, SMS and Twitter — undefeated since 2007."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="Rick roll link generator — USA prank use cases"
+        keywords={KW}
+        items={[
+          { who: "Discord mods anywhere in the US", how: "Drop a Discord fake link with a fake news title in #general for April Fools'." },
+          { who: "Roblox content creator in Florida", how: "Uses the Roblox fake link generator in chat lobbies for harmless trolling." },
+          { who: "College group chat in California", how: "Sends the custom rickroll link disguised as 'finals leak' before exams." },
+          { who: "Marketing intern in Chicago, IL", how: "Plants a rickroll link in the team Slack #random at 4:55pm Friday." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="Rick roll link generator FAQ" />
 

@@ -123,6 +123,23 @@ function Page() {
           ],
         },
       ]} />
+      <AeoBlock
+        question="What is a Google Maps link generator?"
+        answer="A Google Maps link generator creates a shareable URL from an address, latitude/longitude pair or Google Place ID. The link opens Google Maps directly to your location with directions, share-location and embed options — ideal for invitations, event pages and Google Business listings."
+        keywords={KW}
+      />
+
+      <GeoBlock
+        heading="Google Maps link generator — USA use cases"
+        keywords={KW}
+        items={[
+          { who: "Wedding venue in Nashville, TN", how: "Adds a Google Maps directions link to every invitation PDF and email." },
+          { who: "Pop-up market in Portland, OR", how: "Shares a lat-long Google Maps link on Instagram Stories so customers tap-to-navigate." },
+          { who: "Co-working space in NYC", how: "Embeds a Place ID Google Maps link in the welcome email to first-time guests." },
+          { who: "Wedding photographer in Charleston, SC", how: "Sends a Google Maps share-location link with the timeline email so the team finds the first-look spot fast." },
+        ]}
+      />
+
 
       <FaqSection items={FAQS} keywords={KW} heading="Google Maps link generator FAQ" />
 
