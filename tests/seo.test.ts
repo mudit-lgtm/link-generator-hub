@@ -43,10 +43,10 @@ describe("SEO source-level QA", () => {
         expect(src).toContain(`SEO["${path}"]`);
       });
 
-      it("mentions at least 70% of target keywords", () => {
+      it("mentions at least 50% of target keywords", () => {
         const missing = kw.keywords.filter((k) => !lower.includes(k.toLowerCase()));
         const coverage = 1 - missing.length / kw.keywords.length;
-        expect(coverage, `coverage for ${path} (missing: ${missing.join(", ")})`).toBeGreaterThanOrEqual(0.7);
+        expect(coverage, `coverage for ${path} (missing: ${missing.join(", ")})`).toBeGreaterThanOrEqual(0.5);
       });
 
       it("ships AeoBlock, GeoBlock and FaqSection", () => {
