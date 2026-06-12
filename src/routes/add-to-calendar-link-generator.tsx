@@ -30,7 +30,7 @@ export const Route = createFileRoute("/add-to-calendar-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/add-to-calendar-link-generator",
     name: "Add to Calendar Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Add to Calendar Link Generator", item: "/add-to-calendar-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Add to Calendar Link Generator", item: "/add-to-calendar-link-generator" }],
   }),
   component: Page,
 });
@@ -61,7 +61,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Add to Calendar Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Add to Calendar Link Generator" }]} />
       <ToolHero
         h1="Add to Calendar Link Generator — Google, Outlook, Yahoo & .ics"
         intro="Generate add-to-calendar links for Google Calendar, Outlook, Yahoo and downloadable .ics in seconds. This free event link generator and meeting link generator produces all four formats from one form — perfect for webinars, launches, demos and meetings."

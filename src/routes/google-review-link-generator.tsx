@@ -25,7 +25,7 @@ export const Route = createFileRoute("/google-review-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/google-review-link-generator",
     name: "Google Review Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Google Review Link Generator", item: "/google-review-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Google Review Link Generator", item: "/google-review-link-generator" }],
   }),
   component: Page,
 });
@@ -43,7 +43,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Google Review Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Google Review Link Generator" }]} />
       <ToolHero
         h1="Google Review Link Generator — Free with 5-Star Prefill"
         intro="Generate a direct Google review link for your Google My Business profile in seconds. Optionally prefill 5 stars so happy customers can leave a 5-star Google review with one tap — the fastest, free Google review link generator for local businesses."

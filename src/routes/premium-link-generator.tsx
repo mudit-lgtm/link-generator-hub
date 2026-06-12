@@ -34,7 +34,7 @@ export const Route = createFileRoute("/premium-link-generator")({
     title: TITLE, description: DESC, path: "/premium-link-generator",
     name: "Premium Link Generator", faqs: FAQS,
     breadcrumbs: [
-      { name: "Home", item: "/" },
+      { name: "Link Generator", item: "/" },
       { name: "Premium Link Generator", item: "/premium-link-generator" },
     ],
   }),
@@ -52,7 +52,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Premium Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Premium Link Generator" }]} />
       <ToolHero
         eyebrow="Free • 12 Hosts • No Account"
         h1="Premium Link Generator — Rapidgator, Turbobit, Nitroflare & 9 More"

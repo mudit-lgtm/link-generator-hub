@@ -24,7 +24,7 @@ export const Route = createFileRoute("/rickroll-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/rickroll-link-generator",
     name: "Rick Roll Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Rick Roll Link Generator", item: "/rickroll-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Rick Roll Link Generator", item: "/rickroll-link-generator" }],
   }),
   component: Page,
 });
@@ -39,7 +39,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Rick Roll Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Rick Roll Link Generator" }]} />
       <ToolHero
         h1="Rick Roll Link Generator — Free Custom Rickroll & Fake Link Generator"
         intro="Generate a custom rickroll link, fake link, prank link or troll link with any title in seconds. The free rick roll link generator below is the all-in-one rickrolling link generator, custom rick roll link generator, discord fake link generator and roblox fake link generator — perfect harmless internet pranking."

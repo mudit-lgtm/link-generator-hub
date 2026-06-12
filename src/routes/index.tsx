@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
     path: "/",
     name: "Link Generator",
     faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }],
     extraSchemas: [
       {
         "@context": "https://schema.org",

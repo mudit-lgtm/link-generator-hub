@@ -40,7 +40,7 @@ export const Route = createFileRoute("/slug-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/slug-generator",
     name: "SEO URL Slug Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "SEO URL Slug Generator", item: "/slug-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "SEO URL Slug Generator", item: "/slug-generator" }],
   }),
   component: Page,
 });
@@ -53,7 +53,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "SEO URL Slug Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "SEO URL Slug Generator" }]} />
       <ToolHero
         h1="SEO URL Slug Generator — Free Permalink, WordPress & Slugify URL Generator"
         intro="Convert any title into a clean, SEO-friendly URL slug instantly. This free SEO URL generator and url slug generator works as a WordPress slug generator, permalink generator, clean URL generator and slugify URL generator — all in one."
