@@ -25,7 +25,7 @@ export const Route = createFileRoute("/mailto-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/mailto-link-generator",
     name: "Mailto Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Mailto Link Generator", item: "/mailto-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Mailto Link Generator", item: "/mailto-link-generator" }],
   }),
   component: Page,
 });
@@ -50,7 +50,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Mailto Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Mailto Link Generator" }]} />
       <ToolHero
         h1="Mailto Link Generator — Free HTML Email Link with Subject & Body"
         intro="Generate a mailto link with subject, body, CC and BCC in seconds. This free mailto link generator outputs both the mailto: string and a copy-ready HTML email link snippet — works in Gmail, Outlook, Apple Mail and every modern email client."

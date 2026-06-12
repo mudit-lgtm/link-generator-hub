@@ -24,7 +24,7 @@ export const Route = createFileRoute("/referral-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/referral-link-generator",
     name: "Referral Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Referral Link Generator", item: "/referral-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Referral Link Generator", item: "/referral-link-generator" }],
   }),
   component: Page,
 });
@@ -53,7 +53,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Referral Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Referral Link Generator" }]} />
       <ToolHero
         h1="Referral Link Generator — Free Custom Referral, Invite & Tracking Link"
         intro="Generate custom referral links with your code, UTM tracking and clean URL structure in seconds. This free referral link generator doubles as a referral code generator, invite link generator and referral tracking link generator for SaaS, e-commerce and creator programs."

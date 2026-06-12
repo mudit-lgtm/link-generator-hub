@@ -24,7 +24,7 @@ export const Route = createFileRoute("/affiliate-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/affiliate-link-generator",
     name: "Affiliate Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Affiliate Link Generator", item: "/affiliate-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Affiliate Link Generator", item: "/affiliate-link-generator" }],
   }),
   component: Page,
 });
@@ -49,7 +49,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Affiliate Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Affiliate Link Generator" }]} />
       <ToolHero
         h1="Affiliate Link Generator — Free Amazon Affiliate Program Link Generator"
         intro="Generate clean affiliate links with your tracking tag in seconds. This free amazon affiliate link generator also works as an AliExpress affiliate link generator, ShareASale link generator and custom affiliate link generator — paste any product URL, add your tag, copy."

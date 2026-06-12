@@ -26,7 +26,7 @@ export const Route = createFileRoute("/whatsapp-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/whatsapp-link-generator",
     name: "WhatsApp Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "WhatsApp Link Generator", item: "/whatsapp-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "WhatsApp Link Generator", item: "/whatsapp-link-generator" }],
   }),
   component: Page,
 });
@@ -47,7 +47,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "WhatsApp Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "WhatsApp Link Generator" }]} />
       <ToolHero
         h1="WhatsApp Link Generator — Free wa.me Link & QR Code"
         intro="Generate a WhatsApp link for your number in seconds. Our free WhatsApp link generator builds a wa.me URL with prefilled message and a downloadable QR code — perfect for click-to-chat buttons, WhatsApp Business, Instagram bios and printed marketing."

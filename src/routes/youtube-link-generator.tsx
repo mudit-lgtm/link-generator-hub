@@ -25,7 +25,7 @@ export const Route = createFileRoute("/youtube-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/youtube-link-generator",
     name: "YouTube Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "YouTube Link Generator", item: "/youtube-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "YouTube Link Generator", item: "/youtube-link-generator" }],
   }),
   component: Page,
 });
@@ -48,7 +48,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "YouTube Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "YouTube Link Generator" }]} />
       <ToolHero
         h1="YouTube Link Generator — Free Subscribe, Auto-Subscribe & Timestamp Builder"
         intro="Generate a YouTube link in one click. This free youtube link generator works as a subscribe link generator, auto subscribe link generator, 1k subscribers link generator and youtube link to video generator — perfect for end-screens, descriptions and Shorts CTAs."

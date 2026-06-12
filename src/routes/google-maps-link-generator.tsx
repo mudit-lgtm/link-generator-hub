@@ -25,7 +25,7 @@ export const Route = createFileRoute("/google-maps-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/google-maps-link-generator",
     name: "Google Maps Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Google Maps Link Generator", item: "/google-maps-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Google Maps Link Generator", item: "/google-maps-link-generator" }],
   }),
   component: Page,
 });
@@ -45,7 +45,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Google Maps Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Google Maps Link Generator" }]} />
       <ToolHero
         h1="Google Maps Link Generator — Free Map & Directions Link Generator"
         intro="Generate a Google Maps link, Google Maps direction link or Google business map link from any address, latitude/longitude pair or Place ID. The free directions link generator below outputs both a map link and a turn-by-turn directions URL ready to share."

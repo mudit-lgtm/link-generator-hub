@@ -26,7 +26,7 @@ export const Route = createFileRoute("/short-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/short-link-generator",
     name: "Short Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "Short Link Generator", item: "/short-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Short Link Generator", item: "/short-link-generator" }],
   }),
   component: Page,
 });
@@ -43,7 +43,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "Short Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Short Link Generator" }]} />
       <ToolHero
         h1="Short Link Generator — Free Tiny URL & Bitly Alternative"
         intro="Generate a short link from any URL in one click. This free short link generator works as a tiny link generator, bitly link generator alternative and url link generator — perfect to shorten links for SMS, Instagram bio, Twitter/X and email signatures."

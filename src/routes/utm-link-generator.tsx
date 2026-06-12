@@ -25,7 +25,7 @@ export const Route = createFileRoute("/utm-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/utm-link-generator",
     name: "UTM Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "UTM Link Generator", item: "/utm-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "UTM Link Generator", item: "/utm-link-generator" }],
   }),
   component: Page,
 });
@@ -52,7 +52,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "UTM Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "UTM Link Generator" }]} />
       <ToolHero
         h1="UTM Link Generator — Free Google Analytics Campaign URL Builder"
         intro="Generate UTM tracking links for Google Analytics in seconds. This free UTM link generator works as a UTM builder, campaign url builder and tracking link generator — perfect for newsletters, paid ads, Instagram and TikTok campaigns."

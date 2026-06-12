@@ -27,7 +27,7 @@ export const Route = createFileRoute("/qr-code-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/qr-code-link-generator",
     name: "QR Code Link Generator", faqs: FAQS,
-    breadcrumbs: [{ name: "Home", item: "/" }, { name: "QR Code Link Generator", item: "/qr-code-link-generator" }],
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "QR Code Link Generator", item: "/qr-code-link-generator" }],
   }),
   component: Page,
 });
@@ -43,7 +43,7 @@ function Page() {
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Home", to: "/" }, { label: "QR Code Link Generator" }]} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "QR Code Link Generator" }]} />
       <ToolHero
         h1="QR Code Link Generator — Free Link to QR Code Converter"
         intro="Generate a QR code from any link in one click. This free QR code link generator works as a link to qr code generator, qr link generator and link qr code generator — download the PNG and print it on flyers, packaging, menus or business cards."
