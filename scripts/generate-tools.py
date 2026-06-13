@@ -711,29 +711,32 @@ def build_page(t):
 
   intro = f"Generate a {primary} URL in one click. This free {name} works on desktop and mobile — no signup, no limits. Build branded URLs for email, SMS, social bios, QR codes and invoices in seconds."
 
-  page = PAGE_TPL.format(
-    path=path,
-    title_json=jsstr(t["title"]),
-    desc_json=jsstr(t["desc"]),
-    name=name,
-    primary=primary,
-    state="\n".join(state_lines),
-    logic="\n".join(logic_lines),
-    deps=", ".join(deps),
-    fields="\n".join(field_lines),
-    hero_h1_json=jsstr(t["title"].split(" — ")[0] + " — " + t["title"].split(" — ")[1]) if " — " in t["title"] else jsstr(t["title"]),
-    hero_intro_json=jsstr(intro),
-    howto_heading_json=jsstr(f"How to use the {primary}"),
-    steps=steps_src,
-    aeo_q_json=jsstr(t["aeo"][0]),
-    aeo_a_json=jsstr(t["aeo"][1]),
-    geo_heading_json=jsstr(f"{name} — USA business use cases"),
-    geo_items=geo_items_src,
-    seo_sections=sec_src,
-    faq_heading_json=jsstr(f"{name} FAQ"),
-    faqs=faqs_src,
-  )
+  hero_h1 = t["title"]
+  mapping = {
+    "__PATH__": path,
+    "__NAME__": name,
+    "__PRIMARY__": primary,
+    "__TITLE__": jsstr(t["title"]),
+    "__DESC__": jsstr(t["desc"]),
+    "__FAQS__": faqs_src,
+    "__STATE__": "\n".join(state_lines),
+    "__LOGIC__": "\n".join(logic_lines),
+    "__DEPS__": ", ".join(deps),
+    "__FIELDS__": "\n".join(field_lines),
+    "__HERO_H1__": "{" + jsstr(hero_h1) + "}",
+    "__HERO_INTRO__": "{" + jsstr(intro) + "}",
+    "__HOWTO_HEADING__": "{" + jsstr(f"How to use the {primary}") + "}",
+    "__STEPS__": steps_src,
+    "__AEO_Q__": "{" + jsstr(t["aeo"][0]) + "}",
+    "__AEO_A__": "{" + jsstr(t["aeo"][1]) + "}",
+    "__GEO_HEADING__": "{" + jsstr(f"{name} — USA business use cases") + "}",
+    "__GEO_ITEMS__": geo_items_src,
+    "__SEO_SECTIONS__": sec_src,
+    "__FAQ_HEADING__": "{" + jsstr(f"{name} FAQ") + "}",
+  }
+  page = render_page(mapping)
   return path, page
+
 
 
 # Write pages
