@@ -147,6 +147,268 @@ export const SEO: Record<string, PageKeywords> = {
       "youtube link to video generator", "1k subscribers link generate",
     ],
   },
+
+  /* ---- TIER 1 + TIER 2 ---- */
+  "/discord-invite-link-generator": {
+    path: "/discord-invite-link-generator",
+    primary: "discord invite link generator",
+    keywords: [
+      "discord invite link generator",
+      "discord link generator",
+      "discord server link generator",
+      "custom discord invite link",
+      "permanent discord invite",
+      "discord vanity link generator",
+      "free discord invite link generator"
+    ],
+  },
+  "/zoom-meeting-link-generator": {
+    path: "/zoom-meeting-link-generator",
+    primary: "zoom meeting link generator",
+    keywords: [
+      "zoom meeting link generator",
+      "zoom link generator",
+      "zoom invite link generator",
+      "zoom meeting url generator",
+      "free zoom link generator",
+      "custom zoom meeting link",
+      "zoom join link generator"
+    ],
+  },
+  "/google-meet-link-generator": {
+    path: "/google-meet-link-generator",
+    primary: "google meet link generator",
+    keywords: [
+      "google meet link generator",
+      "meet.google.com link generator",
+      "google meet invite link",
+      "custom google meet link",
+      "free google meet link generator",
+      "google meet url generator",
+      "instant google meet link"
+    ],
+  },
+  "/teams-meeting-link-generator": {
+    path: "/teams-meeting-link-generator",
+    primary: "teams meeting link generator",
+    keywords: [
+      "teams meeting link generator",
+      "microsoft teams link generator",
+      "teams invite link generator",
+      "ms teams meeting link",
+      "teams join link generator",
+      "free teams meeting link",
+      "teams.microsoft.com link generator"
+    ],
+  },
+  "/payment-link-generator": {
+    path: "/payment-link-generator",
+    primary: "payment link generator",
+    keywords: [
+      "payment link generator",
+      "stripe payment link generator",
+      "online payment link generator",
+      "custom payment link",
+      "invoice payment link",
+      "free payment link generator",
+      "accept payment link"
+    ],
+  },
+  "/paypal-me-link-generator": {
+    path: "/paypal-me-link-generator",
+    primary: "paypal.me link generator",
+    keywords: [
+      "paypal.me link generator",
+      "paypal link generator",
+      "paypal payment link generator",
+      "custom paypal.me link",
+      "paypal me url generator",
+      "free paypal link generator",
+      "paypal request link"
+    ],
+  },
+  "/instagram-link-generator": {
+    path: "/instagram-link-generator",
+    primary: "instagram link generator",
+    keywords: [
+      "instagram link generator",
+      "instagram profile link generator",
+      "instagram dm link generator",
+      "instagram story link",
+      "custom instagram link",
+      "instagram bio link generator",
+      "free instagram link generator"
+    ],
+  },
+  "/facebook-share-link-generator": {
+    path: "/facebook-share-link-generator",
+    primary: "facebook share link generator",
+    keywords: [
+      "facebook share link generator",
+      "facebook link generator",
+      "facebook share url generator",
+      "fb share link",
+      "facebook share button link",
+      "custom facebook share link",
+      "free facebook share link generator"
+    ],
+  },
+  "/telegram-link-generator": {
+    path: "/telegram-link-generator",
+    primary: "telegram link generator",
+    keywords: [
+      "telegram link generator",
+      "t.me link generator",
+      "telegram channel link generator",
+      "telegram group invite link",
+      "telegram bot link generator",
+      "custom telegram link",
+      "free telegram link generator"
+    ],
+  },
+  "/linkedin-link-generator": {
+    path: "/linkedin-link-generator",
+    primary: "linkedin link generator",
+    keywords: [
+      "linkedin link generator",
+      "linkedin profile link generator",
+      "linkedin share link generator",
+      "linkedin company link generator",
+      "custom linkedin link",
+      "linkedin url generator",
+      "free linkedin link generator"
+    ],
+  },
+  "/google-drive-direct-link-generator": {
+    path: "/google-drive-direct-link-generator",
+    primary: "google drive direct download link generator",
+    keywords: [
+      "google drive direct download link generator",
+      "google drive direct link generator",
+      "drive direct download link",
+      "google drive image direct link",
+      "gdrive direct link generator",
+      "convert google drive link to direct",
+      "free google drive direct link generator"
+    ],
+  },
+  "/dropbox-direct-link-generator": {
+    path: "/dropbox-direct-link-generator",
+    primary: "dropbox direct link generator",
+    keywords: [
+      "dropbox direct link generator",
+      "dropbox direct download link",
+      "dropbox hot link generator",
+      "dropbox raw link generator",
+      "convert dropbox link to direct",
+      "free dropbox direct link generator",
+      "dropbox image direct link"
+    ],
+  },
+  "/onedrive-direct-link-generator": {
+    path: "/onedrive-direct-link-generator",
+    primary: "onedrive direct link generator",
+    keywords: [
+      "onedrive direct link generator",
+      "onedrive direct download link",
+      "onedrive embed link generator",
+      "sharepoint direct link",
+      "convert onedrive link to direct",
+      "free onedrive direct link generator",
+      "onedrive image direct link"
+    ],
+  },
+  "/mega-link-generator": {
+    path: "/mega-link-generator",
+    primary: "mega link generator",
+    keywords: [
+      "mega link generator",
+      "mega.nz link generator",
+      "mega download link generator",
+      "mega folder link generator",
+      "free mega link generator",
+      "mega cloud link generator",
+      "mega share link generator"
+    ],
+  },
+  "/pdf-link-generator": {
+    path: "/pdf-link-generator",
+    primary: "pdf link generator",
+    keywords: [
+      "pdf link generator",
+      "direct pdf link generator",
+      "pdf download link generator",
+      "pdf url generator",
+      "embed pdf link",
+      "free pdf link generator",
+      "pdf share link generator"
+    ],
+  },
+  "/image-link-generator": {
+    path: "/image-link-generator",
+    primary: "image link generator",
+    keywords: [
+      "image link generator",
+      "direct image link generator",
+      "image url generator",
+      "photo link generator",
+      "hotlink image generator",
+      "free image link generator",
+      "image share link generator"
+    ],
+  },
+  "/audio-link-generator": {
+    path: "/audio-link-generator",
+    primary: "audio link generator",
+    keywords: [
+      "audio link generator",
+      "mp3 link generator",
+      "direct audio link generator",
+      "podcast link generator",
+      "audio url generator",
+      "free audio link generator",
+      "audio share link generator"
+    ],
+  },
+  "/video-link-generator": {
+    path: "/video-link-generator",
+    primary: "video link generator",
+    keywords: [
+      "video link generator",
+      "direct video link generator",
+      "mp4 link generator",
+      "video url generator",
+      "video share link generator",
+      "free video link generator",
+      "embed video link"
+    ],
+  },
+  "/magnet-link-generator": {
+    path: "/magnet-link-generator",
+    primary: "magnet link generator",
+    keywords: [
+      "magnet link generator",
+      "torrent magnet link generator",
+      "magnet url generator",
+      "free magnet link generator",
+      "magnet link from hash",
+      "convert torrent to magnet",
+      "custom magnet link"
+    ],
+  },
+  "/direct-download-link-generator": {
+    path: "/direct-download-link-generator",
+    primary: "direct download link generator",
+    keywords: [
+      "direct download link generator",
+      "direct link generator",
+      "force download link",
+      "direct file link generator",
+      "free direct download link generator",
+      "ddl link generator",
+      "instant download link generator"
+    ],
+  },
 };
 
 export const ALL_PATHS = Object.keys(SEO);
