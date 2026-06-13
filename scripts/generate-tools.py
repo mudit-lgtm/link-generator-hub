@@ -486,95 +486,102 @@ TOOLS = [
 PAGE_TPL = '''import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
-import {{
+import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
-}} from "@/components/tool-ui";
-import {{ SEO }} from "@/lib/seo-keywords";
+} from "@/components/tool-ui";
+import { SEO } from "@/lib/seo-keywords";
 
-const KW = SEO["{path}"].keywords;
+const KW = SEO["__PATH__"].keywords;
 
 const FAQS = [
-{faqs}
+__FAQS__
 ];
 
-const TITLE = {title_json};
-const DESC = {desc_json};
+const TITLE = __TITLE__;
+const DESC = __DESC__;
 
-export const Route = createFileRoute("{path}")({{
-  head: () => buildHead({{
-    title: TITLE, description: DESC, path: "{path}",
-    name: "{name}", faqs: FAQS,
-    breadcrumbs: [{{ name: "Link Generator", item: "/" }}, {{ name: "{name}", item: "{path}" }}],
-  }}),
+export const Route = createFileRoute("__PATH__")({
+  head: () => buildHead({
+    title: TITLE, description: DESC, path: "__PATH__",
+    name: "__NAME__", faqs: FAQS,
+    breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "__NAME__", item: "__PATH__" }],
+  }),
   component: Page,
-}});
+});
 
-function Page() {{
-{state}
-  const out = useMemo(() => {{
-{logic}
-  }}, [{deps}]);
+function Page() {
+__STATE__
+  const out = useMemo(() => {
+__LOGIC__
+  }, [__DEPS__]);
 
   return (
     <ToolLayout>
-      <Breadcrumbs trail={{[{{ label: "Link Generator", to: "/" }}, {{ label: "{name}" }}]}} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "__NAME__" }]} />
       <ToolHero
-        h1={hero_h1_json}
-        intro={hero_intro_json}
-        keywords={{KW}}
+        h1=__HERO_H1__
+        intro=__HERO_INTRO__
+        keywords={KW}
       />
 
       <ToolCard>
-{fields}
+__FIELDS__
         <div>
-          <span className="block text-sm font-semibold mb-1.5">Your {primary} URL</span>
-          <OutputBlock value={{out}} />
+          <span className="block text-sm font-semibold mb-1.5">Your __PRIMARY__ URL</span>
+          <OutputBlock value={out} />
         </div>
       </ToolCard>
 
       <HowToUse
-        heading={howto_heading_json}
-        steps={{[
-{steps}
-        ]}}
+        heading=__HOWTO_HEADING__
+        steps={[
+__STEPS__
+        ]}
       />
 
       <AeoBlock
-        question={aeo_q_json}
-        answer={aeo_a_json}
-        keywords={{KW}}
+        question=__AEO_Q__
+        answer=__AEO_A__
+        keywords={KW}
       />
 
       <GeoBlock
-        heading={geo_heading_json}
-        keywords={{KW}}
-        items={{[
-{geo_items}
-        ]}}
+        heading=__GEO_HEADING__
+        keywords={KW}
+        items={[
+__GEO_ITEMS__
+        ]}
       />
 
-      <SeoLongform keywords={{KW}} sections={{[
-{seo_sections}
-      ]}} />
+      <SeoLongform keywords={KW} sections={[
+__SEO_SECTIONS__
+      ]} />
 
-      <FaqSection items={{FAQS}} keywords={{KW}} heading={faq_heading_json} />
+      <FaqSection items={FAQS} keywords={KW} heading=__FAQ_HEADING__ />
 
       <ContextualLinks
         heading="Related link generators"
-        links={{[
-          {{ to: "/", anchor: "Link Generator Hub", blurb: "browse every free link generator." }},
-          {{ to: "/short-link-generator", anchor: "Short Link Generator", blurb: "shorten the URL above for SMS, bios and QR codes." }},
-          {{ to: "/qr-code-link-generator", anchor: "QR Code Link Generator", blurb: "convert your link into a downloadable QR code." }},
-          {{ to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "Rapidgator, Turbobit and Nitroflare premium downloads." }},
-        ]}}
+        links={[
+          { to: "/", anchor: "Link Generator Hub", blurb: "browse every free link generator." },
+          { to: "/short-link-generator", anchor: "Short Link Generator", blurb: "shorten the URL above for SMS, bios and QR codes." },
+          { to: "/qr-code-link-generator", anchor: "QR Code Link Generator", blurb: "convert your link into a downloadable QR code." },
+          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "Rapidgator, Turbobit and Nitroflare premium downloads." },
+        ]}
       />
 
       <BackToHomeLink />
     </ToolLayout>
   );
-}}
+}
 '''
+
+def render_page(mapping):
+    out = PAGE_TPL
+    for k, v in mapping.items():
+        out = out.replace(k, v)
+    return out
+
 
 
 def make_faqs(t):
