@@ -37,7 +37,7 @@ function Page() {
 
       <ToolForm
         fields={[{"name": "host", "label": "Host", "type": "select", "options": [{"value": "rapidgator", "label": "Rapidgator"}, {"value": "turbobit", "label": "Turbobit"}, {"value": "nitroflare", "label": "Nitroflare"}, {"value": "filejoker", "label": "Filejoker"}, {"value": "keep2share", "label": "Keep2Share / K2S"}, {"value": "hitfile", "label": "Hitfile"}, {"value": "ddownload", "label": "DDownload"}, {"value": "uploadhaven", "label": "Uploadhaven"}, {"value": "katfile", "label": "Katfile"}, {"value": "fastfile", "label": "Fastfile.cc"}, {"value": "filesfly", "label": "Filesfly"}]}, {"name": "u", "label": "Source file URL", "type": "url", "placeholder": "https://rapidgator.net/file/…"}]}
-        build={(v) => { if(!v.u) return ''; const map={rapidgator:'rapidgator.net',turbobit:'turbobit.net',nitroflare:'nitroflare.com',filejoker:'filejoker.net',keep2share:'k2s.cc',hitfile:'hitfile.net',ddownload:'ddownload.com',uploadhaven:'uploadhaven.com',katfile:'katfile.com',fastfile:'fastfile.cc',filesfly:'filesfly.cc'}; const want=map[String(v.host)]; if(!want) return ''; return v.u.includes(want) ? v.u : `⚠ URL does not look like a ${want} link.`; }}
+        build={(v) => { if(!v.u) return ''; const map: Record<string,string>={rapidgator:'rapidgator.net',turbobit:'turbobit.net',nitroflare:'nitroflare.com',filejoker:'filejoker.net',keep2share:'k2s.cc',hitfile:'hitfile.net',ddownload:'ddownload.com',uploadhaven:'uploadhaven.com',katfile:'katfile.com',fastfile:'fastfile.cc',filesfly:'filesfly.cc'}; const want=map[String(v.host)]; if(!want) return ''; return v.u.includes(want) ? v.u : `⚠ URL does not look like a ${want} link.`; }}
         
       />
 
