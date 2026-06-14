@@ -307,7 +307,7 @@ export type FieldDef =
 
 export type ToolFormProps = {
   fields: FieldDef[];
-  build: (values: Record<string, string | boolean | File | null>) => string;
+  build: (values: Record<string, any>) => string;
   preview?: "image" | "audio" | "video" | "pdf" | "qr" | null;
   outputLabel?: string;
   multiline?: boolean;
