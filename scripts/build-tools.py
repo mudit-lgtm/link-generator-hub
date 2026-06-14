@@ -485,7 +485,7 @@ add(slug="rickroll-link-generator", name="Rick Roll Link Generator", h1="Rick Ro
           ("Will browsers warn about it?","No — it's a normal YouTube redirect."),
           ("Where did rickrolling start?","On 4chan in 2007 as a bait-and-switch joke."),
           ("Is there a Rick Roll holiday?","April 1st (April Fools) is peak rickroll season.")],
-    steps=["Enter a display label or slug.","Copy the disguised URL.","Drop it where a real link would normally go.","Watch the reactions.")],
+    steps=["Enter a display label or slug.","Copy the disguised URL.","Drop it where a real link would normally go.","Watch the reactions."],
     related=["short-link-generator","qr-code-link-generator","youtube-link-generator","mailto-link-generator"])
 
 add(slug="youtube-link-generator", name="YouTube Link Generator", h1="YouTube Link Generator (Subscribe, Timestamp, Autoplay)",
