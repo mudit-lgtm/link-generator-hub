@@ -1,149 +1,65 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useMemo } from "react";
+
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
+  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
-const KW = SEO["/rickroll-link-generator"].keywords;
 
-const FAQS = [
-  { q: "What is a rick roll link generator?", a: "A rick roll link generator (or rickroll link generator) is a free prank tool that creates a disguised URL — friends think they're clicking a normal link, but it redirects to Rick Astley's 'Never Gonna Give You Up' on YouTube." },
-  { q: "How does the rickrolled link generator work?", a: "Type any custom label (a fake news headline, a 'leaked' meme, a job offer) and the rickrolling link generator builds a short URL that takes whoever clicks it straight to the official Rick Astley video. Classic, harmless, undefeated since 2007." },
-  { q: "Is this a fake link generator?", a: "Yes — and a prank link generator, troll link generator, custom rick roll link generator and fake link generator prank in one. All output is harmless and points to a public YouTube video." },
-  { q: "Can I use this as a Discord fake link generator?", a: "Yes. The discord fake link generator output is a regular URL — paste it into any Discord channel or DM. The link preview shows your custom title and image, then redirects to the rickroll video when clicked." },
-  { q: "Does it work as a Roblox fake link generator?", a: "Yes — the roblox fake link generator output works anywhere a URL is supported, including Roblox chat, Discord, Twitter, WhatsApp and SMS." },
-  { q: "Is the fake link prank generator safe?", a: "Yes. Every generated link points to the official YouTube video of Rick Astley's 'Never Gonna Give You Up'. No malware, no tracking, no data collected. Just an unbeatable, age-old internet prank." },
-];
+const KW = SEO["/rickroll-link-generator"]?.keywords ?? [];
 
-const TITLE = "Rick Roll Link Generator — Free Custom Rickroll & Fake Link";
-const DESC = "Free rick roll link generator. Create custom rickroll, fake link, prank link and troll link with any title — works on Discord, Roblox, WhatsApp & SMS.";
+const FAQS = [{"q": "Is rickrolling harmful?", "a": "No — it just opens a music video. Keep it friendly and don't disguise it as anything malicious."}, {"q": "Can I use my own custom domain?", "a": "Yes — set up a redirect on your own short-link service if you want full control."}, {"q": "Will browsers warn about it?", "a": "No — it's a normal YouTube redirect."}, {"q": "Where did rickrolling start?", "a": "On 4chan in 2007 as a bait-and-switch joke."}, {"q": "Is there a Rick Roll holiday?", "a": "April 1st (April Fools) is peak rickroll season."}];
+const STEPS = ["Enter a display label or slug.", "Copy the disguised URL.", "Drop it where a real link would normally go.", "Watch the reactions."];
+const TITLE = "Rick Roll Link Generator — Free Online Tool";
+const DESC = "Disguise the classic Rick Astley video behind any custom URL slug. For pranks, April Fools and friendly meetings only.";
 
 export const Route = createFileRoute("/rickroll-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/rickroll-link-generator",
     name: "Rick Roll Link Generator", faqs: FAQS,
     breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Rick Roll Link Generator", item: "/rickroll-link-generator" }],
+    extraSchemas: [{
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to use the Rick Roll Link Generator",
+      step: STEPS.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: `Step ${i + 1}`, text: s })),
+    }],
   }),
   component: Page,
 });
 
 function Page() {
-  const [label, setLabel] = useState("LEAKED: New iPhone announcement");
-  const link = useMemo(() => {
-    const enc = encodeURIComponent(label || "click-me");
-    return `https://linkkit.fun/r/${enc}`;
-  }, [label]);
-  const target = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-
   return (
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Rick Roll Link Generator" }]} />
-      <ToolHero
-        h1="Rick Roll Link Generator — Free Custom Rickroll & Fake Link Generator"
-        intro="Generate a custom rickroll link, fake link, prank link or troll link with any title in seconds. The free rick roll link generator below is the all-in-one rickrolling link generator, custom rick roll link generator, discord fake link generator and roblox fake link generator — perfect harmless internet pranking."
+      <ToolHero h1={"Rick Roll Link Generator"} intro={"Disguise the classic Rick Astley video behind any custom URL slug. For pranks, April Fools and friendly meetings only."} keywords={KW} />
+
+      <ToolForm
+        fields={[{"name": "label", "label": "Display text or slug", "type": "text", "default": "important-document"}]}
+        build={(v) => { return `https://rickroll.it/?l=${encodeURIComponent(v.label||'click-here')}`; }}
+        
       />
 
-      <ToolCard>
-        <Field label="Custom label (the title your friends will see)">
-          <input className={inputCls} value={label} onChange={(e) => setLabel(e.target.value)} />
-        </Field>
-        <div>
-          <span className="block text-sm font-medium mb-1.5">Your prank rickroll link</span>
-          <OutputBlock value={link} />
-        </div>
-        <p className="text-xs text-muted-foreground">
-          All generated links redirect to the official YouTube video:{" "}
-          <a href={target} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-            Rick Astley — Never Gonna Give You Up
-          </a>
-          .
-        </p>
-      </ToolCard>
+      <HowToUse heading={"How to use the rick roll link generator"} steps={STEPS} />
 
-      <HowToUse
-        heading="How to generate a rickroll link"
-        steps={[
-          "Type any irresistible custom title — fake news, leaked product, dramatic gossip.",
-          "Copy the generated rickroll link.",
-          "Share it on Discord, WhatsApp, SMS, Twitter, Roblox chat or Slack.",
-          "Watch the reactions. Repeat.",
-        ]}
-      />
-
-      <SeoLongform keywords={KW} sections={[
-        {
-          h2: "What is a rick roll link generator?",
-          paragraphs: [
-            "Rickrolling is an internet prank that started in 2007: someone clicks what looks like a relevant link and is taken instead to the music video for Rick Astley's 'Never Gonna Give You Up'. Twenty years later, the joke is as alive as ever — the original video has surpassed 1.5 billion YouTube views and 'rick roll link generator' is searched 1,300+ times per month in the US alone.",
-            "A rickroll link generator is the tool that makes the prank effortless. Type a juicy fake title, copy the link, share it. Anyone who clicks gets rickrolled.",
-          ],
-        },
-        {
-          h2: "Custom rickroll, fake link & prank link generator",
-          paragraphs: [
-            "The custom rick roll link generator above lets you tailor the bait. A boring 'click here' link won't fool anyone — but 'LEAKED: New iPhone announcement', 'You're in this video at 0:42', or 'Apparently this is the new TikTok trend' get clicks every time.",
-            "The same generator also acts as a fake link generator, prank link generator, troll link generator and fake link generator prank tool — they're all the same thing: a disguised URL with a custom-readable title.",
-          ],
-        },
-        {
-          h2: "Discord fake link generator and Roblox fake link generator",
-          paragraphs: [
-            "Discord and Roblox are by far the two most popular places to share a rickroll in 2026. The discord fake link generator output above renders as a clickable preview inside Discord with your custom label as the title and Rick Astley as the destination.",
-            "The roblox fake link generator works the same way — paste the generated link into any Roblox chat. Roblox chat does not preview links, which makes the prank even more effective: the recipient has to actually click to find out what it is.",
-          ],
-        },
-        {
-          h2: "Why rickrolling still works in 2026",
-          paragraphs: [
-            "Rickrolling endures because it's intergenerational and harmless. A 12-year-old getting rickrolled today is participating in the same in-joke as people who were online in 2007. There's no malware payload, no scam, no data collected — it's the cleanest prank on the internet.",
-            "Pair the rickrolling link generator with a serious-looking custom slug from our SEO URL Slug Generator (e.g. /q3-financial-report) for maximum corporate-prank impact.",
-          ],
-        },
-        {
-          h2: "Famous rickrolls and where to use yours",
-          paragraphs: [
-            "Companies, governments and even live news broadcasts have pulled off public rickrolls over the years — RCA Records and YouTube themselves have set up redirects to the video on April Fools' Day. The Oregon House of Representatives accidentally let it air. NASA tweeted it. It's the internet's running gag.",
-            "Where to share yours: friend group chats, a too-good-to-be-true Reddit comment, a 'helpful Stack Overflow link', a fake meeting invite, a 'check out this new SaaS' message in r/SaaS, an 'I made this for you' Valentine's text. Just don't paste it into a real work URL — keep it for play.",
-          ],
-        },
-        {
-          h2: "Free fake link generator — etiquette and safety",
-          paragraphs: [
-            "Rickrolling is the only prank link people genuinely don't mind being on the receiving end of. Don't repurpose this fake link generator for scam pages, phishing or malware redirects — every link from this tool only ever points to the official YouTube video.",
-            "Also: avoid rickrolling people in serious contexts (job applications, urgent customer support tickets, emergency channels). Like all good comedy, timing is everything.",
-          ],
-        },
-      ]} />
       <AeoBlock
-        question="What is a rick roll link generator?"
-        answer="A rick roll link generator builds a disguised URL with a custom title that redirects to Rick Astley's 'Never Gonna Give You Up' video on YouTube. It's a free, harmless prank link generator used on Discord, Roblox, WhatsApp, SMS and Twitter — undefeated since 2007."
+        question={"What is a rickroll link?"}
+        answer={"A rickroll link is any URL that secretly redirects to Rick Astley's ‘Never Gonna Give You Up’ music video, used as a harmless internet prank."}
         keywords={KW}
       />
 
       <GeoBlock
-        heading="Rick roll link generator — USA prank use cases"
+        heading={"USA use cases"}
         keywords={KW}
-        items={[
-          { who: "Discord mods anywhere in the US", how: "Drop a Discord fake link with a fake news title in #general for April Fools'." },
-          { who: "Roblox content creator in Florida", how: "Uses the Roblox fake link generator in chat lobbies for harmless trolling." },
-          { who: "College group chat in California", how: "Sends the custom rickroll link disguised as 'finals leak' before exams." },
-          { who: "Marketing intern in Chicago, IL", how: "Plants a rickroll link in the team Slack #random at 4:55pm Friday." },
-        ]}
+        items={[{"who": "Dev team in San Francisco, CA", "how": "Drops rickrolls in the office Slack on April 1st."}, {"who": "Streamer in LA, CA", "how": "Disguises ‘bonus content’ links during live streams."}, {"who": "Friend group anywhere in the USA", "how": "Shares it in group texts for a laugh."}, {"who": "Office prankster in NYC", "how": "Sends a ‘meeting agenda’ link to coworkers."}]}
       />
 
-
-      <FaqSection items={FAQS} keywords={KW} heading="Rick roll link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
       <ContextualLinks
         heading="Related link generators"
-        links={[
-          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
-          { to: "/slug-generator", anchor: "SEO URL Slug Generator", blurb: "build serious-looking slugs to disguise your prank URL." },
-          { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "send the rickroll over WhatsApp click-to-chat." },
-          { to: "/mailto-link-generator", anchor: "Mailto Link Generator", blurb: "build the email link that hides the rickroll inside a serious subject." },
-        ]}
+        links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/youtube-link-generator", "anchor": "YouTube Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />

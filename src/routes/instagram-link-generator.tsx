@@ -1,128 +1,65 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useMemo } from "react";
+
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
+  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
-const KW = SEO["/instagram-link-generator"].keywords;
+const KW = SEO["/instagram-link-generator"]?.keywords ?? [];
 
-const FAQS = [
-  { q: "What is a instagram link generator?", a: "An Instagram link generator builds an instagram.com/{username} or DM URL for use in bios, link-in-bio pages, Google Business profiles and offline QR codes. The free Instagram link generator above works for profile share, story share and direct-message deep links." },
-  { q: "How do I use this instagram link generator?", a: "Fill the field above and the Instagram Link Generator builds the URL instantly. Copy it and paste it anywhere — email, SMS, social bios, QR codes or invoices. The instagram link generator runs entirely in your browser; no signup required." },
-  { q: "Is the instagram link generator free?", a: "Yes, this instagram link generator is 100% free with no signup, no rate limits and no tracking. It works on desktop, iPhone, Android and tablets." },
-  { q: "Does the instagram link generator work on mobile?", a: "Yes — the instagram link generator is fully responsive. Use it on iPhone, Android, iPad or any mobile browser to generate links on the go." },
-  { q: "Can I use the instagram link generator for commercial projects?", a: "Yes. Output from the instagram link generator is free for personal and commercial use — client work, agency campaigns, e-commerce stores and SaaS products." },
-  { q: "Does the instagram link generator store my data?", a: "No. The instagram link generator runs entirely in your browser. Your input is never sent to a server, never logged and never shared." },
-  { q: "What's the difference between the instagram link generator and a paid tool?", a: "Paid tools add analytics, custom domains and team features. For most one-off needs — invoices, SMS blasts, social posts — the free instagram link generator above is enough." },
-  { q: "Can I shorten the output of the instagram link generator?", a: "Yes — paste the URL from the instagram link generator into our short link generator for a tiny shareable alias, or send it through the QR code link generator for offline use." }
-];
-
-const TITLE = "Instagram Link Generator — Free Profile, DM & Story URL Builder";
-const DESC = "Free Instagram link generator. Build instagram.com/{username} profile URLs, DM links and share links — perfect for bios, link-in-bio pages and creator promos.";
+const FAQS = [{"q": "Will ig.me open the app?", "a": "Yes — mobile devices with Instagram installed open the app; otherwise they fall back to the web."}, {"q": "Do I need a Business account for DM links?", "a": "No — ig.me works for any public account."}, {"q": "Can I link to a story?", "a": "Stories are ephemeral — you can link to a Highlight or use the share-sheet from the app."}, {"q": "Will the profile link work for private accounts?", "a": "It opens the profile; viewers still need to follow to see posts."}, {"q": "Can I track clicks?", "a": "Wrap the link in a short-link or UTM redirect."}];
+const STEPS = ["Pick the type of link (profile, DM, or Reel).", "Enter the username or Reel ID.", "Copy the URL.", "Add it to your bio, website or email."];
+const TITLE = "Instagram Link Generator — Free Online Tool";
+const DESC = "Build deep links to an Instagram profile, direct message thread, or story-share intent.";
 
 export const Route = createFileRoute("/instagram-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/instagram-link-generator",
     name: "Instagram Link Generator", faqs: FAQS,
     breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Instagram Link Generator", item: "/instagram-link-generator" }],
+    extraSchemas: [{
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to use the Instagram Link Generator",
+      step: STEPS.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: `Step ${i + 1}`, text: s })),
+    }],
   }),
   component: Page,
 });
 
 function Page() {
-  const [value, setValue] = useState("linkkit");
-  const out = useMemo(() => {
-    if (!value.trim()) return "";
-    return `https://instagram.com/${value.trim()}`;
-  }, [value]);
-
   return (
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Instagram Link Generator" }]} />
-      <ToolHero
-        h1={"Instagram Link Generator — Free Profile, DM & Story URL Builder"}
-        intro={"Generate a instagram link generator URL in one click. This free Instagram Link Generator works on desktop and mobile — no signup, no limits. Build branded URLs for email, SMS, social bios, QR codes and invoices in seconds."}
-        keywords={KW}
+      <ToolHero h1={"Instagram Profile, DM & Story-Share Link Generator"} intro={"Build deep links to an Instagram profile, direct message thread, or story-share intent."} keywords={KW} />
+
+      <ToolForm
+        fields={[{"name": "kind", "label": "Link type", "type": "select", "options": [{"value": "profile", "label": "Profile"}, {"value": "dm", "label": "Direct message"}, {"value": "reel", "label": "Reel by ID"}]}, {"name": "handle", "label": "Username or ID", "type": "text", "placeholder": "username (without @)"}]}
+        build={(v) => { if(!v.handle) return ''; const h=String(v.handle).trim().replace(/^@/,''); if(v.kind==='dm') return `https://ig.me/m/${h}`; if(v.kind==='reel') return `https://www.instagram.com/reel/${h}/`; return `https://www.instagram.com/${h}/`; }}
+        
       />
 
-      <ToolCard>
-        <Field label="Instagram @username">
-          <input className={inputCls} value={value} onChange={(e) => setValue(e.target.value)} />
-        </Field>
-        <div>
-          <span className="block text-sm font-semibold mb-1.5">Your instagram link generator URL</span>
-          <OutputBlock value={out} />
-        </div>
-      </ToolCard>
-
-      <HowToUse
-        heading={"How to use the instagram link generator"}
-        steps={[
-          "Fill the field above with your instagram @username.",
-          "The instagram link generator builds the URL instantly as you type.",
-          "Copy the result with one click.",
-          "Paste it in email, SMS, social bios, QR codes, invoices or anywhere a link works."
-        ]}
-      />
+      <HowToUse heading={"How to use the instagram link generator"} steps={STEPS} />
 
       <AeoBlock
-        question={"What is an Instagram link generator?"}
-        answer={"An Instagram link generator builds an instagram.com/{username} or DM URL for use in bios, link-in-bio pages, Google Business profiles and offline QR codes. The free Instagram link generator above works for profile share, story share and direct-message deep links."}
+        question={"How do I link to an Instagram DM?"}
+        answer={"Use `https://ig.me/m/<username>` — Instagram's official short-domain that opens directly into a new DM thread on mobile and the web."}
         keywords={KW}
       />
 
       <GeoBlock
-        heading={"Instagram Link Generator — USA business use cases"}
+        heading={"USA use cases"}
         keywords={KW}
-        items={[
-          { who: "Influencer in Los Angeles, CA", how: "Generates Instagram profile links for every brand-partnership media kit." },
-          { who: "Med-spa in Miami, FL", how: "Drops the Instagram DM link generator URL in Google review responses." },
-          { who: "Yoga studio in Austin, TX", how: "Uses the custom Instagram link in their Google Business Profile." },
-          { who: "Restaurant in Brooklyn, NY", how: "Prints the Instagram bio link QR code on table tents." }
-        ]}
+        items={[{"who": "Boutique in NYC", "how": "Adds a DM link to the website footer for customer questions."}, {"who": "Influencer in LA, CA", "how": "Sends collab requests via ig.me/m links in email."}, {"who": "Realtor in Miami, FL", "how": "Embeds an Instagram profile QR on yard signs."}, {"who": "Coffee shop in Austin, TX", "how": "Cross-links the menu to their Reels."}]}
       />
 
-      <SeoLongform keywords={KW} sections={[
-        {
-          h2: "Free instagram link generator — how it works",
-          paragraphs: [
-            "This free instagram link generator runs entirely in your browser. Fill the input above and the Instagram Link Generator builds your URL instantly, ready to copy. No signup, no rate limits, no tracking. Built for marketers, creators, freelancers and small business owners across the USA who need a quick, reliable instagram link generator.",
-            "Pair this instagram link generator with our short link generator, QR code link generator and UTM link generator for a complete link-marketing stack."
-          ],
-        },
-        {
-          h2: "When to use a instagram link generator",
-          paragraphs: [
-            "Use the instagram link generator any time you need a clean, predictable URL. Common scenarios include email campaigns, SMS blasts, Instagram bios, Twitter/X posts, LinkedIn DMs, QR codes printed on packaging, invoice CTAs and customer onboarding flows. The instagram link generator guarantees the URL is encoded correctly and works across browsers, devices and email clients."
-          ],
-        },
-        {
-          h2: "instagram link generator vs paid alternatives",
-          paragraphs: [
-            "Paid SaaS tools add analytics dashboards, custom domains and team seats. For one-off needs — a single Instagram bio link, an SMS reminder, a QR code on a flyer — the free instagram link generator above is enough. Save the paid tools for high-volume tracked campaigns where attribution matters."
-          ],
-        },
-        {
-          h2: "Tips to get more from the instagram link generator",
-          paragraphs: [
-            "Combine the instagram link generator with a UTM builder to attribute traffic in Google Analytics, then shrink the result with the short link generator for SMS-friendly length. For offline campaigns, send the final URL through the QR code link generator and print it on packaging, table tents or business cards."
-          ],
-        }
-      ]} />
-
-      <FaqSection items={FAQS} keywords={KW} heading={"Instagram Link Generator FAQ"} />
+      <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
       <ContextualLinks
         heading="Related link generators"
-        links={[
-          { to: "/", anchor: "Link Generator Hub", blurb: "browse every free link generator." },
-          { to: "/short-link-generator", anchor: "Short Link Generator", blurb: "shorten the URL above for SMS, bios and QR codes." },
-          { to: "/qr-code-link-generator", anchor: "QR Code Link Generator", blurb: "convert your link into a downloadable QR code." },
-          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "Rapidgator, Turbobit and Nitroflare premium downloads." },
-        ]}
+        links={[{"to": "/facebook-share-link-generator", "anchor": "Facebook Share Link Generator", "blurb": "related link generator."}, {"to": "/telegram-link-generator", "anchor": "Telegram Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />

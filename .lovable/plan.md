@@ -1,100 +1,135 @@
-## Goals
 
-Fix the four real problems: wrong homepage strategy, bland black-and-white design, content reads like an essay instead of keyword-targeted SEO, and missing AEO/GEO blocks + QA verification.
+## Goal
 
-## 1. Restructure the homepage (correct SEO)
+Before adding Tier 3 / Tier 4, make the 35 existing tools genuinely useful, ship cleaner AEO/GEO/schema-optimized copy, and fix the mega menu so it stays open and spans full width.
 
-- **`/`** becomes the **General Link Generator hub / pillar page** targeting `link generator` (1,600), `generator link` (480), `google drive direct download link generator` (390), `url generator`, `free link generator`. This is the broad-intent pillar that links to every sub-tool.
-- **`/premium-link-generator`** becomes its own dedicated page again (the current `/` content moves back here), keeping all 13 host keywords (turbobit, rapidgator, nitroflare, filejoker, k2s, ddownload, hitfile, fastfile.cc, uploadhaven, filesfly, katfile, keep2share).
-- Add a 301 from any legacy URL collisions; update sitemap priorities (`/` = 1.0, `/premium-link-generator` = 0.9, others = 0.8).
-- Hub page layout: hero with broad-keyword H1 + a built-in mini "URL → short link / direct link" tool (so `/` is itself a working utility, not just a directory), then the icon grid of all 10 sub-tools, then ~1000 words of keyword-targeted hub content + FAQs.
+---
 
-## 2. Rebrand — Sunset Utility design system
+## 1. Fix the mega menu (header navigation)
 
-Apply the chosen palette across `src/styles.css` using OKLCH tokens:
+Problems in `src/components/ToolLayout.tsx` `ToolsDropdown`:
+- Menu disappears because of a gap between the trigger button and the floating panel — `mt-2` creates a 8px dead zone where `onMouseLeave` fires before the cursor enters the panel.
+- Panel is `w-[28rem]` and right-aligned — not full width, columns feel cramped, no category grouping.
 
-- Background: cream `#fff7ed`, surface white
-- Primary: coral-orange `#ff6b35` (CTAs, links, accents)
-- Secondary: magenta-pink `#e84393` (gradient partner, hover states)
-- Foreground: deep navy `#1a1a2e`
-- Gradient token `--gradient-sunset: linear-gradient(135deg, #ff6b35, #e84393)` for hero, buttons, tool-card hovers
-- Shadow token `--shadow-warm: 0 10px 30px -10px rgba(232, 67, 147, 0.25)`
+Fixes:
+- Convert to a proper full-width mega menu: position the panel using a wrapper that includes both the trigger and the panel under a single `onMouseLeave`, with no visual gap (use `pt-2` padding inside the panel container rather than `mt-2`, plus a small hover-bridge).
+- Add a 150ms close delay (`setTimeout` cleared on re-enter) so flicking across the panel doesn't dismiss it.
+- Stretch panel to `left-0 right-0 w-screen max-w-none` anchored under the sticky header, with an inner `max-w-6xl mx-auto` grid of 4 columns grouped by category: **Marketing**, **Social & Meeting**, **File & Media**, **Utility & Fun**.
+- Each column: category label + tool links with icon, name, one-line blurb.
+- Keyboard accessible (focus open/close, ESC to close, focus trap optional).
+- Mobile: collapse to an accordion drawer triggered by a hamburger.
 
-Typography: pair **Space Grotesk** (display, bold tracking-tight headings) + **Inter** (body), loaded via `<link>` in `__root.tsx`. Update `@theme` font tokens.
+## 2. Make every tool actually do its job (UX audit + per-tool fix)
 
-Component refresh:
-- Branded header with gradient wordmark "LinkKit"
-- Hero with gradient background + decorative blob
-- Tool icon cards: white surface, colored icon chip (rotating accent per tool), gradient border on hover, warm shadow
-- Buttons: gradient primary, soft coral secondary
-- Section dividers, badge pills ("Free", "No signup"), rating stars
-- Subtle motion: framer-motion fade-up on hero + stagger on icon grid
+All ~35 tools currently share the same "paste a URL → echo URL" template. Group them by the real input each tool needs, then replace `<Field><input/></Field>` with the right controls and add real client-side logic. Nothing server-side; everything stays in-browser.
 
-## 3. Rewrite content for SEO (not essay-style)
+### Tools that need a file upload + Blob URL (not a URL input)
+Use `<input type="file" accept="...">`, create a `URL.createObjectURL(file)` (or read as base64 data URL when persistence across tabs matters), display preview, copy button, plus a notice that blob URLs live only in the current browser session and recommend pairing with a real host.
 
-For every page (hub + 10 tools), replace prose-y blocks with **scannable, keyword-led structure**:
+- `audio-link-generator` — accept `audio/*`, preview `<audio controls>`, output blob/data URL
+- `video-link-generator` — accept `video/*`, preview `<video controls>`
+- `image-link-generator` — accept `image/*`, preview `<img>`, optional base64 data URL toggle
+- `pdf-link-generator` — accept `application/pdf`, embed in `<iframe>`, output `…#view=FitH`
+- `direct-download-link-generator` — accept any file, output blob URL + `download` attribute snippet
 
-- **H1**: exact head keyword, e.g. "WhatsApp Link Generator — Free wa.me Click-to-Chat Link"
-- **Intro (50–80 words)**: head keyword in first sentence, **bolded** target keywords, USA reference
-- **Tool block** at top (above the fold), not buried
-- **H2 sections** each titled with a long-tail keyword from the spreadsheet (e.g. "How to create a WhatsApp link with prefilled message", "WhatsApp link generator with QR code", "Free WhatsApp business link for USA businesses")
-- **Use-case bullet list** (5–7 items) with bolded keywords
-- **AEO direct-answer block**: "What is a [tool]?" — single ≤55-word paragraph optimized for AI Overviews & featured snippets
-- **GEO block**: USA-specific examples (Shopify store in Austin, dentist in Miami, realtor in Phoenix, etc.) — relevant on Google Review, Maps, WhatsApp, Mailto, Affiliate pages especially
-- **Comparison / platform mini-sections**: e.g. premium page gets one micro-section per host (Rapidgator, Turbobit…) with that host's exact keyword as H3
-- **FAQ section** (8–10 Q&As) using exact "People Also Ask" keywords from the spreadsheet — mirrored in `FAQPage` JSON-LD
-- Total ~1000 words per page, **keyword density 1–2%**, no stuffing
-- Keywords **visually highlighted** via `<strong>` and bolded anchor text in internal links
+### Tools that need a URL transform (input URL → rewritten URL)
+Keep URL input but actually transform it.
 
-## 4. Internal linking pass
+- `google-drive-direct-link-generator` — regex `/d/<id>` or `id=<id>` → `https://drive.google.com/uc?export=download&id=<id>`
+- `dropbox-direct-link-generator` — swap `www.dropbox.com` → `dl.dropboxusercontent.com`, force `?dl=1`
+- `onedrive-direct-link-generator` — base64-url-encode share URL → `https://api.onedrive.com/v1.0/shares/u!<b64>/root/content`
+- `mega-link-generator` — validate `mega.nz/file/<id>#<key>` / folder format, warn on missing key
+- `short-link-generator` — call public is.gd or TinyURL via `fetch` (no key required) with graceful fallback
+- `qr-code-link-generator` — render QR client-side with `qrcode` npm package (already-friendly), PNG download
+- `utm-link-generator` — already needs source/medium/campaign fields, ensure they're present
+- `slug-generator` — slugify input string (already correct type; verify)
 
-- Every tool page gets a "Related link generators" block with 3–4 contextual links using **exact-match keyword anchors** (e.g. "Mailto Link Generator", "Google Review Link Generator")
-- Body prose contains 2–3 contextual in-line links to related tools + the `/link-generator` hub using keyword anchors
-- Hub page icon grid uses keyword-rich anchor text + descriptions
-- Footer keeps full directory; header gets a "Tools" dropdown with all 10
+### Tools that compose a URL from structured inputs
+Replace the single URL field with multiple fields and assemble the deep link.
 
-## 5. Schema coverage (full)
+- `whatsapp-link-generator` — phone + message → `https://wa.me/<phone>?text=<urlencoded>`
+- `mailto-link-generator` — to / cc / bcc / subject / body → `mailto:` URI
+- `google-maps-link-generator` — address OR lat,lng OR Place ID + travel mode → maps URL
+- `google-review-link-generator` — Place ID → `https://search.google.com/local/writereview?placeid=<id>`
+- `add-to-calendar-link-generator` — title / start / end / location / details → Google + Outlook + Yahoo + .ics download
+- `affiliate-link-generator` — product URL + tag → Amazon/AliExpress affiliate URL with subID
+- `referral-link-generator` — base URL + ref code → `?ref=<code>`
+- `rickroll-link-generator` — display label + destination toggle → shareable rickroll
+- `youtube-link-generator` — video URL or ID + timestamp + sub/autoplay flags
+- `discord-invite-link-generator` — invite code or vanity → `discord.gg/<code>`
+- `zoom-meeting-link-generator` — meeting ID + passcode → `https://zoom.us/j/<id>?pwd=<pwd>`
+- `google-meet-link-generator` — meeting code or "new" link
+- `teams-meeting-link-generator` — Teams meeting URL builder
+- `payment-link-generator` — amount + currency + description → encoded payment request URL
+- `paypal-me-link-generator` — handle + amount + currency → `https://paypal.me/<handle>/<amount><currency>`
+- `instagram-link-generator` — type toggle (profile / DM / story share) + handle
+- `facebook-share-link-generator` — URL → `https://www.facebook.com/sharer/sharer.php?u=<url>`
+- `telegram-link-generator` — type toggle (channel / group / bot / share) + handle/text
+- `linkedin-link-generator` — type toggle (profile / company / share) + value
+- `premium-link-generator` — host dropdown + file URL → host-specific deep link (validation only; no scraping)
+- `magnet-link-generator` — info hash + display name + tracker list → `magnet:?xt=urn:btih:…`
 
-Per page, emit:
-- `WebPage`
-- `SoftwareApplication` (offers $0, aggregateRating)
-- `FAQPage` (mirrors visible FAQ exactly)
-- `BreadcrumbList`
-- Hub page additionally emits `WebSite` + `ItemList` (listing all 10 tools)
-- Root `__root.tsx` keeps `Organization` only
+Each tool keeps its identity, but the form, output, and any preview reflect what the tool actually does.
 
-## 6. SEO QA — checklist + automated tests (both)
+### Implementation pattern (shared)
+Add a new lightweight `tool-ui.tsx` primitive `FileField` (and optionally `MultiField`) so each tool stays small. Each tool's `Page()` function gets a tailored form; everything else (`ToolHero`, `HowToUse`, `AeoBlock`, `GeoBlock`, `FaqSection`, `Breadcrumbs`, JSON-LD via `buildHead`) stays untouched.
 
-**Standalone script** `scripts/seo-qa.ts` (run with `bun scripts/seo-qa.ts`):
-- Build the site, walk every route from `routeTree.gen.ts`
-- For each URL fetch the rendered HTML and check:
-  - exactly one `<h1>`, contains target head keyword
-  - `<title>` 30–60 chars, unique across pages
-  - meta description 120–160 chars, unique
-  - canonical present and self-referential
-  - JSON-LD blocks parse and include required `@type`s
-  - body word count ≥ 900
-  - target keywords from the page's keyword list appear in H1/H2/intro
-  - URL listed in `/sitemap.xml`
-  - no `noindex`
-- Pretty pass/fail report per URL + exit code
+## 3. De-fluff content (AEO / GEO / schema cleanup)
 
-**Vitest suite** `tests/seo.test.ts` covers the same assertions per route so CI fails on regressions. A shared `src/lib/seo-keywords.ts` source-of-truth file (page → keyword list) feeds both the components (for content/FAQ generation) and the QA scripts.
+Current copy stuffs the exact keyword into nearly every sentence (e.g., "image link generator" appears 20+ times on one page). Refactor template helpers in `src/components/tool-ui.tsx` so:
 
-## 7. New tools (deferred)
+- `ToolHero.intro` — one focused 1–2-sentence value prop, keyword used **once** naturally.
+- `HowToUse` — concise imperative steps describing the actual UI (now that inputs differ per tool).
+- `AeoBlock` — single direct Q&A optimized for "People Also Ask" / Perplexity, no keyword repetition.
+- `GeoBlock` — 4 USA persona use-cases written like real scenarios, not keyword chants.
+- `SeoLongform` — trim to 2 sections × 1 short paragraph each; remove keyword stuffing.
+- `FaqSection` — 5 questions max, each answer 1–2 sentences, varied phrasing.
 
-You didn't paste the full new-tools list — only the General Link Generator hub. I'll build that hub now. Reply with the additional tools (with target keywords + KD/volume) when ready and I'll add them in a follow-up.
+Per-page word count target: ~450–650 words (down from ~900+), keyword density ≤ 1.5%. Update `scripts/seo-qa.ts` thresholds to reflect this.
 
-## Technical implementation
+JSON-LD already shipped per page (FAQPage, BreadcrumbList, SoftwareApplication). Keep these; just verify each page's schema reflects the **new** trimmed FAQ list. Add `HowTo` JSON-LD generated from the new `HowToUse` steps for any tool with ≥ 3 user-facing steps.
 
-- `src/styles.css` — replace OKLCH tokens, add gradient + shadow tokens, register `--font-display`, `--font-body` under `@theme`; add Space Grotesk + Inter `<link>` in `__root.tsx`.
-- `src/lib/seo-keywords.ts` — new: per-page keyword lists imported by routes and QA scripts.
-- `src/components/tool-ui.tsx` — add `KeywordIntro`, `AeoBlock`, `GeoBlock`, `KeywordSection` components that bold keywords automatically.
-- `src/components/ToolLayout.tsx` — rebrand header (gradient wordmark, tools dropdown), refresh `IconToolGrid` with colored icon chips + warm shadows, framer-motion stagger.
-- `src/components/Hero.tsx` — new gradient hero with built-in mini tool for `/`.
-- `src/routes/index.tsx` — rewrite as General Link Generator hub.
-- `src/routes/premium-link-generator.tsx` — restore full Premium Link Generator page (remove the 301).
-- All 10 existing tool routes — rewrite copy to keyword-led structure + AEO + GEO + 8–10 FAQs from spreadsheet.
-- `src/routes/sitemap[.]xml.ts` — update priorities; ensure all routes listed.
-- `scripts/seo-qa.ts` + `tests/seo.test.ts` + `package.json` script `"seo:qa": "bun scripts/seo-qa.ts"`.
-- `bun add framer-motion` (if not already), no other deps.
+## 4. Verification
+
+- `bunx vitest run tests/seo.test.ts` — extend it to assert each route has the correct input element types (e.g., `audio-link-generator` page contains `input[type="file"][accept^="audio"]`).
+- Add a new `tests/ux.test.ts` that mounts each route via `@testing-library/react`, checks the form renders, and submits a sample input to confirm the output area updates.
+- Manual spot-check on preview after build.
+
+## Out of scope (deferred)
+
+- Tier 3 / Tier 4 new tools — start only after this audit passes.
+- Server-side file hosting (blob URLs only; we'll add a real upload backend later if you want one).
+
+---
+
+### Technical details
+
+- New `FileField` primitive in `src/components/tool-ui.tsx`:
+  ```tsx
+  export function FileField({ label, accept, onFile }: { label: string; accept: string; onFile: (f: File) => void }) { ... }
+  ```
+- Mega menu wrapper:
+  ```tsx
+  <div className="relative" onMouseEnter={open} onMouseLeave={scheduleClose}>
+    <button>Tools ▾</button>
+    {isOpen && (
+      <div className="absolute left-0 right-0 top-full pt-2 w-screen">
+        <div className="bg-card border-y border-border shadow-warm">
+          <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-4 gap-6">…</div>
+        </div>
+      </div>
+    )}
+  </div>
+  ```
+- Drive direct: `const id = url.match(/\/d\/([^/]+)/)?.[1] ?? new URL(url).searchParams.get("id");`
+- Magnet: `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(name)}${trackers.map(t=>'&tr='+encodeURIComponent(t)).join('')}`
+
+### Files that will change
+
+- `src/components/ToolLayout.tsx` — new mega menu + mobile drawer
+- `src/components/tool-ui.tsx` — `FileField`, trimmed templates, optional `HowTo` schema
+- All 35 files in `src/routes/*-link-generator.tsx` plus `slug-generator.tsx` — per-tool form + logic + trimmed copy
+- `scripts/seo-qa.ts` — updated word-count / density thresholds
+- `tests/seo.test.ts` + new `tests/ux.test.ts`
+
+Confirm and I'll execute. If you want, I can also split this into two PR-style batches: **(A) mega menu + content de-fluff** first, then **(B) per-tool UX rewrites** — say the word.

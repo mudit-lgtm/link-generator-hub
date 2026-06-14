@@ -1,156 +1,65 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useMemo } from "react";
+
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  SeoLongform, ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock,
+  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
-const KW = SEO["/google-maps-link-generator"].keywords;
 
-const FAQS = [
-  { q: "What is a Google Maps link generator?", a: "A Google Maps link generator is a free online tool that creates a shareable Google Maps URL from any address, latitude/longitude pair or Google Place ID. The generated map link generator URL works on iOS, Android and desktop." },
-  { q: "What is the difference between a Google Maps link generator and a Google Maps direction link generator?", a: "A Google Maps link generator produces a link that drops a pin on the map. A Google Maps direction link generator produces a link that opens turn-by-turn navigation from the user's current location to the destination. The tool above produces both at once." },
-  { q: "Is this a free Google business map link generator?", a: "Yes. The Google business map link generator above is 100% free and works for any verified Google Business Profile. Optionally paste your Place ID for the most accurate result." },
-  { q: "Can I use this as a directions link generator for emails and SMS?", a: "Yes — paste the generated directions link into emails, SMS confirmations, calendar invites and WhatsApp messages. The Google Maps link generator output is a plain URL that opens the Maps app on every modern phone." },
-  { q: "Where do I find my Google Place ID for the generator?", a: "Use Google's free Place ID Finder at developers.google.com/maps/documentation/places/web-service/place-id. It's the same Place ID generator Google itself recommends." },
-  { q: "Does the map link generator work for latitude/longitude?", a: "Yes. Paste coordinates in the 'lat,lng' format (for example 37.4220,-122.0841) into the address field. The Google Maps link generator builds a valid URL that opens the exact spot." },
-  { q: "Will the generated Google Maps link work on mobile?", a: "Yes — Google Maps URLs open the Google Maps app on Android and iOS when installed, and fall back to maps.google.com in any browser." },
-];
+const KW = SEO["/google-maps-link-generator"]?.keywords ?? [];
 
-const TITLE = "Google Maps Link Generator — Directions, Place ID, Map URL";
-const DESC = "Free Google Maps link generator. Build maps and directions links from any address, lat/lng or Place ID — ideal for businesses, emails, SMS and websites.";
+const FAQS = [{"q": "Can I use latitude and longitude?", "a": "Yes — paste `lat,lng` as the query. Maps treats the comma value as coordinates."}, {"q": "Does the link work on iOS?", "a": "Yes — iPhones open Google Maps if installed or fall back to Apple Maps via the URL."}, {"q": "How do I link to a specific Place ID?", "a": "Use `https://www.google.com/maps/place/?q=place_id:YOUR_PLACE_ID`."}, {"q": "Can I add a starting point?", "a": "Yes — append `&origin=<address>` to the directions URL."}, {"q": "Is there a character limit?", "a": "URLs over ~2,000 chars may truncate in SMS — shorten the result for messaging."}];
+const STEPS = ["Enter an address, place name or `lat,lng` coordinates.", "Pick a travel mode if you want directions; leave blank to show a pin.", "Copy the URL.", "Add it to your site, email or QR code."];
+const TITLE = "Google Maps Link Generator — Free Online Tool";
+const DESC = "Generate a Google Maps link for any address, lat/lng or place — with optional travel mode for directions.";
 
 export const Route = createFileRoute("/google-maps-link-generator")({
   head: () => buildHead({
     title: TITLE, description: DESC, path: "/google-maps-link-generator",
     name: "Google Maps Link Generator", faqs: FAQS,
     breadcrumbs: [{ name: "Link Generator", item: "/" }, { name: "Google Maps Link Generator", item: "/google-maps-link-generator" }],
+    extraSchemas: [{
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to use the Google Maps Link Generator",
+      step: STEPS.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: `Step ${i + 1}`, text: s })),
+    }],
   }),
   component: Page,
 });
 
 function Page() {
-  const [query, setQuery] = useState("1600 Amphitheatre Parkway, Mountain View, CA");
-  const [placeId, setPlaceId] = useState("");
-
-  const { map, directions } = useMemo(() => {
-    const q = encodeURIComponent(query);
-    const placeSuffix = placeId ? `&query_place_id=${encodeURIComponent(placeId)}` : "";
-    return {
-      map: `https://www.google.com/maps/search/?api=1&query=${q}${placeSuffix}`,
-      directions: `https://www.google.com/maps/dir/?api=1&destination=${q}${placeId ? `&destination_place_id=${encodeURIComponent(placeId)}` : ""}`,
-    };
-  }, [query, placeId]);
-
   return (
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Google Maps Link Generator" }]} />
-      <ToolHero
-        h1="Google Maps Link Generator — Free Map & Directions Link Generator"
-        intro="Generate a Google Maps link, Google Maps direction link or Google business map link from any address, latitude/longitude pair or Place ID. The free directions link generator below outputs both a map link and a turn-by-turn directions URL ready to share."
+      <ToolHero h1={"Google Maps Directions Link Generator"} intro={"Generate a Google Maps link for any address, lat/lng or place — with optional travel mode for directions."} keywords={KW} />
+
+      <ToolForm
+        fields={[{"name": "q", "label": "Address, place name, or lat,lng", "type": "text", "placeholder": "1600 Amphitheatre Pkwy, Mountain View, CA"}, {"name": "mode", "label": "Travel mode (for directions)", "type": "select", "options": [{"value": "", "label": "None — show place"}, {"value": "driving", "label": "Driving"}, {"value": "walking", "label": "Walking"}, {"value": "bicycling", "label": "Bicycling"}, {"value": "transit", "label": "Transit"}]}]}
+        build={(v) => { if(!v.q) return ''; const q=encodeURIComponent(String(v.q).trim()); return v.mode ? `https://www.google.com/maps/dir/?api=1&destination=${q}&travelmode=${v.mode}` : `https://www.google.com/maps/search/?api=1&query=${q}`; }}
+        
       />
 
-      <ToolCard>
-        <Field label="Address or lat,lng">
-          <input className={inputCls} value={query} onChange={(e) => setQuery(e.target.value)} />
-        </Field>
-        <Field label="Google Place ID (optional — recommended for businesses)">
-          <input className={inputCls} value={placeId} onChange={(e) => setPlaceId(e.target.value)} placeholder="ChIJ..." />
-        </Field>
-        <div>
-          <span className="block text-sm font-medium mb-1.5">Google Maps link</span>
-          <OutputBlock value={map} />
-        </div>
-        <div>
-          <span className="block text-sm font-medium mb-1.5">Google Maps directions link</span>
-          <OutputBlock value={directions} />
-        </div>
-      </ToolCard>
+      <HowToUse heading={"How to use the google maps link generator"} steps={STEPS} />
 
-      <HowToUse
-        heading="How to generate a Google Maps link"
-        steps={[
-          "Paste your business address, a postcode, or latitude/longitude coordinates.",
-          "Optionally add your Google Place ID for the most accurate result (recommended for businesses).",
-          "Copy the map link to drop a pin, or the directions link for turn-by-turn navigation.",
-          "Paste the link in your website footer, contact page, email signature, SMS confirmation or calendar invite.",
-        ]}
-      />
-
-      <SeoLongform keywords={KW} sections={[
-        {
-          h2: "What is a Google Maps link generator?",
-          paragraphs: [
-            "A Google Maps link generator is a free utility that builds a properly-formatted Google Maps URL from a place name, street address, latitude/longitude or Place ID. Instead of opening Google Maps, searching, copying the URL and trimming the tracking parameters by hand, the generator does it in one step.",
-            "Two types of links are produced: a map link (drops a pin) and a Google Maps direction link generator output (opens turn-by-turn navigation from the user's current location).",
-            "Both URLs use Google's officially documented maps.google.com/maps/?api=1 format — the only format guaranteed to keep working across every Google Maps web and app update.",
-          ],
-        },
-        {
-          h2: "Google Maps direction link generator for businesses",
-          paragraphs: [
-            "If you run a brick-and-mortar business — a restaurant, salon, dental clinic, real-estate office, hotel, gym or retail store — adding a 'Get directions' link to your website and email confirmations meaningfully improves walk-in conversion. Customers shouldn't have to copy your address into another app.",
-            "Use the Google Maps direction link generator above with your Place ID for the most accurate result. The Place ID locks the destination to your exact storefront entrance rather than the closest geocoded address, which can occasionally point next door.",
-          ],
-        },
-        {
-          h2: "Google business map link generator and Google Place ID generator",
-          paragraphs: [
-            "Your Google Place ID is a permanent unique identifier for your physical business. It does not change when you rename your business, move within the same building, or update your Google Business Profile. Find it using Google's free Place ID Finder (the same tool sometimes searched as 'google place id generator').",
-            "Once you have it, paste the Place ID into the field above. The Google business map link generator appends &query_place_id= and &destination_place_id= so Google Maps always opens your exact listing — useful for the Google Maps review link generator workflow too.",
-          ],
-        },
-        {
-          h2: "Map link generator for lat/lng coordinates",
-          paragraphs: [
-            "If you don't have a street address — for example you're sharing a trailhead, a marina slip, a remote vacation rental or a parking spot at a stadium — use latitude and longitude. Type the coordinates in the address field as 'lat,lng' (for example 37.4220,-122.0841).",
-            "The map link generator output works on every device and never requires the recipient to install anything. Apple devices that don't have Google Maps installed will open the web map at maps.google.com.",
-          ],
-        },
-        {
-          h2: "Where to use your generated Google Maps and directions links",
-          paragraphs: [
-            "The highest-impact placements: contact page (replace the static address text with a clickable directions link), order confirmation emails (so customers can drive to pick up), event invites, calendar attachments built with our add to calendar link generator, SMS appointment reminders, footer of every page, and printed receipts.",
-            "For multi-location businesses, generate one Google Maps link per location and store them in your CMS — never hardcode static maps URLs you copied from the browser address bar because they include short-lived session parameters that break.",
-          ],
-        },
-        {
-          h2: "Google Maps link generator vs Google Maps Embed",
-          paragraphs: [
-            "Use the Google Maps link generator when you want a clickable link the user opens in Google Maps itself. Use Google Maps Embed when you want to display a live, interactive map inside your own page.",
-            "For most local businesses, a directions link is better than an embed — embeds are heavy, slow down your page speed score, and rarely convert better than a plain link. The Google Maps direction link generator output above is faster, accessible and works inside email (where iframes are blocked).",
-          ],
-        },
-      ]} />
       <AeoBlock
-        question="What is a Google Maps link generator?"
-        answer="A Google Maps link generator creates a shareable URL from an address, latitude/longitude pair or Google Place ID. The link opens Google Maps directly to your location with directions, share-location and embed options — ideal for invitations, event pages and Google Business listings."
+        question={"What's the URL format for a Google Maps link?"}
+        answer={"Use `https://www.google.com/maps/search/?api=1&query=<address>` to show a place, or `https://www.google.com/maps/dir/?api=1&destination=<address>&travelmode=driving` for turn-by-turn directions."}
         keywords={KW}
       />
 
       <GeoBlock
-        heading="Google Maps link generator — USA use cases"
+        heading={"USA use cases"}
         keywords={KW}
-        items={[
-          { who: "Wedding venue in Nashville, TN", how: "Adds a Google Maps directions link to every invitation PDF and email." },
-          { who: "Pop-up market in Portland, OR", how: "Shares a lat-long Google Maps link on Instagram Stories so customers tap-to-navigate." },
-          { who: "Co-working space in NYC", how: "Embeds a Place ID Google Maps link in the welcome email to first-time guests." },
-          { who: "Wedding photographer in Charleston, SC", how: "Sends a Google Maps share-location link with the timeline email so the team finds the first-look spot fast." },
-        ]}
+        items={[{"who": "Restaurant in Austin, TX", "how": "Pins ‘Get directions’ on Google Business and the homepage footer."}, {"who": "Realtor in Miami, FL", "how": "Sends listing addresses with one-tap walking directions."}, {"who": "Event venue in Las Vegas, NV", "how": "Drops a directions link inside attendee email confirmations."}, {"who": "Local salon in Brooklyn, NY", "how": "Embeds a transit directions link on the contact page."}]}
       />
 
-
-      <FaqSection items={FAQS} keywords={KW} heading="Google Maps link generator FAQ" />
+      <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
       <ContextualLinks
-        heading="Related local-business link generators"
-        links={[
-          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "free Rapidgator, Turbobit, Nitroflare premium link generator on the home page." },
-          { to: "/google-review-link-generator", anchor: "Google Review Link Generator", blurb: "5-star Google My Business review link for the same Place ID." },
-          { to: "/whatsapp-link-generator", anchor: "WhatsApp Link Generator", blurb: "click-to-chat link to share alongside your directions link." },
-          { to: "/add-to-calendar-link-generator", anchor: "Add to Calendar Link Generator", blurb: "attach event details with the venue directions link inline." },
-        ]}
+        heading="Related link generators"
+        links={[{"to": "/google-review-link-generator", "anchor": "Google Review Link Generator", "blurb": "related link generator."}, {"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />

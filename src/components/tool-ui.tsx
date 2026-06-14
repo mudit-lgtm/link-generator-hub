@@ -1,5 +1,6 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+
 
 export { BackToHomeLink } from "./ToolLayout";
 
@@ -292,4 +293,167 @@ export function buildHead({ title, description, path, faqs, name, breadcrumbs, e
     links: [{ rel: "canonical", href: path }],
     scripts: buildSchemas({ name, description, url: path, faqs, breadcrumbs, extra: extraSchemas }),
   };
+}
+
+/* -----------------------------------------------------------
+ * Generic per-tool form runner
+ * --------------------------------------------------------- */
+export type FieldDef =
+  | { name: string; label: string; type: "text" | "url" | "email" | "tel" | "number"; placeholder?: string; default?: string; hint?: string }
+  | { name: string; label: string; type: "textarea"; placeholder?: string; default?: string; hint?: string; rows?: number }
+  | { name: string; label: string; type: "select"; options: { value: string; label: string }[]; default?: string; hint?: string }
+  | { name: string; label: string; type: "checkbox"; default?: boolean; hint?: string }
+  | { name: string; label: string; type: "file"; accept: string; hint?: string };
+
+export type ToolFormProps = {
+  fields: FieldDef[];
+  build: (values: Record<string, any>) => string;
+  preview?: "image" | "audio" | "video" | "pdf" | "qr" | null;
+  outputLabel?: string;
+  multiline?: boolean;
+};
+
+export function ToolForm({ fields, build, preview = null, outputLabel = "Generated link", multiline = false }: ToolFormProps) {
+  const initial: Record<string, string | boolean | File | null> = {};
+  for (const f of fields) {
+    if (f.type === "checkbox") initial[f.name] = (f as any).default ?? false;
+    else if (f.type === "file") initial[f.name] = null;
+    else initial[f.name] = (f as any).default ?? "";
+  }
+  const [values, setValues] = useState(initial);
+  const [blobUrl, setBlobUrl] = useState<string>("");
+  const fileFieldName = fields.find((f) => f.type === "file")?.name;
+
+  useEffect(() => {
+    if (!fileFieldName) return;
+    const f = values[fileFieldName] as File | null;
+    if (f instanceof File) {
+      const u = URL.createObjectURL(f);
+      setBlobUrl(u);
+      return () => URL.revokeObjectURL(u);
+    }
+    setBlobUrl("");
+  }, [fileFieldName, values[fileFieldName as string]]);
+
+  const out = useMemo(() => {
+    try {
+      const v = fileFieldName ? { ...values, [fileFieldName]: blobUrl ? blobUrl : null, __blobUrl: blobUrl } : values;
+      return build(v as any) || "";
+    } catch {
+      return "";
+    }
+  }, [values, blobUrl, build, fileFieldName]);
+
+  const update = (name: string, v: string | boolean | File | null) =>
+    setValues((p) => ({ ...p, [name]: v }));
+
+  return (
+    <ToolCard>
+      {fields.map((f) => {
+        if (f.type === "textarea") {
+          return (
+            <Field key={f.name} label={f.label} hint={f.hint}>
+              <textarea
+                className={inputCls + " min-h-[88px]"}
+                rows={f.rows ?? 3}
+                placeholder={f.placeholder}
+                value={(values[f.name] as string) ?? ""}
+                onChange={(e) => update(f.name, e.target.value)}
+              />
+            </Field>
+          );
+        }
+        if (f.type === "select") {
+          return (
+            <Field key={f.name} label={f.label} hint={f.hint}>
+              <select
+                className={inputCls}
+                value={(values[f.name] as string) ?? ""}
+                onChange={(e) => update(f.name, e.target.value)}
+              >
+                {f.options.map((o) => (
+                  <option key={o.value} value={o.value}>{o.label}</option>
+                ))}
+              </select>
+            </Field>
+          );
+        }
+        if (f.type === "checkbox") {
+          return (
+            <label key={f.name} className="flex items-center gap-2 text-sm font-medium select-none">
+              <input
+                type="checkbox"
+                checked={!!values[f.name]}
+                onChange={(e) => update(f.name, e.target.checked)}
+                className="w-4 h-4 rounded border-input accent-primary"
+              />
+              <span>{f.label}</span>
+              {f.hint && <span className="text-xs text-muted-foreground ml-1">{f.hint}</span>}
+            </label>
+          );
+        }
+        if (f.type === "file") {
+          return <FileField key={f.name} label={f.label} accept={f.accept} hint={f.hint} onFile={(file) => update(f.name, file)} />;
+        }
+        return (
+          <Field key={f.name} label={f.label} hint={f.hint}>
+            <input
+              type={f.type}
+              className={inputCls}
+              placeholder={f.placeholder}
+              value={(values[f.name] as string) ?? ""}
+              onChange={(e) => update(f.name, e.target.value)}
+            />
+          </Field>
+        );
+      })}
+
+      <div>
+        <span className="block text-sm font-semibold mb-1.5">{outputLabel}</span>
+        <OutputBlock value={out} multiline={multiline} />
+      </div>
+
+      {preview === "image" && out && <img src={out} alt="Preview" className="mt-3 max-h-64 rounded-lg border border-border" />}
+      {preview === "audio" && out && <audio controls src={out} className="mt-3 w-full" />}
+      {preview === "video" && out && <video controls src={out} className="mt-3 w-full max-h-72 rounded-lg border border-border" />}
+      {preview === "pdf" && out && <iframe src={out} title="PDF preview" className="mt-3 w-full h-72 rounded-lg border border-border" />}
+      {preview === "qr" && out && (
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(out)}`}
+          alt="QR code preview"
+          className="mt-3 w-48 h-48 rounded-lg border border-border bg-white p-2"
+        />
+      )}
+    </ToolCard>
+  );
+}
+
+export function FileField({ label, accept, hint, onFile }: { label: string; accept: string; hint?: string; onFile: (f: File | null) => void }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [name, setName] = useState<string>("");
+  return (
+    <Field label={label} hint={hint ?? "Files stay in your browser — nothing is uploaded."}>
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => inputRef.current?.click()}
+          className="px-3 py-2 rounded-lg border border-input bg-background text-sm font-semibold hover:bg-accent transition"
+        >
+          Choose file
+        </button>
+        <span className="text-xs text-muted-foreground truncate">{name || "No file selected"}</span>
+        <input
+          ref={inputRef}
+          type="file"
+          accept={accept}
+          className="hidden"
+          onChange={(e) => {
+            const f = e.target.files?.[0] ?? null;
+            setName(f?.name ?? "");
+            onFile(f);
+          }}
+        />
+      </div>
+    </Field>
+  );
 }
