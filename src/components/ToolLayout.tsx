@@ -106,35 +106,80 @@ function BrandMark() {
   );
 }
 
-function ToolsDropdown() {
+const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
+  {
+    title: "Marketing & Tracking",
+    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator"].includes(t.to)),
+  },
+  {
+    title: "Social & Messaging",
+    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator"].includes(t.to)),
+  },
+  {
+    title: "Meetings & Payments",
+    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/paypal-me-link-generator"].includes(t.to)),
+  },
+  {
+    title: "Files & Downloads",
+    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/dropbox-direct-link-generator","/onedrive-direct-link-generator","/mega-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator"].includes(t.to)),
+  },
+];
+
+function MegaMenu() {
   const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelClose = () => { if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; } };
+  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => setOpen(false), 180); };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
-    <div className="relative" onMouseLeave={() => setOpen(false)}>
+    <div className="static" onMouseEnter={() => { cancelClose(); setOpen(true); }} onMouseLeave={scheduleClose}>
       <button
         type="button"
-        onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen((v) => !v)}
         className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1"
         aria-expanded={open}
+        aria-haspopup="true"
       >
-        Tools <span className="text-xs">▾</span>
+        All Tools <span className={`text-xs transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-[28rem] max-h-[70vh] overflow-y-auto rounded-2xl border border-border bg-card shadow-warm z-30 p-3 grid grid-cols-2 gap-1">
-          {TOOLS.map((t) => (
-            <Link
-              key={t.to}
-              to={t.to}
-              onClick={() => setOpen(false)}
-              className="flex items-start gap-2 p-2 rounded-lg hover:bg-accent transition"
-            >
-              <span aria-hidden className={`flex-shrink-0 w-7 h-7 rounded-md grid place-items-center text-sm bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
-              <span className="min-w-0">
-                <span className="block text-xs font-semibold text-foreground leading-tight">{t.label}</span>
-                <span className="block text-[11px] text-muted-foreground leading-snug line-clamp-1">{t.blurb}</span>
-              </span>
-            </Link>
-          ))}
+        <div
+          className="absolute left-0 right-0 top-full w-full z-40"
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
+        >
+          {/* hover bridge */}
+          <div className="h-2" />
+          <div className="bg-card border-y border-border shadow-warm">
+            <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+              {MENU_GROUPS.map((g) => (
+                <div key={g.title}>
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
+                  <ul className="space-y-1.5">
+                    {g.tools.map((t) => (
+                      <li key={t.to}>
+                        <Link
+                          to={t.to}
+                          onClick={() => setOpen(false)}
+                          className="flex items-start gap-2 p-1.5 rounded-md hover:bg-accent transition group"
+                        >
+                          <span aria-hidden className={`flex-shrink-0 w-6 h-6 rounded grid place-items-center text-xs bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
+                          <span className="text-xs font-semibold text-foreground leading-tight group-hover:text-primary">{t.short}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -144,7 +189,7 @@ function ToolsDropdown() {
 export function ToolLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border/60 bg-card/85 backdrop-blur-md sticky top-0 z-20">
+      <header className="border-b border-border/60 bg-card/85 backdrop-blur-md sticky top-0 z-30 relative">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center" aria-label="LinkKit home">
             <BrandMark />
@@ -159,11 +204,12 @@ export function ToolLayout({ children }: { children: ReactNode }) {
             <Link to="/short-link-generator" className="hidden md:inline text-sm font-semibold text-foreground hover:text-primary transition" activeProps={{ className: "text-primary" }}>
               Short Link
             </Link>
-            <ToolsDropdown />
+            <MegaMenu />
           </nav>
         </div>
       </header>
       <main className="max-w-3xl mx-auto px-4 py-10">{children}</main>
+
       <footer className="border-t border-border/60 mt-20 bg-card/60">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
