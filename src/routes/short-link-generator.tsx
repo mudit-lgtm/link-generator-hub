@@ -30,6 +30,20 @@ export const Route = createFileRoute("/short-link-generator")({
 });
 
 function Page() {
+  const [u, setU] = useState("");
+  const [out, setOut] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState("");
+  async function shorten() {
+    if (!u.trim()) return;
+    setBusy(true); setErr(""); setOut("");
+    try {
+      const r = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(u.trim())}`);
+      const t = await r.text();
+      if (t.startsWith("http")) setOut(t.trim()); else setErr(t);
+    } catch { setErr("Network error — try again."); }
+    setBusy(false);
+  }
   return (
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Short Link Generator" }]} />
