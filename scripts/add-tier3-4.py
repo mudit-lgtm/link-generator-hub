@@ -256,7 +256,7 @@ add(slug="cashapp-link-generator", name="Cash App Link Generator", h1="Cash App 
           ("Is there an international version?","Cash App is US + UK only as of 2026."),
           ("Will fees apply?","Personal transfers free; business profiles charge a percentage."),
           ("How do I QR-code my link?","Pair with our QR code generator.")],
-    steps=["Type your $Cashtag.","Add an optional amount.","Copy the link.","Share via SMS, QR or bio.")],
+    steps=["Type your $Cashtag.","Add an optional amount.","Copy the link.","Share via SMS, QR or bio."],
     related=["venmo-link-generator","paypal-me-link-generator","payment-link-generator","qr-code-link-generator"])
 
 add(slug="calendly-link-generator", name="Calendly Link Generator", h1="Calendly Booking & Embed Link Generator",
