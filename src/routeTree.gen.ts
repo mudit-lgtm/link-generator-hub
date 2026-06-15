@@ -30,6 +30,7 @@ import { Route as RickrollLinkGeneratorRouteImport } from './routes/rickroll-lin
 import { Route as ReferralLinkGeneratorRouteImport } from './routes/referral-link-generator'
 import { Route as RedditShareLinkGeneratorRouteImport } from './routes/reddit-share-link-generator'
 import { Route as QrCodeLinkGeneratorRouteImport } from './routes/qr-code-link-generator'
+import { Route as QaRouteImport } from './routes/qa'
 import { Route as PremiumLinkGeneratorRouteImport } from './routes/premium-link-generator'
 import { Route as PlayStoreLinkGeneratorRouteImport } from './routes/play-store-link-generator'
 import { Route as PinterestShareLinkGeneratorRouteImport } from './routes/pinterest-share-link-generator'
@@ -170,6 +171,11 @@ const RedditShareLinkGeneratorRoute =
 const QrCodeLinkGeneratorRoute = QrCodeLinkGeneratorRouteImport.update({
   id: '/qr-code-link-generator',
   path: '/qr-code-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QaRoute = QaRouteImport.update({
+  id: '/qa',
+  path: '/qa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PremiumLinkGeneratorRoute = PremiumLinkGeneratorRouteImport.update({
@@ -370,6 +376,7 @@ export interface FileRoutesByFullPath {
   '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
   '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qa': typeof QaRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
@@ -424,6 +431,7 @@ export interface FileRoutesByTo {
   '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
   '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qa': typeof QaRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
@@ -479,6 +487,7 @@ export interface FileRoutesById {
   '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
   '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
+  '/qa': typeof QaRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
   '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
@@ -535,6 +544,7 @@ export interface FileRouteTypes {
     | '/pinterest-share-link-generator'
     | '/play-store-link-generator'
     | '/premium-link-generator'
+    | '/qa'
     | '/qr-code-link-generator'
     | '/reddit-share-link-generator'
     | '/referral-link-generator'
@@ -589,6 +599,7 @@ export interface FileRouteTypes {
     | '/pinterest-share-link-generator'
     | '/play-store-link-generator'
     | '/premium-link-generator'
+    | '/qa'
     | '/qr-code-link-generator'
     | '/reddit-share-link-generator'
     | '/referral-link-generator'
@@ -643,6 +654,7 @@ export interface FileRouteTypes {
     | '/pinterest-share-link-generator'
     | '/play-store-link-generator'
     | '/premium-link-generator'
+    | '/qa'
     | '/qr-code-link-generator'
     | '/reddit-share-link-generator'
     | '/referral-link-generator'
@@ -698,6 +710,7 @@ export interface RootRouteChildren {
   PinterestShareLinkGeneratorRoute: typeof PinterestShareLinkGeneratorRoute
   PlayStoreLinkGeneratorRoute: typeof PlayStoreLinkGeneratorRoute
   PremiumLinkGeneratorRoute: typeof PremiumLinkGeneratorRoute
+  QaRoute: typeof QaRoute
   QrCodeLinkGeneratorRoute: typeof QrCodeLinkGeneratorRoute
   RedditShareLinkGeneratorRoute: typeof RedditShareLinkGeneratorRoute
   ReferralLinkGeneratorRoute: typeof ReferralLinkGeneratorRoute
@@ -868,6 +881,13 @@ declare module '@tanstack/react-router' {
       path: '/qr-code-link-generator'
       fullPath: '/qr-code-link-generator'
       preLoaderRoute: typeof QrCodeLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qa': {
+      id: '/qa'
+      path: '/qa'
+      fullPath: '/qa'
+      preLoaderRoute: typeof QaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/premium-link-generator': {
@@ -1122,6 +1142,7 @@ const rootRouteChildren: RootRouteChildren = {
   PinterestShareLinkGeneratorRoute: PinterestShareLinkGeneratorRoute,
   PlayStoreLinkGeneratorRoute: PlayStoreLinkGeneratorRoute,
   PremiumLinkGeneratorRoute: PremiumLinkGeneratorRoute,
+  QaRoute: QaRoute,
   QrCodeLinkGeneratorRoute: QrCodeLinkGeneratorRoute,
   RedditShareLinkGeneratorRoute: RedditShareLinkGeneratorRoute,
   ReferralLinkGeneratorRoute: ReferralLinkGeneratorRoute,
