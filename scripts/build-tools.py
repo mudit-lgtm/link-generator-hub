@@ -765,8 +765,8 @@ __PAGE__
 DEFAULT_PAGE = """function Page() {
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "__NAME__" }]} />
-      <ToolHero h1={"__H1__"} intro={"__INTRO__"} keywords={KW} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: __NAME_JSON__ }]} />
+      <ToolHero h1={__H1__} intro={__INTRO__} keywords={KW} />
 
       <ToolForm
         fields={__FIELDS__}
@@ -774,11 +774,11 @@ DEFAULT_PAGE = """function Page() {
         __EXTRA_PROPS__
       />
 
-      <HowToUse heading={"How to use the __NAME_LOWER__"} steps={STEPS} />
+      <HowToUse heading={__HOW_HEADING__} steps={STEPS} />
 
       <AeoBlock
-        question={"__AEO_Q__"}
-        answer={"__AEO_A__"}
+        question={__AEO_Q__}
+        answer={__AEO_A__}
         keywords={KW}
       />
 
@@ -803,11 +803,11 @@ DEFAULT_PAGE = """function Page() {
 CUSTOM_PAGE_WRAP = """function Page() {
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "__NAME__" }]} />
-      <ToolHero h1={"__H1__"} intro={"__INTRO__"} keywords={KW} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: __NAME_JSON__ }]} />
+      <ToolHero h1={__H1__} intro={__INTRO__} keywords={KW} />
       __INNER__
-      <HowToUse heading={"How to use the __NAME_LOWER__"} steps={STEPS} />
-      <AeoBlock question={"__AEO_Q__"} answer={"__AEO_A__"} keywords={KW} />
+      <HowToUse heading={__HOW_HEADING__} steps={STEPS} />
+      <AeoBlock question={__AEO_Q__} answer={__AEO_A__} keywords={KW} />
       <GeoBlock heading={"USA use cases"} keywords={KW} items={__GEO__} />
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
       <ContextualLinks heading="Related link generators" links={__RELATED__} />
