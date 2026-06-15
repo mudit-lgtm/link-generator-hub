@@ -37,7 +37,7 @@ function Page() {
 
       <ToolForm
         fields={[{"name": "hash", "label": "Info hash (40-char SHA-1 or 32-char base32)", "type": "text", "placeholder": "e.g. c12fe1c06bba254a9dc9f519b335aa7c1367a88a"}, {"name": "dn", "label": "Display name", "type": "text", "placeholder": "my-release-name"}, {"name": "tr", "label": "Trackers (one per line)", "type": "textarea", "placeholder": "udp://tracker.opentrackr.org:1337/announce"}]}
-        build={(v) => { if(!v.hash) return ''; const trs=(v.tr||'').split(/\r?\n/).filter(Boolean).map(t=>'&tr='+encodeURIComponent(t.trim())).join(''); const dn=v.dn?'&dn='+encodeURIComponent(v.dn):''; return `magnet:?xt=urn:btih:${v.hash.trim()}${dn}${trs}`; }}
+        build={(v) => { if(!v.hash) return ''; const trs=(v.tr||'').split(/\r?\n/).filter(Boolean).map((t: string)=>'&tr='+encodeURIComponent(t.trim())).join(''); const dn=v.dn?'&dn='+encodeURIComponent(v.dn):''; return `magnet:?xt=urn:btih:${v.hash.trim()}${dn}${trs}`; }}
         
       />
 
