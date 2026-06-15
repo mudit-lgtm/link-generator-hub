@@ -13,16 +13,26 @@ import { Route as ZoomMeetingLinkGeneratorRouteImport } from './routes/zoom-meet
 import { Route as YoutubeLinkGeneratorRouteImport } from './routes/youtube-link-generator'
 import { Route as WhatsappLinkGeneratorRouteImport } from './routes/whatsapp-link-generator'
 import { Route as VideoLinkGeneratorRouteImport } from './routes/video-link-generator'
+import { Route as VenmoLinkGeneratorRouteImport } from './routes/venmo-link-generator'
 import { Route as UtmLinkGeneratorRouteImport } from './routes/utm-link-generator'
+import { Route as UnsubscribeLinkGeneratorRouteImport } from './routes/unsubscribe-link-generator'
+import { Route as TwitterShareLinkGeneratorRouteImport } from './routes/twitter-share-link-generator'
+import { Route as TinyurlLinkGeneratorRouteImport } from './routes/tinyurl-link-generator'
+import { Route as TiktokLinkGeneratorRouteImport } from './routes/tiktok-link-generator'
 import { Route as TelegramLinkGeneratorRouteImport } from './routes/telegram-link-generator'
 import { Route as TeamsMeetingLinkGeneratorRouteImport } from './routes/teams-meeting-link-generator'
+import { Route as SpotifyLinkGeneratorRouteImport } from './routes/spotify-link-generator'
+import { Route as SmsLinkGeneratorRouteImport } from './routes/sms-link-generator'
 import { Route as SlugGeneratorRouteImport } from './routes/slug-generator'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShortLinkGeneratorRouteImport } from './routes/short-link-generator'
 import { Route as RickrollLinkGeneratorRouteImport } from './routes/rickroll-link-generator'
 import { Route as ReferralLinkGeneratorRouteImport } from './routes/referral-link-generator'
+import { Route as RedditShareLinkGeneratorRouteImport } from './routes/reddit-share-link-generator'
 import { Route as QrCodeLinkGeneratorRouteImport } from './routes/qr-code-link-generator'
 import { Route as PremiumLinkGeneratorRouteImport } from './routes/premium-link-generator'
+import { Route as PlayStoreLinkGeneratorRouteImport } from './routes/play-store-link-generator'
+import { Route as PinterestShareLinkGeneratorRouteImport } from './routes/pinterest-share-link-generator'
 import { Route as PdfLinkGeneratorRouteImport } from './routes/pdf-link-generator'
 import { Route as PaypalMeLinkGeneratorRouteImport } from './routes/paypal-me-link-generator'
 import { Route as PaymentLinkGeneratorRouteImport } from './routes/payment-link-generator'
@@ -37,11 +47,17 @@ import { Route as GoogleReviewLinkGeneratorRouteImport } from './routes/google-r
 import { Route as GoogleMeetLinkGeneratorRouteImport } from './routes/google-meet-link-generator'
 import { Route as GoogleMapsLinkGeneratorRouteImport } from './routes/google-maps-link-generator'
 import { Route as GoogleDriveDirectLinkGeneratorRouteImport } from './routes/google-drive-direct-link-generator'
+import { Route as GmailComposeLinkGeneratorRouteImport } from './routes/gmail-compose-link-generator'
+import { Route as FacetimeLinkGeneratorRouteImport } from './routes/facetime-link-generator'
 import { Route as FacebookShareLinkGeneratorRouteImport } from './routes/facebook-share-link-generator'
 import { Route as DropboxDirectLinkGeneratorRouteImport } from './routes/dropbox-direct-link-generator'
 import { Route as DiscordInviteLinkGeneratorRouteImport } from './routes/discord-invite-link-generator'
 import { Route as DirectDownloadLinkGeneratorRouteImport } from './routes/direct-download-link-generator'
+import { Route as DeepLinkGeneratorRouteImport } from './routes/deep-link-generator'
+import { Route as CashappLinkGeneratorRouteImport } from './routes/cashapp-link-generator'
+import { Route as CalendlyLinkGeneratorRouteImport } from './routes/calendly-link-generator'
 import { Route as AudioLinkGeneratorRouteImport } from './routes/audio-link-generator'
+import { Route as AppStoreLinkGeneratorRouteImport } from './routes/app-store-link-generator'
 import { Route as AffiliateLinkGeneratorRouteImport } from './routes/affiliate-link-generator'
 import { Route as AddToCalendarLinkGeneratorRouteImport } from './routes/add-to-calendar-link-generator'
 import { Route as IndexRouteImport } from './routes/index'
@@ -67,9 +83,36 @@ const VideoLinkGeneratorRoute = VideoLinkGeneratorRouteImport.update({
   path: '/video-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VenmoLinkGeneratorRoute = VenmoLinkGeneratorRouteImport.update({
+  id: '/venmo-link-generator',
+  path: '/venmo-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UtmLinkGeneratorRoute = UtmLinkGeneratorRouteImport.update({
   id: '/utm-link-generator',
   path: '/utm-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeLinkGeneratorRoute =
+  UnsubscribeLinkGeneratorRouteImport.update({
+    id: '/unsubscribe-link-generator',
+    path: '/unsubscribe-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TwitterShareLinkGeneratorRoute =
+  TwitterShareLinkGeneratorRouteImport.update({
+    id: '/twitter-share-link-generator',
+    path: '/twitter-share-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TinyurlLinkGeneratorRoute = TinyurlLinkGeneratorRouteImport.update({
+  id: '/tinyurl-link-generator',
+  path: '/tinyurl-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiktokLinkGeneratorRoute = TiktokLinkGeneratorRouteImport.update({
+  id: '/tiktok-link-generator',
+  path: '/tiktok-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TelegramLinkGeneratorRoute = TelegramLinkGeneratorRouteImport.update({
@@ -83,6 +126,16 @@ const TeamsMeetingLinkGeneratorRoute =
     path: '/teams-meeting-link-generator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SpotifyLinkGeneratorRoute = SpotifyLinkGeneratorRouteImport.update({
+  id: '/spotify-link-generator',
+  path: '/spotify-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SmsLinkGeneratorRoute = SmsLinkGeneratorRouteImport.update({
+  id: '/sms-link-generator',
+  path: '/sms-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SlugGeneratorRoute = SlugGeneratorRouteImport.update({
   id: '/slug-generator',
   path: '/slug-generator',
@@ -108,6 +161,12 @@ const ReferralLinkGeneratorRoute = ReferralLinkGeneratorRouteImport.update({
   path: '/referral-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RedditShareLinkGeneratorRoute =
+  RedditShareLinkGeneratorRouteImport.update({
+    id: '/reddit-share-link-generator',
+    path: '/reddit-share-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const QrCodeLinkGeneratorRoute = QrCodeLinkGeneratorRouteImport.update({
   id: '/qr-code-link-generator',
   path: '/qr-code-link-generator',
@@ -118,6 +177,17 @@ const PremiumLinkGeneratorRoute = PremiumLinkGeneratorRouteImport.update({
   path: '/premium-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayStoreLinkGeneratorRoute = PlayStoreLinkGeneratorRouteImport.update({
+  id: '/play-store-link-generator',
+  path: '/play-store-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PinterestShareLinkGeneratorRoute =
+  PinterestShareLinkGeneratorRouteImport.update({
+    id: '/pinterest-share-link-generator',
+    path: '/pinterest-share-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PdfLinkGeneratorRoute = PdfLinkGeneratorRouteImport.update({
   id: '/pdf-link-generator',
   path: '/pdf-link-generator',
@@ -191,6 +261,17 @@ const GoogleDriveDirectLinkGeneratorRoute =
     path: '/google-drive-direct-link-generator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GmailComposeLinkGeneratorRoute =
+  GmailComposeLinkGeneratorRouteImport.update({
+    id: '/gmail-compose-link-generator',
+    path: '/gmail-compose-link-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FacetimeLinkGeneratorRoute = FacetimeLinkGeneratorRouteImport.update({
+  id: '/facetime-link-generator',
+  path: '/facetime-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FacebookShareLinkGeneratorRoute =
   FacebookShareLinkGeneratorRouteImport.update({
     id: '/facebook-share-link-generator',
@@ -215,9 +296,29 @@ const DirectDownloadLinkGeneratorRoute =
     path: '/direct-download-link-generator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DeepLinkGeneratorRoute = DeepLinkGeneratorRouteImport.update({
+  id: '/deep-link-generator',
+  path: '/deep-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CashappLinkGeneratorRoute = CashappLinkGeneratorRouteImport.update({
+  id: '/cashapp-link-generator',
+  path: '/cashapp-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendlyLinkGeneratorRoute = CalendlyLinkGeneratorRouteImport.update({
+  id: '/calendly-link-generator',
+  path: '/calendly-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AudioLinkGeneratorRoute = AudioLinkGeneratorRouteImport.update({
   id: '/audio-link-generator',
   path: '/audio-link-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppStoreLinkGeneratorRoute = AppStoreLinkGeneratorRouteImport.update({
+  id: '/app-store-link-generator',
+  path: '/app-store-link-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AffiliateLinkGeneratorRoute = AffiliateLinkGeneratorRouteImport.update({
@@ -241,11 +342,17 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/app-store-link-generator': typeof AppStoreLinkGeneratorRoute
   '/audio-link-generator': typeof AudioLinkGeneratorRoute
+  '/calendly-link-generator': typeof CalendlyLinkGeneratorRoute
+  '/cashapp-link-generator': typeof CashappLinkGeneratorRoute
+  '/deep-link-generator': typeof DeepLinkGeneratorRoute
   '/direct-download-link-generator': typeof DirectDownloadLinkGeneratorRoute
   '/discord-invite-link-generator': typeof DiscordInviteLinkGeneratorRoute
   '/dropbox-direct-link-generator': typeof DropboxDirectLinkGeneratorRoute
   '/facebook-share-link-generator': typeof FacebookShareLinkGeneratorRoute
+  '/facetime-link-generator': typeof FacetimeLinkGeneratorRoute
+  '/gmail-compose-link-generator': typeof GmailComposeLinkGeneratorRoute
   '/google-drive-direct-link-generator': typeof GoogleDriveDirectLinkGeneratorRoute
   '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
   '/google-meet-link-generator': typeof GoogleMeetLinkGeneratorRoute
@@ -260,16 +367,26 @@ export interface FileRoutesByFullPath {
   '/payment-link-generator': typeof PaymentLinkGeneratorRoute
   '/paypal-me-link-generator': typeof PaypalMeLinkGeneratorRoute
   '/pdf-link-generator': typeof PdfLinkGeneratorRoute
+  '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
+  '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
+  '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
   '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/sms-link-generator': typeof SmsLinkGeneratorRoute
+  '/spotify-link-generator': typeof SpotifyLinkGeneratorRoute
   '/teams-meeting-link-generator': typeof TeamsMeetingLinkGeneratorRoute
   '/telegram-link-generator': typeof TelegramLinkGeneratorRoute
+  '/tiktok-link-generator': typeof TiktokLinkGeneratorRoute
+  '/tinyurl-link-generator': typeof TinyurlLinkGeneratorRoute
+  '/twitter-share-link-generator': typeof TwitterShareLinkGeneratorRoute
+  '/unsubscribe-link-generator': typeof UnsubscribeLinkGeneratorRoute
   '/utm-link-generator': typeof UtmLinkGeneratorRoute
+  '/venmo-link-generator': typeof VenmoLinkGeneratorRoute
   '/video-link-generator': typeof VideoLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
   '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
@@ -279,11 +396,17 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/app-store-link-generator': typeof AppStoreLinkGeneratorRoute
   '/audio-link-generator': typeof AudioLinkGeneratorRoute
+  '/calendly-link-generator': typeof CalendlyLinkGeneratorRoute
+  '/cashapp-link-generator': typeof CashappLinkGeneratorRoute
+  '/deep-link-generator': typeof DeepLinkGeneratorRoute
   '/direct-download-link-generator': typeof DirectDownloadLinkGeneratorRoute
   '/discord-invite-link-generator': typeof DiscordInviteLinkGeneratorRoute
   '/dropbox-direct-link-generator': typeof DropboxDirectLinkGeneratorRoute
   '/facebook-share-link-generator': typeof FacebookShareLinkGeneratorRoute
+  '/facetime-link-generator': typeof FacetimeLinkGeneratorRoute
+  '/gmail-compose-link-generator': typeof GmailComposeLinkGeneratorRoute
   '/google-drive-direct-link-generator': typeof GoogleDriveDirectLinkGeneratorRoute
   '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
   '/google-meet-link-generator': typeof GoogleMeetLinkGeneratorRoute
@@ -298,16 +421,26 @@ export interface FileRoutesByTo {
   '/payment-link-generator': typeof PaymentLinkGeneratorRoute
   '/paypal-me-link-generator': typeof PaypalMeLinkGeneratorRoute
   '/pdf-link-generator': typeof PdfLinkGeneratorRoute
+  '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
+  '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
+  '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
   '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/sms-link-generator': typeof SmsLinkGeneratorRoute
+  '/spotify-link-generator': typeof SpotifyLinkGeneratorRoute
   '/teams-meeting-link-generator': typeof TeamsMeetingLinkGeneratorRoute
   '/telegram-link-generator': typeof TelegramLinkGeneratorRoute
+  '/tiktok-link-generator': typeof TiktokLinkGeneratorRoute
+  '/tinyurl-link-generator': typeof TinyurlLinkGeneratorRoute
+  '/twitter-share-link-generator': typeof TwitterShareLinkGeneratorRoute
+  '/unsubscribe-link-generator': typeof UnsubscribeLinkGeneratorRoute
   '/utm-link-generator': typeof UtmLinkGeneratorRoute
+  '/venmo-link-generator': typeof VenmoLinkGeneratorRoute
   '/video-link-generator': typeof VideoLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
   '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
@@ -318,11 +451,17 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
+  '/app-store-link-generator': typeof AppStoreLinkGeneratorRoute
   '/audio-link-generator': typeof AudioLinkGeneratorRoute
+  '/calendly-link-generator': typeof CalendlyLinkGeneratorRoute
+  '/cashapp-link-generator': typeof CashappLinkGeneratorRoute
+  '/deep-link-generator': typeof DeepLinkGeneratorRoute
   '/direct-download-link-generator': typeof DirectDownloadLinkGeneratorRoute
   '/discord-invite-link-generator': typeof DiscordInviteLinkGeneratorRoute
   '/dropbox-direct-link-generator': typeof DropboxDirectLinkGeneratorRoute
   '/facebook-share-link-generator': typeof FacebookShareLinkGeneratorRoute
+  '/facetime-link-generator': typeof FacetimeLinkGeneratorRoute
+  '/gmail-compose-link-generator': typeof GmailComposeLinkGeneratorRoute
   '/google-drive-direct-link-generator': typeof GoogleDriveDirectLinkGeneratorRoute
   '/google-maps-link-generator': typeof GoogleMapsLinkGeneratorRoute
   '/google-meet-link-generator': typeof GoogleMeetLinkGeneratorRoute
@@ -337,16 +476,26 @@ export interface FileRoutesById {
   '/payment-link-generator': typeof PaymentLinkGeneratorRoute
   '/paypal-me-link-generator': typeof PaypalMeLinkGeneratorRoute
   '/pdf-link-generator': typeof PdfLinkGeneratorRoute
+  '/pinterest-share-link-generator': typeof PinterestShareLinkGeneratorRoute
+  '/play-store-link-generator': typeof PlayStoreLinkGeneratorRoute
   '/premium-link-generator': typeof PremiumLinkGeneratorRoute
   '/qr-code-link-generator': typeof QrCodeLinkGeneratorRoute
+  '/reddit-share-link-generator': typeof RedditShareLinkGeneratorRoute
   '/referral-link-generator': typeof ReferralLinkGeneratorRoute
   '/rickroll-link-generator': typeof RickrollLinkGeneratorRoute
   '/short-link-generator': typeof ShortLinkGeneratorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slug-generator': typeof SlugGeneratorRoute
+  '/sms-link-generator': typeof SmsLinkGeneratorRoute
+  '/spotify-link-generator': typeof SpotifyLinkGeneratorRoute
   '/teams-meeting-link-generator': typeof TeamsMeetingLinkGeneratorRoute
   '/telegram-link-generator': typeof TelegramLinkGeneratorRoute
+  '/tiktok-link-generator': typeof TiktokLinkGeneratorRoute
+  '/tinyurl-link-generator': typeof TinyurlLinkGeneratorRoute
+  '/twitter-share-link-generator': typeof TwitterShareLinkGeneratorRoute
+  '/unsubscribe-link-generator': typeof UnsubscribeLinkGeneratorRoute
   '/utm-link-generator': typeof UtmLinkGeneratorRoute
+  '/venmo-link-generator': typeof VenmoLinkGeneratorRoute
   '/video-link-generator': typeof VideoLinkGeneratorRoute
   '/whatsapp-link-generator': typeof WhatsappLinkGeneratorRoute
   '/youtube-link-generator': typeof YoutubeLinkGeneratorRoute
@@ -358,11 +507,17 @@ export interface FileRouteTypes {
     | '/'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
+    | '/app-store-link-generator'
     | '/audio-link-generator'
+    | '/calendly-link-generator'
+    | '/cashapp-link-generator'
+    | '/deep-link-generator'
     | '/direct-download-link-generator'
     | '/discord-invite-link-generator'
     | '/dropbox-direct-link-generator'
     | '/facebook-share-link-generator'
+    | '/facetime-link-generator'
+    | '/gmail-compose-link-generator'
     | '/google-drive-direct-link-generator'
     | '/google-maps-link-generator'
     | '/google-meet-link-generator'
@@ -377,16 +532,26 @@ export interface FileRouteTypes {
     | '/payment-link-generator'
     | '/paypal-me-link-generator'
     | '/pdf-link-generator'
+    | '/pinterest-share-link-generator'
+    | '/play-store-link-generator'
     | '/premium-link-generator'
     | '/qr-code-link-generator'
+    | '/reddit-share-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
     | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/sms-link-generator'
+    | '/spotify-link-generator'
     | '/teams-meeting-link-generator'
     | '/telegram-link-generator'
+    | '/tiktok-link-generator'
+    | '/tinyurl-link-generator'
+    | '/twitter-share-link-generator'
+    | '/unsubscribe-link-generator'
     | '/utm-link-generator'
+    | '/venmo-link-generator'
     | '/video-link-generator'
     | '/whatsapp-link-generator'
     | '/youtube-link-generator'
@@ -396,11 +561,17 @@ export interface FileRouteTypes {
     | '/'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
+    | '/app-store-link-generator'
     | '/audio-link-generator'
+    | '/calendly-link-generator'
+    | '/cashapp-link-generator'
+    | '/deep-link-generator'
     | '/direct-download-link-generator'
     | '/discord-invite-link-generator'
     | '/dropbox-direct-link-generator'
     | '/facebook-share-link-generator'
+    | '/facetime-link-generator'
+    | '/gmail-compose-link-generator'
     | '/google-drive-direct-link-generator'
     | '/google-maps-link-generator'
     | '/google-meet-link-generator'
@@ -415,16 +586,26 @@ export interface FileRouteTypes {
     | '/payment-link-generator'
     | '/paypal-me-link-generator'
     | '/pdf-link-generator'
+    | '/pinterest-share-link-generator'
+    | '/play-store-link-generator'
     | '/premium-link-generator'
     | '/qr-code-link-generator'
+    | '/reddit-share-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
     | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/sms-link-generator'
+    | '/spotify-link-generator'
     | '/teams-meeting-link-generator'
     | '/telegram-link-generator'
+    | '/tiktok-link-generator'
+    | '/tinyurl-link-generator'
+    | '/twitter-share-link-generator'
+    | '/unsubscribe-link-generator'
     | '/utm-link-generator'
+    | '/venmo-link-generator'
     | '/video-link-generator'
     | '/whatsapp-link-generator'
     | '/youtube-link-generator'
@@ -434,11 +615,17 @@ export interface FileRouteTypes {
     | '/'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
+    | '/app-store-link-generator'
     | '/audio-link-generator'
+    | '/calendly-link-generator'
+    | '/cashapp-link-generator'
+    | '/deep-link-generator'
     | '/direct-download-link-generator'
     | '/discord-invite-link-generator'
     | '/dropbox-direct-link-generator'
     | '/facebook-share-link-generator'
+    | '/facetime-link-generator'
+    | '/gmail-compose-link-generator'
     | '/google-drive-direct-link-generator'
     | '/google-maps-link-generator'
     | '/google-meet-link-generator'
@@ -453,16 +640,26 @@ export interface FileRouteTypes {
     | '/payment-link-generator'
     | '/paypal-me-link-generator'
     | '/pdf-link-generator'
+    | '/pinterest-share-link-generator'
+    | '/play-store-link-generator'
     | '/premium-link-generator'
     | '/qr-code-link-generator'
+    | '/reddit-share-link-generator'
     | '/referral-link-generator'
     | '/rickroll-link-generator'
     | '/short-link-generator'
     | '/sitemap.xml'
     | '/slug-generator'
+    | '/sms-link-generator'
+    | '/spotify-link-generator'
     | '/teams-meeting-link-generator'
     | '/telegram-link-generator'
+    | '/tiktok-link-generator'
+    | '/tinyurl-link-generator'
+    | '/twitter-share-link-generator'
+    | '/unsubscribe-link-generator'
     | '/utm-link-generator'
+    | '/venmo-link-generator'
     | '/video-link-generator'
     | '/whatsapp-link-generator'
     | '/youtube-link-generator'
@@ -473,11 +670,17 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AddToCalendarLinkGeneratorRoute: typeof AddToCalendarLinkGeneratorRoute
   AffiliateLinkGeneratorRoute: typeof AffiliateLinkGeneratorRoute
+  AppStoreLinkGeneratorRoute: typeof AppStoreLinkGeneratorRoute
   AudioLinkGeneratorRoute: typeof AudioLinkGeneratorRoute
+  CalendlyLinkGeneratorRoute: typeof CalendlyLinkGeneratorRoute
+  CashappLinkGeneratorRoute: typeof CashappLinkGeneratorRoute
+  DeepLinkGeneratorRoute: typeof DeepLinkGeneratorRoute
   DirectDownloadLinkGeneratorRoute: typeof DirectDownloadLinkGeneratorRoute
   DiscordInviteLinkGeneratorRoute: typeof DiscordInviteLinkGeneratorRoute
   DropboxDirectLinkGeneratorRoute: typeof DropboxDirectLinkGeneratorRoute
   FacebookShareLinkGeneratorRoute: typeof FacebookShareLinkGeneratorRoute
+  FacetimeLinkGeneratorRoute: typeof FacetimeLinkGeneratorRoute
+  GmailComposeLinkGeneratorRoute: typeof GmailComposeLinkGeneratorRoute
   GoogleDriveDirectLinkGeneratorRoute: typeof GoogleDriveDirectLinkGeneratorRoute
   GoogleMapsLinkGeneratorRoute: typeof GoogleMapsLinkGeneratorRoute
   GoogleMeetLinkGeneratorRoute: typeof GoogleMeetLinkGeneratorRoute
@@ -492,16 +695,26 @@ export interface RootRouteChildren {
   PaymentLinkGeneratorRoute: typeof PaymentLinkGeneratorRoute
   PaypalMeLinkGeneratorRoute: typeof PaypalMeLinkGeneratorRoute
   PdfLinkGeneratorRoute: typeof PdfLinkGeneratorRoute
+  PinterestShareLinkGeneratorRoute: typeof PinterestShareLinkGeneratorRoute
+  PlayStoreLinkGeneratorRoute: typeof PlayStoreLinkGeneratorRoute
   PremiumLinkGeneratorRoute: typeof PremiumLinkGeneratorRoute
   QrCodeLinkGeneratorRoute: typeof QrCodeLinkGeneratorRoute
+  RedditShareLinkGeneratorRoute: typeof RedditShareLinkGeneratorRoute
   ReferralLinkGeneratorRoute: typeof ReferralLinkGeneratorRoute
   RickrollLinkGeneratorRoute: typeof RickrollLinkGeneratorRoute
   ShortLinkGeneratorRoute: typeof ShortLinkGeneratorRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlugGeneratorRoute: typeof SlugGeneratorRoute
+  SmsLinkGeneratorRoute: typeof SmsLinkGeneratorRoute
+  SpotifyLinkGeneratorRoute: typeof SpotifyLinkGeneratorRoute
   TeamsMeetingLinkGeneratorRoute: typeof TeamsMeetingLinkGeneratorRoute
   TelegramLinkGeneratorRoute: typeof TelegramLinkGeneratorRoute
+  TiktokLinkGeneratorRoute: typeof TiktokLinkGeneratorRoute
+  TinyurlLinkGeneratorRoute: typeof TinyurlLinkGeneratorRoute
+  TwitterShareLinkGeneratorRoute: typeof TwitterShareLinkGeneratorRoute
+  UnsubscribeLinkGeneratorRoute: typeof UnsubscribeLinkGeneratorRoute
   UtmLinkGeneratorRoute: typeof UtmLinkGeneratorRoute
+  VenmoLinkGeneratorRoute: typeof VenmoLinkGeneratorRoute
   VideoLinkGeneratorRoute: typeof VideoLinkGeneratorRoute
   WhatsappLinkGeneratorRoute: typeof WhatsappLinkGeneratorRoute
   YoutubeLinkGeneratorRoute: typeof YoutubeLinkGeneratorRoute
@@ -538,11 +751,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VideoLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/venmo-link-generator': {
+      id: '/venmo-link-generator'
+      path: '/venmo-link-generator'
+      fullPath: '/venmo-link-generator'
+      preLoaderRoute: typeof VenmoLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/utm-link-generator': {
       id: '/utm-link-generator'
       path: '/utm-link-generator'
       fullPath: '/utm-link-generator'
       preLoaderRoute: typeof UtmLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe-link-generator': {
+      id: '/unsubscribe-link-generator'
+      path: '/unsubscribe-link-generator'
+      fullPath: '/unsubscribe-link-generator'
+      preLoaderRoute: typeof UnsubscribeLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/twitter-share-link-generator': {
+      id: '/twitter-share-link-generator'
+      path: '/twitter-share-link-generator'
+      fullPath: '/twitter-share-link-generator'
+      preLoaderRoute: typeof TwitterShareLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tinyurl-link-generator': {
+      id: '/tinyurl-link-generator'
+      path: '/tinyurl-link-generator'
+      fullPath: '/tinyurl-link-generator'
+      preLoaderRoute: typeof TinyurlLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tiktok-link-generator': {
+      id: '/tiktok-link-generator'
+      path: '/tiktok-link-generator'
+      fullPath: '/tiktok-link-generator'
+      preLoaderRoute: typeof TiktokLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/telegram-link-generator': {
@@ -557,6 +805,20 @@ declare module '@tanstack/react-router' {
       path: '/teams-meeting-link-generator'
       fullPath: '/teams-meeting-link-generator'
       preLoaderRoute: typeof TeamsMeetingLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spotify-link-generator': {
+      id: '/spotify-link-generator'
+      path: '/spotify-link-generator'
+      fullPath: '/spotify-link-generator'
+      preLoaderRoute: typeof SpotifyLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sms-link-generator': {
+      id: '/sms-link-generator'
+      path: '/sms-link-generator'
+      fullPath: '/sms-link-generator'
+      preLoaderRoute: typeof SmsLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/slug-generator': {
@@ -594,6 +856,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReferralLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reddit-share-link-generator': {
+      id: '/reddit-share-link-generator'
+      path: '/reddit-share-link-generator'
+      fullPath: '/reddit-share-link-generator'
+      preLoaderRoute: typeof RedditShareLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/qr-code-link-generator': {
       id: '/qr-code-link-generator'
       path: '/qr-code-link-generator'
@@ -606,6 +875,20 @@ declare module '@tanstack/react-router' {
       path: '/premium-link-generator'
       fullPath: '/premium-link-generator'
       preLoaderRoute: typeof PremiumLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play-store-link-generator': {
+      id: '/play-store-link-generator'
+      path: '/play-store-link-generator'
+      fullPath: '/play-store-link-generator'
+      preLoaderRoute: typeof PlayStoreLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pinterest-share-link-generator': {
+      id: '/pinterest-share-link-generator'
+      path: '/pinterest-share-link-generator'
+      fullPath: '/pinterest-share-link-generator'
+      preLoaderRoute: typeof PinterestShareLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pdf-link-generator': {
@@ -706,6 +989,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoogleDriveDirectLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gmail-compose-link-generator': {
+      id: '/gmail-compose-link-generator'
+      path: '/gmail-compose-link-generator'
+      fullPath: '/gmail-compose-link-generator'
+      preLoaderRoute: typeof GmailComposeLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facetime-link-generator': {
+      id: '/facetime-link-generator'
+      path: '/facetime-link-generator'
+      fullPath: '/facetime-link-generator'
+      preLoaderRoute: typeof FacetimeLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/facebook-share-link-generator': {
       id: '/facebook-share-link-generator'
       path: '/facebook-share-link-generator'
@@ -734,11 +1031,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectDownloadLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/deep-link-generator': {
+      id: '/deep-link-generator'
+      path: '/deep-link-generator'
+      fullPath: '/deep-link-generator'
+      preLoaderRoute: typeof DeepLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cashapp-link-generator': {
+      id: '/cashapp-link-generator'
+      path: '/cashapp-link-generator'
+      fullPath: '/cashapp-link-generator'
+      preLoaderRoute: typeof CashappLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendly-link-generator': {
+      id: '/calendly-link-generator'
+      path: '/calendly-link-generator'
+      fullPath: '/calendly-link-generator'
+      preLoaderRoute: typeof CalendlyLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/audio-link-generator': {
       id: '/audio-link-generator'
       path: '/audio-link-generator'
       fullPath: '/audio-link-generator'
       preLoaderRoute: typeof AudioLinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app-store-link-generator': {
+      id: '/app-store-link-generator'
+      path: '/app-store-link-generator'
+      fullPath: '/app-store-link-generator'
+      preLoaderRoute: typeof AppStoreLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/affiliate-link-generator': {
@@ -769,11 +1094,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AddToCalendarLinkGeneratorRoute: AddToCalendarLinkGeneratorRoute,
   AffiliateLinkGeneratorRoute: AffiliateLinkGeneratorRoute,
+  AppStoreLinkGeneratorRoute: AppStoreLinkGeneratorRoute,
   AudioLinkGeneratorRoute: AudioLinkGeneratorRoute,
+  CalendlyLinkGeneratorRoute: CalendlyLinkGeneratorRoute,
+  CashappLinkGeneratorRoute: CashappLinkGeneratorRoute,
+  DeepLinkGeneratorRoute: DeepLinkGeneratorRoute,
   DirectDownloadLinkGeneratorRoute: DirectDownloadLinkGeneratorRoute,
   DiscordInviteLinkGeneratorRoute: DiscordInviteLinkGeneratorRoute,
   DropboxDirectLinkGeneratorRoute: DropboxDirectLinkGeneratorRoute,
   FacebookShareLinkGeneratorRoute: FacebookShareLinkGeneratorRoute,
+  FacetimeLinkGeneratorRoute: FacetimeLinkGeneratorRoute,
+  GmailComposeLinkGeneratorRoute: GmailComposeLinkGeneratorRoute,
   GoogleDriveDirectLinkGeneratorRoute: GoogleDriveDirectLinkGeneratorRoute,
   GoogleMapsLinkGeneratorRoute: GoogleMapsLinkGeneratorRoute,
   GoogleMeetLinkGeneratorRoute: GoogleMeetLinkGeneratorRoute,
@@ -788,16 +1119,26 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentLinkGeneratorRoute: PaymentLinkGeneratorRoute,
   PaypalMeLinkGeneratorRoute: PaypalMeLinkGeneratorRoute,
   PdfLinkGeneratorRoute: PdfLinkGeneratorRoute,
+  PinterestShareLinkGeneratorRoute: PinterestShareLinkGeneratorRoute,
+  PlayStoreLinkGeneratorRoute: PlayStoreLinkGeneratorRoute,
   PremiumLinkGeneratorRoute: PremiumLinkGeneratorRoute,
   QrCodeLinkGeneratorRoute: QrCodeLinkGeneratorRoute,
+  RedditShareLinkGeneratorRoute: RedditShareLinkGeneratorRoute,
   ReferralLinkGeneratorRoute: ReferralLinkGeneratorRoute,
   RickrollLinkGeneratorRoute: RickrollLinkGeneratorRoute,
   ShortLinkGeneratorRoute: ShortLinkGeneratorRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlugGeneratorRoute: SlugGeneratorRoute,
+  SmsLinkGeneratorRoute: SmsLinkGeneratorRoute,
+  SpotifyLinkGeneratorRoute: SpotifyLinkGeneratorRoute,
   TeamsMeetingLinkGeneratorRoute: TeamsMeetingLinkGeneratorRoute,
   TelegramLinkGeneratorRoute: TelegramLinkGeneratorRoute,
+  TiktokLinkGeneratorRoute: TiktokLinkGeneratorRoute,
+  TinyurlLinkGeneratorRoute: TinyurlLinkGeneratorRoute,
+  TwitterShareLinkGeneratorRoute: TwitterShareLinkGeneratorRoute,
+  UnsubscribeLinkGeneratorRoute: UnsubscribeLinkGeneratorRoute,
   UtmLinkGeneratorRoute: UtmLinkGeneratorRoute,
+  VenmoLinkGeneratorRoute: VenmoLinkGeneratorRoute,
   VideoLinkGeneratorRoute: VideoLinkGeneratorRoute,
   WhatsappLinkGeneratorRoute: WhatsappLinkGeneratorRoute,
   YoutubeLinkGeneratorRoute: YoutubeLinkGeneratorRoute,
