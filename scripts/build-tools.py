@@ -765,8 +765,8 @@ __PAGE__
 DEFAULT_PAGE = """function Page() {
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "__NAME__" }]} />
-      <ToolHero h1={"__H1__"} intro={"__INTRO__"} keywords={KW} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: __NAME_JSON__ }]} />
+      <ToolHero h1={__H1__} intro={__INTRO__} keywords={KW} />
 
       <ToolForm
         fields={__FIELDS__}
@@ -774,11 +774,11 @@ DEFAULT_PAGE = """function Page() {
         __EXTRA_PROPS__
       />
 
-      <HowToUse heading={"How to use the __NAME_LOWER__"} steps={STEPS} />
+      <HowToUse heading={__HOW_HEADING__} steps={STEPS} />
 
       <AeoBlock
-        question={"__AEO_Q__"}
-        answer={"__AEO_A__"}
+        question={__AEO_Q__}
+        answer={__AEO_A__}
         keywords={KW}
       />
 
@@ -803,11 +803,11 @@ DEFAULT_PAGE = """function Page() {
 CUSTOM_PAGE_WRAP = """function Page() {
   return (
     <ToolLayout>
-      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "__NAME__" }]} />
-      <ToolHero h1={"__H1__"} intro={"__INTRO__"} keywords={KW} />
+      <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: __NAME_JSON__ }]} />
+      <ToolHero h1={__H1__} intro={__INTRO__} keywords={KW} />
       __INNER__
-      <HowToUse heading={"How to use the __NAME_LOWER__"} steps={STEPS} />
-      <AeoBlock question={"__AEO_Q__"} answer={"__AEO_A__"} keywords={KW} />
+      <HowToUse heading={__HOW_HEADING__} steps={STEPS} />
+      <AeoBlock question={__AEO_Q__} answer={__AEO_A__} keywords={KW} />
       <GeoBlock heading={"USA use cases"} keywords={KW} items={__GEO__} />
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
       <ContextualLinks heading="Related link generators" links={__RELATED__} />
@@ -829,36 +829,24 @@ def render(spec):
     title = f'{spec["name"]} — Free Online Tool'
     # Trim description to ~150 chars
     desc = (spec["intro"][:155]).rstrip()
+    common = {
+        "__NAME_JSON__": j(spec["name"]),
+        "__H1__": j(spec["h1"]),
+        "__INTRO__": j(spec["intro"]),
+        "__HOW_HEADING__": j(f'How to use the {spec["name"].lower()}'),
+        "__AEO_Q__": j(spec["aeoQ"]),
+        "__AEO_A__": j(spec["aeoA"]),
+        "__GEO__": j([{"who":w,"how":h} for w,h in spec["geo"]]),
+        "__RELATED__": j(related),
+    }
     if spec.get("custom_page"):
-        # custom_page is a full Page function string; we need to extract its <return> body — simpler: replace entire Page with custom string
-        page_block = spec["custom_page"]
-        # but still need outer ToolLayout wrappers around custom card + standard sections
-        # Use CUSTOM_PAGE_WRAP and replace __INNER__ with what's inside the <> fragment
         inner = re.search(r"<>\s*(.*?)\s*</>", spec["custom_page"], re.S)
         inner_str = inner.group(1) if inner else ""
-        page = (CUSTOM_PAGE_WRAP
-            .replace("__NAME__", spec["name"])
-            .replace("__H1__", spec["h1"])
-            .replace("__INTRO__", spec["intro"])
-            .replace("__INNER__", inner_str)
-            .replace("__NAME_LOWER__", spec["name"].lower())
-            .replace("__AEO_Q__", spec["aeoQ"])
-            .replace("__AEO_A__", spec["aeoA"])
-            .replace("__GEO__", j([{"who":w,"how":h} for w,h in spec["geo"]]))
-            .replace("__RELATED__", j(related)))
+        page = CUSTOM_PAGE_WRAP.replace("__INNER__", inner_str)
+        for k, v in common.items(): page = page.replace(k, v)
     else:
-        page = (DEFAULT_PAGE
-            .replace("__NAME__", spec["name"])
-            .replace("__H1__", spec["h1"])
-            .replace("__INTRO__", spec["intro"])
-            .replace("__FIELDS__", j(spec["fields"]))
-            .replace("__BUILD__", spec["build"])
-            .replace("__EXTRA_PROPS__", " ".join(extra))
-            .replace("__NAME_LOWER__", spec["name"].lower())
-            .replace("__AEO_Q__", spec["aeoQ"])
-            .replace("__AEO_A__", spec["aeoA"])
-            .replace("__GEO__", j([{"who":w,"how":h} for w,h in spec["geo"]]))
-            .replace("__RELATED__", j(related)))
+        page = DEFAULT_PAGE.replace("__FIELDS__", j(spec["fields"])).replace("__BUILD__", spec["build"]).replace("__EXTRA_PROPS__", " ".join(extra))
+        for k, v in common.items(): page = page.replace(k, v)
     imports = "import { useState } from \"react\";" if spec.get("custom_page") else ""
     out = (TEMPLATE
         .replace("__IMPORTS__", imports)

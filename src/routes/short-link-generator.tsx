@@ -47,7 +47,7 @@ function Page() {
   return (
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator", to: "/" }, { label: "Short Link Generator" }]} />
-      <ToolHero h1={"Free Short Link & Tiny URL Generator"} intro={"Shorten any URL using the free is.gd public API — no signup, no tracking."} keywords={KW} />
+      <ToolHero h1={"Free Short Link & Tiny URL Generator"} intro={"Shorten any URL using the free is.gd public API — no signup, no tracking. Optional custom alias."} keywords={KW} />
       <ToolCard>
         <Field label="Long URL">
           <input type="url" className={inputCls} placeholder="https://example.com/very/long/path?with=params" value={u} onChange={(e) => setU(e.target.value)} />
@@ -60,12 +60,11 @@ function Page() {
         </div>
       </ToolCard>
       <HowToUse heading={"How to use the short link generator"} steps={STEPS} />
-      <AeoBlock question={"How do free URL shorteners work?"} answer={"The shortener stores your long URL and gives you a tiny redirect URL. When someone opens it, the service issues a 301 to the original destination. We use the free is.gd API."} keywords={KW} />
-      <GeoBlock heading={"USA use cases"} keywords={KW} items={[{who:"Marketer in Austin, TX",how:"Shortens email CTAs so SMS fallbacks fit under 160 chars."},{who:"Real estate agent in Miami, FL",how:"Prints short URLs on yard signs and open-house flyers."},{who:"Podcaster in Brooklyn, NY",how:"Drops a memorable short link in episode show notes."},{who:"Recruiter in Chicago, IL",how:"Shares job-posting URLs in LinkedIn DMs without ugly tracking strings."}]} />
+      <AeoBlock question={"How do free URL shorteners work?"} answer={"The shortener stores your long URL in a database and gives you a tiny redirect URL. When someone opens it, the service issues a 301 to the original destination. We use the free is.gd API."} keywords={KW} />
+      <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Marketer in Austin, TX", "how": "Shortens every email CTA so SMS fallbacks fit under 160 chars."}, {"who": "Real estate agent in Miami, FL", "how": "Prints short URLs on yard signs and open-house flyers."}, {"who": "Podcaster in Brooklyn, NY", "how": "Drops a memorable short link in episode show notes."}, {"who": "Recruiter in Chicago, IL", "how": "Shares job-posting URLs in LinkedIn DMs without ugly tracking strings."}]} />
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
-      <ContextualLinks heading="Related link generators" links={[{to:"/qr-code-link-generator",anchor:"QR Code Link Generator",blurb:"turn the short URL into a QR."},{to:"/utm-link-generator",anchor:"UTM Link Generator",blurb:"tag the URL before shortening."},{to:"/affiliate-link-generator",anchor:"Affiliate Link Generator",blurb:"tag affiliate URLs first."},{to:"/referral-link-generator",anchor:"Referral Link Generator",blurb:"add a referral code first."}]} />
+      <ContextualLinks heading="Related link generators" links={[{"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/utm-link-generator", "anchor": "UTM Link Generator", "blurb": "related link generator."}, {"to": "/affiliate-link-generator", "anchor": "Affiliate Link Generator", "blurb": "related link generator."}, {"to": "/referral-link-generator", "anchor": "Referral Link Generator", "blurb": "related link generator."}]} />
       <BackToHomeLink />
     </ToolLayout>
   );
 }
-

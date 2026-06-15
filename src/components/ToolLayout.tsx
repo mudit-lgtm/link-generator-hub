@@ -91,6 +91,38 @@ export const TOOLS: Tool[] = [
     blurb: "Build magnet URIs from BitTorrent info hashes.", accent: "from-zinc-500 to-slate-700" },
   { to: "/direct-download-link-generator", label: "Direct Download Link Generator", short: "Direct Download", icon: "⬇️",
     blurb: "Force-download URLs for any hosted file.", accent: "from-emerald-500 to-green-700" },
+  { to: "/tiktok-link-generator", label: "TikTok Link Generator", short: "TikTok", icon: "\ud83c\udfb6",
+    blurb: "Profile, video & sound TikTok URLs.", accent: "from-rose-500 to-pink-600" },
+  { to: "/twitter-share-link-generator", label: "Twitter / X Share Link Generator", short: "X Share", icon: "\ud835\udd4f",
+    blurb: "Pre-filled tweet intent URL builder.", accent: "from-zinc-800 to-zinc-950" },
+  { to: "/reddit-share-link-generator", label: "Reddit Share Link Generator", short: "Reddit Share", icon: "\ud83d\udc7d",
+    blurb: "reddit.com/submit pre-fill links.", accent: "from-orange-500 to-red-600" },
+  { to: "/pinterest-share-link-generator", label: "Pinterest Share Link Generator", short: "Pin-It", icon: "\ud83d\udccc",
+    blurb: "Pinterest Pin-It share URLs.", accent: "from-red-500 to-rose-700" },
+  { to: "/sms-link-generator", label: "SMS Link Generator", short: "SMS Link", icon: "\ud83d\udcac",
+    blurb: "sms: click-to-text deep links.", accent: "from-emerald-400 to-teal-600" },
+  { to: "/facetime-link-generator", label: "FaceTime Link Generator", short: "FaceTime", icon: "\ud83d\udcde",
+    blurb: "facetime: video & audio call links.", accent: "from-green-400 to-emerald-600" },
+  { to: "/spotify-link-generator", label: "Spotify Link Generator", short: "Spotify", icon: "\ud83c\udfa7",
+    blurb: "Track, album, playlist & artist URLs.", accent: "from-green-500 to-emerald-700" },
+  { to: "/app-store-link-generator", label: "Apple App Store Link Generator", short: "App Store", icon: "\ud83c\udf4e",
+    blurb: "apps.apple.com canonical URLs.", accent: "from-slate-800 to-zinc-950" },
+  { to: "/play-store-link-generator", label: "Google Play Store Link Generator", short: "Play Store", icon: "\u25b6",
+    blurb: "Play Store install URLs with referrer.", accent: "from-emerald-500 to-green-700" },
+  { to: "/deep-link-generator", label: "Deep Link Generator", short: "Deep Link", icon: "\ud83d\udd17",
+    blurb: "Custom-scheme app deep links.", accent: "from-violet-500 to-indigo-700" },
+  { to: "/venmo-link-generator", label: "Venmo Link Generator", short: "Venmo", icon: "\ud83d\udcb8",
+    blurb: "Venmo pay & charge deep links.", accent: "from-sky-400 to-blue-600" },
+  { to: "/cashapp-link-generator", label: "Cash App Link Generator", short: "Cash App", icon: "\ud83d\udcb5",
+    blurb: "$Cashtag pay URLs.", accent: "from-green-500 to-lime-600" },
+  { to: "/calendly-link-generator", label: "Calendly Link Generator", short: "Calendly", icon: "\ud83d\udcc6",
+    blurb: "Booking URLs with UTM attribution.", accent: "from-blue-500 to-indigo-600" },
+  { to: "/tinyurl-link-generator", label: "TinyURL Link Generator", short: "TinyURL", icon: "\ud83d\udd17",
+    blurb: "Free TinyURL shortening API.", accent: "from-cyan-500 to-sky-700" },
+  { to: "/gmail-compose-link-generator", label: "Gmail Compose Link Generator", short: "Gmail Compose", icon: "\ud83d\udce7",
+    blurb: "Gmail composer pre-fill URLs.", accent: "from-red-500 to-rose-600" },
+  { to: "/unsubscribe-link-generator", label: "Unsubscribe Link Generator", short: "Unsubscribe", icon: "\u270b",
+    blurb: "RFC List-Unsubscribe header builder.", accent: "from-zinc-500 to-slate-700" },
 ];
 
 export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
@@ -109,80 +141,130 @@ function BrandMark() {
 const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   {
     title: "Marketing & Tracking",
-    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator","/play-store-link-generator","/deep-link-generator","/tinyurl-link-generator"].includes(t.to)),
   },
   {
     title: "Social & Messaging",
-    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/pinterest-share-link-generator","/sms-link-generator","/gmail-compose-link-generator","/unsubscribe-link-generator"].includes(t.to)),
   },
   {
     title: "Meetings & Payments",
-    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/paypal-me-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/paypal-me-link-generator","/facetime-link-generator","/venmo-link-generator","/cashapp-link-generator","/calendly-link-generator"].includes(t.to)),
   },
   {
     title: "Files & Downloads",
-    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/dropbox-direct-link-generator","/onedrive-direct-link-generator","/mega-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/dropbox-direct-link-generator","/onedrive-direct-link-generator","/mega-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator","/spotify-link-generator"].includes(t.to)),
   },
 ];
 
 function MegaMenu() {
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cancelClose = () => { if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; } };
-  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => setOpen(false), 180); };
+  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => setOpen(false), 220); };
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); setMobileOpen(false); } };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // close on route change (when the user clicks a link)
+  useEffect(() => () => cancelClose(), []);
+
   return (
-    <div className="static" onMouseEnter={() => { cancelClose(); setOpen(true); }} onMouseLeave={scheduleClose}>
+    <>
+      {/* Desktop trigger */}
+      <div
+        className="relative hidden lg:block"
+        onMouseEnter={() => { cancelClose(); setOpen(true); }}
+        onMouseLeave={scheduleClose}
+      >
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1 py-2"
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          All Tools <span className={`text-xs transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
+        </button>
+        {/* Fixed full-width panel anchored under the sticky header */}
+        {open && (
+          <div
+            className="fixed left-0 right-0 top-[60px] z-40"
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+          >
+            {/* invisible hover bridge */}
+            <div className="h-2" aria-hidden />
+            <div className="bg-card border-y border-border shadow-2xl">
+              <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto">
+                {MENU_GROUPS.map((g) => (
+                  <div key={g.title}>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
+                    <ul className="space-y-1.5">
+                      {g.tools.map((t) => (
+                        <li key={t.to}>
+                          <Link
+                            to={t.to}
+                            onClick={() => setOpen(false)}
+                            className="flex items-start gap-2 p-1.5 rounded-md hover:bg-accent transition group"
+                          >
+                            <span aria-hidden className={`flex-shrink-0 w-6 h-6 rounded grid place-items-center text-xs bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
+                            <span className="text-xs font-semibold text-foreground leading-tight group-hover:text-primary">{t.short}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile/tablet hamburger */}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1"
-        aria-expanded={open}
-        aria-haspopup="true"
+        onClick={() => setMobileOpen(true)}
+        className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-foreground hover:bg-accent"
+        aria-label="Open tools menu"
+        aria-expanded={mobileOpen}
       >
-        All Tools <span className={`text-xs transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      {open && (
-        <div
-          className="absolute left-0 right-0 top-full w-full z-40"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-        >
-          {/* hover bridge */}
-          <div className="h-2" />
-          <div className="bg-card border-y border-border shadow-warm">
-            <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/40" onClick={() => setMobileOpen(false)}>
+          <div className="absolute right-0 top-0 bottom-0 w-[88vw] max-w-sm bg-card shadow-2xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <span className="font-display font-bold">All Tools</span>
+              <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="w-8 h-8 grid place-items-center rounded hover:bg-accent">✕</button>
+            </div>
+            <div className="p-4 space-y-5">
               {MENU_GROUPS.map((g) => (
-                <div key={g.title}>
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
-                  <ul className="space-y-1.5">
+                <details key={g.title} open>
+                  <summary className="text-[11px] font-bold uppercase tracking-widest text-primary mb-2 cursor-pointer">{g.title}</summary>
+                  <ul className="mt-2 space-y-1">
                     {g.tools.map((t) => (
                       <li key={t.to}>
-                        <Link
-                          to={t.to}
-                          onClick={() => setOpen(false)}
-                          className="flex items-start gap-2 p-1.5 rounded-md hover:bg-accent transition group"
-                        >
+                        <Link to={t.to} onClick={() => setMobileOpen(false)} className="flex items-start gap-2 p-2 rounded-md hover:bg-accent">
                           <span aria-hidden className={`flex-shrink-0 w-6 h-6 rounded grid place-items-center text-xs bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
-                          <span className="text-xs font-semibold text-foreground leading-tight group-hover:text-primary">{t.short}</span>
+                          <span className="text-sm font-semibold text-foreground">{t.short}</span>
                         </Link>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </details>
               ))}
             </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
