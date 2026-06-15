@@ -91,6 +91,38 @@ export const TOOLS: Tool[] = [
     blurb: "Build magnet URIs from BitTorrent info hashes.", accent: "from-zinc-500 to-slate-700" },
   { to: "/direct-download-link-generator", label: "Direct Download Link Generator", short: "Direct Download", icon: "⬇️",
     blurb: "Force-download URLs for any hosted file.", accent: "from-emerald-500 to-green-700" },
+  { to: "/tiktok-link-generator", label: "TikTok Link Generator", short: "TikTok", icon: "\ud83c\udfb6",
+    blurb: "Profile, video & sound TikTok URLs.", accent: "from-rose-500 to-pink-600" },
+  { to: "/twitter-share-link-generator", label: "Twitter / X Share Link Generator", short: "X Share", icon: "\ud835\udd4f",
+    blurb: "Pre-filled tweet intent URL builder.", accent: "from-zinc-800 to-zinc-950" },
+  { to: "/reddit-share-link-generator", label: "Reddit Share Link Generator", short: "Reddit Share", icon: "\ud83d\udc7d",
+    blurb: "reddit.com/submit pre-fill links.", accent: "from-orange-500 to-red-600" },
+  { to: "/pinterest-share-link-generator", label: "Pinterest Share Link Generator", short: "Pin-It", icon: "\ud83d\udccc",
+    blurb: "Pinterest Pin-It share URLs.", accent: "from-red-500 to-rose-700" },
+  { to: "/sms-link-generator", label: "SMS Link Generator", short: "SMS Link", icon: "\ud83d\udcac",
+    blurb: "sms: click-to-text deep links.", accent: "from-emerald-400 to-teal-600" },
+  { to: "/facetime-link-generator", label: "FaceTime Link Generator", short: "FaceTime", icon: "\ud83d\udcde",
+    blurb: "facetime: video & audio call links.", accent: "from-green-400 to-emerald-600" },
+  { to: "/spotify-link-generator", label: "Spotify Link Generator", short: "Spotify", icon: "\ud83c\udfa7",
+    blurb: "Track, album, playlist & artist URLs.", accent: "from-green-500 to-emerald-700" },
+  { to: "/app-store-link-generator", label: "Apple App Store Link Generator", short: "App Store", icon: "\ud83c\udf4e",
+    blurb: "apps.apple.com canonical URLs.", accent: "from-slate-800 to-zinc-950" },
+  { to: "/play-store-link-generator", label: "Google Play Store Link Generator", short: "Play Store", icon: "\u25b6",
+    blurb: "Play Store install URLs with referrer.", accent: "from-emerald-500 to-green-700" },
+  { to: "/deep-link-generator", label: "Deep Link Generator", short: "Deep Link", icon: "\ud83d\udd17",
+    blurb: "Custom-scheme app deep links.", accent: "from-violet-500 to-indigo-700" },
+  { to: "/venmo-link-generator", label: "Venmo Link Generator", short: "Venmo", icon: "\ud83d\udcb8",
+    blurb: "Venmo pay & charge deep links.", accent: "from-sky-400 to-blue-600" },
+  { to: "/cashapp-link-generator", label: "Cash App Link Generator", short: "Cash App", icon: "\ud83d\udcb5",
+    blurb: "$Cashtag pay URLs.", accent: "from-green-500 to-lime-600" },
+  { to: "/calendly-link-generator", label: "Calendly Link Generator", short: "Calendly", icon: "\ud83d\udcc6",
+    blurb: "Booking URLs with UTM attribution.", accent: "from-blue-500 to-indigo-600" },
+  { to: "/tinyurl-link-generator", label: "TinyURL Link Generator", short: "TinyURL", icon: "\ud83d\udd17",
+    blurb: "Free TinyURL shortening API.", accent: "from-cyan-500 to-sky-700" },
+  { to: "/gmail-compose-link-generator", label: "Gmail Compose Link Generator", short: "Gmail Compose", icon: "\ud83d\udce7",
+    blurb: "Gmail composer pre-fill URLs.", accent: "from-red-500 to-rose-600" },
+  { to: "/unsubscribe-link-generator", label: "Unsubscribe Link Generator", short: "Unsubscribe", icon: "\u270b",
+    blurb: "RFC List-Unsubscribe header builder.", accent: "from-zinc-500 to-slate-700" },
 ];
 
 export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
@@ -109,19 +141,19 @@ function BrandMark() {
 const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   {
     title: "Marketing & Tracking",
-    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator","/play-store-link-generator","/deep-link-generator","/tinyurl-link-generator"].includes(t.to)),
   },
   {
     title: "Social & Messaging",
-    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/pinterest-share-link-generator","/sms-link-generator","/gmail-compose-link-generator","/unsubscribe-link-generator"].includes(t.to)),
   },
   {
     title: "Meetings & Payments",
-    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/paypal-me-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/paypal-me-link-generator","/facetime-link-generator","/venmo-link-generator","/cashapp-link-generator","/calendly-link-generator"].includes(t.to)),
   },
   {
     title: "Files & Downloads",
-    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/dropbox-direct-link-generator","/onedrive-direct-link-generator","/mega-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/dropbox-direct-link-generator","/onedrive-direct-link-generator","/mega-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator","/spotify-link-generator"].includes(t.to)),
   },
 ];
 

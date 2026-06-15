@@ -45,7 +45,7 @@ function Page() {
 
       <AeoBlock
         question={"How do I force a file to download instead of opening?"}
-        answer={'Use an <a href="file.ext" download="file.ext"> tag. The download attribute tells the browser to save the file rather than open it inline.'}
+        answer={"Use an `<a href="file.ext" download="file.ext">` tag. The `download` attribute tells the browser to save the file rather than open it inline."}
         keywords={KW}
       />
 

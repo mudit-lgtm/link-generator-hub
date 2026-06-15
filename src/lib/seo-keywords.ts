@@ -409,6 +409,86 @@ export const SEO: Record<string, PageKeywords> = {
       "instant download link generator"
     ],
   },
+  "/tiktok-link-generator": {
+    path: "/tiktok-link-generator",
+    primary: "tiktok link generator",
+    keywords: ["tiktok link generator", "tiktok video link generator", "tiktok share link generator", "tiktok profile link", "custom tiktok link"],
+  },
+  "/twitter-share-link-generator": {
+    path: "/twitter-share-link-generator",
+    primary: "twitter share link generator",
+    keywords: ["twitter share link generator", "twitter intent link", "x share link generator", "tweet intent url", "share on x link"],
+  },
+  "/reddit-share-link-generator": {
+    path: "/reddit-share-link-generator",
+    primary: "reddit share link generator",
+    keywords: ["reddit share link generator", "reddit submit link", "share on reddit url", "subreddit share link", "reddit post link generator"],
+  },
+  "/pinterest-share-link-generator": {
+    path: "/pinterest-share-link-generator",
+    primary: "pinterest share link generator",
+    keywords: ["pinterest share link generator", "pin it link generator", "pinterest pin link", "share on pinterest url", "pin button link"],
+  },
+  "/sms-link-generator": {
+    path: "/sms-link-generator",
+    primary: "sms link generator",
+    keywords: ["sms link generator", "click to text link", "sms:// link generator", "text message link", "sms link with body"],
+  },
+  "/facetime-link-generator": {
+    path: "/facetime-link-generator",
+    primary: "facetime link generator",
+    keywords: ["facetime link generator", "facetime: link", "facetime audio link", "facetime web link", "apple facetime url"],
+  },
+  "/spotify-link-generator": {
+    path: "/spotify-link-generator",
+    primary: "spotify link generator",
+    keywords: ["spotify link generator", "spotify track link", "spotify share link", "open spotify url", "custom spotify link"],
+  },
+  "/app-store-link-generator": {
+    path: "/app-store-link-generator",
+    primary: "app store link generator",
+    keywords: ["app store link generator", "apple app store link", "apps.apple.com link generator", "ios app link generator", "app store url generator"],
+  },
+  "/play-store-link-generator": {
+    path: "/play-store-link-generator",
+    primary: "google play store link generator",
+    keywords: ["google play store link generator", "play store link", "android app link generator", "play store referrer link", "custom play store url"],
+  },
+  "/deep-link-generator": {
+    path: "/deep-link-generator",
+    primary: "deep link generator",
+    keywords: ["deep link generator", "app deep link", "custom url scheme generator", "mobile deep link", "universal link generator"],
+  },
+  "/venmo-link-generator": {
+    path: "/venmo-link-generator",
+    primary: "venmo link generator",
+    keywords: ["venmo link generator", "venmo payment link", "venmo pay link", "venmo charge link", "venmo deep link"],
+  },
+  "/cashapp-link-generator": {
+    path: "/cashapp-link-generator",
+    primary: "cash app link generator",
+    keywords: ["cash app link generator", "cashapp link generator", "$cashtag link", "cash.app pay url", "cash app payment link"],
+  },
+  "/calendly-link-generator": {
+    path: "/calendly-link-generator",
+    primary: "calendly link generator",
+    keywords: ["calendly link generator", "calendly booking link", "calendly with utm", "calendly embed link", "custom calendly url"],
+  },
+  "/tinyurl-link-generator": {
+    path: "/tinyurl-link-generator",
+    primary: "tinyurl link generator",
+    keywords: ["tinyurl link generator", "tinyurl alias", "free tinyurl shortener", "tinyurl api", "short link generator"],
+  },
+  "/gmail-compose-link-generator": {
+    path: "/gmail-compose-link-generator",
+    primary: "gmail compose link generator",
+    keywords: ["gmail compose link generator", "gmail link generator", "mail.google.com compose url", "gmail prefilled link", "compose gmail url"],
+  },
+  "/unsubscribe-link-generator": {
+    path: "/unsubscribe-link-generator",
+    primary: "unsubscribe link generator",
+    keywords: ["unsubscribe link generator", "list-unsubscribe header", "one-click unsubscribe", "email unsubscribe link", "gmail unsubscribe button"],
+  },
 };
 
 export const ALL_PATHS = Object.keys(SEO);
