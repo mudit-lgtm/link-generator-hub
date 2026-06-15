@@ -159,62 +159,112 @@ const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
 
 function MegaMenu() {
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cancelClose = () => { if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; } };
-  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => setOpen(false), 180); };
+  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => setOpen(false), 220); };
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); setMobileOpen(false); } };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // close on route change (when the user clicks a link)
+  useEffect(() => () => cancelClose(), []);
+
   return (
-    <div className="static" onMouseEnter={() => { cancelClose(); setOpen(true); }} onMouseLeave={scheduleClose}>
+    <>
+      {/* Desktop trigger */}
+      <div
+        className="relative hidden lg:block"
+        onMouseEnter={() => { cancelClose(); setOpen(true); }}
+        onMouseLeave={scheduleClose}
+      >
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1 py-2"
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          All Tools <span className={`text-xs transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
+        </button>
+        {/* Fixed full-width panel anchored under the sticky header */}
+        {open && (
+          <div
+            className="fixed left-0 right-0 top-[60px] z-40"
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+          >
+            {/* invisible hover bridge */}
+            <div className="h-2" aria-hidden />
+            <div className="bg-card border-y border-border shadow-2xl">
+              <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto">
+                {MENU_GROUPS.map((g) => (
+                  <div key={g.title}>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
+                    <ul className="space-y-1.5">
+                      {g.tools.map((t) => (
+                        <li key={t.to}>
+                          <Link
+                            to={t.to}
+                            onClick={() => setOpen(false)}
+                            className="flex items-start gap-2 p-1.5 rounded-md hover:bg-accent transition group"
+                          >
+                            <span aria-hidden className={`flex-shrink-0 w-6 h-6 rounded grid place-items-center text-xs bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
+                            <span className="text-xs font-semibold text-foreground leading-tight group-hover:text-primary">{t.short}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile/tablet hamburger */}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1"
-        aria-expanded={open}
-        aria-haspopup="true"
+        onClick={() => setMobileOpen(true)}
+        className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-foreground hover:bg-accent"
+        aria-label="Open tools menu"
+        aria-expanded={mobileOpen}
       >
-        All Tools <span className={`text-xs transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      {open && (
-        <div
-          className="absolute left-0 right-0 top-full w-full z-40"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-        >
-          {/* hover bridge */}
-          <div className="h-2" />
-          <div className="bg-card border-y border-border shadow-warm">
-            <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/40" onClick={() => setMobileOpen(false)}>
+          <div className="absolute right-0 top-0 bottom-0 w-[88vw] max-w-sm bg-card shadow-2xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <span className="font-display font-bold">All Tools</span>
+              <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="w-8 h-8 grid place-items-center rounded hover:bg-accent">✕</button>
+            </div>
+            <div className="p-4 space-y-5">
               {MENU_GROUPS.map((g) => (
-                <div key={g.title}>
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
-                  <ul className="space-y-1.5">
+                <details key={g.title} open>
+                  <summary className="text-[11px] font-bold uppercase tracking-widest text-primary mb-2 cursor-pointer">{g.title}</summary>
+                  <ul className="mt-2 space-y-1">
                     {g.tools.map((t) => (
                       <li key={t.to}>
-                        <Link
-                          to={t.to}
-                          onClick={() => setOpen(false)}
-                          className="flex items-start gap-2 p-1.5 rounded-md hover:bg-accent transition group"
-                        >
+                        <Link to={t.to} onClick={() => setMobileOpen(false)} className="flex items-start gap-2 p-2 rounded-md hover:bg-accent">
                           <span aria-hidden className={`flex-shrink-0 w-6 h-6 rounded grid place-items-center text-xs bg-gradient-to-br ${t.accent ?? "from-orange-400 to-pink-500"} text-white`}>{t.icon}</span>
-                          <span className="text-xs font-semibold text-foreground leading-tight group-hover:text-primary">{t.short}</span>
+                          <span className="text-sm font-semibold text-foreground">{t.short}</span>
                         </Link>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </details>
               ))}
             </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
