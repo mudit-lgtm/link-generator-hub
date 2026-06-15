@@ -37,7 +37,7 @@ function Page() {
 
       <ToolForm
         fields={[{"name": "scheme", "label": "URL scheme", "type": "text", "placeholder": "yourapp"}, {"name": "path", "label": "Path", "type": "text", "placeholder": "product/123"}, {"name": "q", "label": "Query params (key=value per line)", "type": "textarea", "placeholder": "ref=email\\ncampaign=spring"}]}
-        build={(v) => { if(!v.scheme) return ''; const params=(v.q||'').split(/\r?\n/).filter(Boolean).map(l=>{const [k,...r]=l.split('='); return `${encodeURIComponent(k.trim())}=${encodeURIComponent(r.join('=').trim())}`;}).join('&'); const qs=params?`?${params}`:''; return `${v.scheme}://${(v.path||'').replace(/^\/+/,'')}${qs}`; }}
+        build={(v) => { if(!v.scheme) return ''; const params=(v.q||'').split(/\r?\n/).filter(Boolean).map((l: string)=>{const [k,...r]=l.split('='); return `${encodeURIComponent(k.trim())}=${encodeURIComponent(r.join('=').trim())}`;}).join('&'); const qs=params?`?${params}`:''; return `${v.scheme}://${(v.path||'').replace(/^\/+/,'')}${qs}`; }}
         
       />
 
