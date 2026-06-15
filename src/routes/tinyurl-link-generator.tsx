@@ -37,7 +37,7 @@ function Page() {
 
       <ToolForm
         fields={[{"name": "u", "label": "Long URL", "type": "url", "placeholder": "https://example.com/very/long/path"}, {"name": "alias", "label": "Custom alias (optional)", "type": "text", "placeholder": "my-link"}]}
-        build={(v) => { if(!v.u) return ''; const a=v.alias?`&alias=${encodeURIComponent(v.alias)}`:''; const api=`https://tinyurl.com/api-create.php?url=${encodeURIComponent(String(v.u).trim())}${a}`; return fetch(api).then(r=>r.text()).catch(()=>'API blocked by CORS — open the API URL directly: '+api); }}
+        build={(v) => { if(!v.u) return ''; const a=v.alias?`&alias=${encodeURIComponent(v.alias)}`:''; return `https://tinyurl.com/api-create.php?url=${encodeURIComponent(String(v.u).trim())}${a}`; }}
         
       />
 
