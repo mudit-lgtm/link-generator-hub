@@ -89,20 +89,26 @@ export const TOOLS: Tool[] = [
     blurb: "Pre-filled tweet intent URL builder.", accent: "from-zinc-800 to-zinc-950" },
   { to: "/reddit-share-link-generator", label: "Reddit Share Link Generator", short: "Reddit Share", icon: "\ud83d\udc7d",
     blurb: "reddit.com/submit pre-fill links.", accent: "from-orange-500 to-red-600" },
-  { to: "/pinterest-share-link-generator", label: "Pinterest Share Link Generator", short: "Pin-It", icon: "\ud83d\udccc",
-    blurb: "Pinterest Pin-It share URLs.", accent: "from-red-500 to-rose-700" },
   { to: "/sms-link-generator", label: "SMS Link Generator", short: "SMS Link", icon: "\ud83d\udcac",
     blurb: "sms: click-to-text deep links.", accent: "from-emerald-400 to-teal-600" },
   { to: "/spotify-link-generator", label: "Spotify Link Generator", short: "Spotify", icon: "\ud83c\udfa7",
     blurb: "Track, album, playlist & artist URLs.", accent: "from-green-500 to-emerald-700" },
   { to: "/app-store-link-generator", label: "Apple App Store Link Generator", short: "App Store", icon: "\ud83c\udf4e",
     blurb: "apps.apple.com canonical URLs.", accent: "from-slate-800 to-zinc-950" },
-  { to: "/play-store-link-generator", label: "Google Play Store Link Generator", short: "Play Store", icon: "\u25b6",
-    blurb: "Play Store install URLs with referrer.", accent: "from-emerald-500 to-green-700" },
-  { to: "/deep-link-generator", label: "Deep Link Generator", short: "Deep Link", icon: "\ud83d\udd17",
-    blurb: "Custom-scheme app deep links.", accent: "from-violet-500 to-indigo-700" },
   { to: "/calendly-link-generator", label: "Calendly Link Generator", short: "Calendly", icon: "\ud83d\udcc6",
     blurb: "Booking URLs with UTM attribution.", accent: "from-blue-500 to-indigo-600" },
+  { to: "/html-link-generator", label: "HTML Link Generator", short: "HTML Link", icon: "</>",
+    blurb: "Clickable HTML, Markdown and BBCode link code.", accent: "from-sky-500 to-indigo-600" },
+  { to: "/iframe-embed-link-generator", label: "Iframe Embed Generator", short: "Iframe Embed", icon: "🖥️",
+    blurb: "Responsive iframe embed code for any URL.", accent: "from-slate-500 to-slate-700" },
+  { to: "/tel-link-generator", label: "Phone Call Link Generator", short: "Call Link", icon: "📞",
+    blurb: "tel: click-to-call links with extensions.", accent: "from-emerald-400 to-teal-600" },
+  { to: "/anchor-link-generator", label: "Anchor Link Generator", short: "Anchor Link", icon: "⚓",
+    blurb: "Jump links and #section anchors for long pages.", accent: "from-cyan-500 to-blue-600" },
+  { to: "/upi-link-generator", label: "UPI Payment Link Generator", short: "UPI Link", icon: "🇮🇳",
+    blurb: "upi://pay deep links for GPay, PhonePe & Paytm.", accent: "from-amber-500 to-orange-600" },
+  { to: "/email-signature-link-generator", label: "Email Signature Generator", short: "Email Signature", icon: "✍️",
+    blurb: "HTML signature block with linked website & socials.", accent: "from-violet-500 to-purple-700" },
 ];
 
 export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
@@ -121,15 +127,15 @@ function BrandMark() {
 const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   {
     title: "Marketing & Tracking",
-    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator","/play-store-link-generator","/deep-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/anchor-link-generator","/iframe-embed-link-generator","/html-link-generator","/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator"].includes(t.to)),
   },
   {
     title: "Social & Messaging",
-    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/pinterest-share-link-generator","/sms-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/email-signature-link-generator","/tel-link-generator","/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/sms-link-generator"].includes(t.to)),
   },
   {
     title: "Meetings & Payments",
-    tools: TOOLS.filter((t) => ["/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/calendly-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/upi-link-generator","/zoom-meeting-link-generator","/google-meet-link-generator","/teams-meeting-link-generator","/add-to-calendar-link-generator","/google-maps-link-generator","/payment-link-generator","/calendly-link-generator"].includes(t.to)),
   },
   {
     title: "Files & Downloads",

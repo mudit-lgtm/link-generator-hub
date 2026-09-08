@@ -60,7 +60,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "related link generator."}, {"to": "/mega-link-generator", "anchor": "MEGA Link Generator", "blurb": "related link generator."}, {"to": "/magnet-link-generator", "anchor": "Magnet Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "MEGA Link Generator", "blurb": "related link generator."}, {"to": "/magnet-link-generator", "anchor": "Magnet Link Generator", "blurb": "related link generator."}]}
       />
 
       <ShareAndGuestbook path="/premium-link-generator" title={TITLE} />

@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}, {"to": "/facetime-link-generator", "anchor": "Facetime Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}, {"to": "/sms-link-generator", "anchor": "Facetime Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />

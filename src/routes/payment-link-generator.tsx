@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/paypal-me-link-generator", "anchor": "PayPal.Me Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/payment-link-generator", "anchor": "PayPal.Me Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />
