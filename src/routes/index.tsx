@@ -20,7 +20,7 @@ const FAQS = [
   { q: "Do you have a custom link generator I can use on my own site?", a: "Not yet as an embeddable widget, but the hub above covers every common custom link generator use case: WhatsApp, mailto, review, maps, calendar, affiliate, referral, slug, premium download and rickroll. Bookmark the hub and use it on demand." },
 ];
 
-const TITLE = "Link Generator — Free URL Generator Hub for 10+ Utility Tools";
+const TITLE = "Link Generator — Free URL Generator Hub for 40+ Utility Tools";
 const DESC = "Free link generator hub. Generate WhatsApp, mailto, Google review, Maps, calendar, affiliate, referral, premium download and SEO URL slug links — no signup.";
 
 export const Route = createFileRoute("/")({
@@ -81,7 +81,7 @@ function Page() {
     <ToolLayout>
       <Breadcrumbs trail={[{ label: "Link Generator" }]} />
       <ToolHero
-        eyebrow="Free • No Signup • 10 Tools"
+        eyebrow={`Free • No Signup • ${TOOLS.length}+ Tools`}
         h1="Link Generator — Free URL Generator Hub"
         intro="LinkKit is a free link generator hub. Generate a wa.me WhatsApp link, mailto email link, Google review link, Google Maps directions link, Amazon affiliate link, calendar event link, premium download link or SEO URL slug — all from one place. Every online link generator on this page is free, no signup."
         keywords={KW}
@@ -178,7 +178,7 @@ function Page() {
             ],
           },
           {
-            h2: "The 10 most useful free link generators in 2026",
+            h2: "The most useful free link generators in 2026",
             paragraphs: [
               "Below the hero tool, the icon grid lists every dedicated link generator on LinkKit. Each one is keyword-optimised for the way US users actually search Google in 2026:",
             ],

@@ -165,7 +165,7 @@ function MegaMenu() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="text-sm font-semibold text-foreground hover:text-primary transition flex items-center gap-1 py-2"
+          className="inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-semibold text-foreground hover:text-primary hover:bg-accent transition"
           aria-expanded={open}
           aria-haspopup="true"
         >
@@ -181,7 +181,7 @@ function MegaMenu() {
             {/* invisible hover bridge */}
             <div className="h-2" aria-hidden />
             <div className="bg-card border-y border-border shadow-2xl">
-              <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto">
                 {MENU_GROUPS.map((g) => (
                   <div key={g.title}>
                     <p className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">{g.title}</p>
@@ -252,18 +252,18 @@ export function ToolLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border/60 bg-card/85 backdrop-blur-md sticky top-0 z-30 relative">
-        <div className="max-w-6xl mx-auto px-4 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-4">
           <Link to="/" className="flex items-center" aria-label="LinkKit home">
             <BrandMark />
           </Link>
-          <nav className="flex items-center justify-center gap-5">
-            <Link to="/" activeOptions={{ exact: true }} className="hidden sm:inline text-sm font-semibold text-foreground hover:text-primary transition" activeProps={{ className: "text-primary" }}>
+          <nav className="flex items-center justify-center gap-1 rounded-full border border-border/70 bg-background/60 px-1.5 py-1 mx-auto w-fit shadow-sm">
+            <Link to="/" activeOptions={{ exact: true }} className="hidden sm:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
               Hub
             </Link>
-            <Link to="/premium-link-generator" className="hidden md:inline text-sm font-semibold text-foreground hover:text-primary transition" activeProps={{ className: "text-primary" }}>
+            <Link to="/premium-link-generator" className="hidden md:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
               Premium
             </Link>
-            <Link to="/short-link-generator" className="hidden md:inline text-sm font-semibold text-foreground hover:text-primary transition" activeProps={{ className: "text-primary" }}>
+            <Link to="/short-link-generator" className="hidden md:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
               Short Link
             </Link>
             <MegaMenu />
@@ -271,10 +271,10 @@ export function ToolLayout({ children }: { children: ReactNode }) {
           <span aria-hidden />
         </div>
       </header>
-      <main className="max-w-3xl mx-auto px-4 py-10">{children}</main>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10">{children}</main>
 
       <footer className="border-t border-border/60 mt-20 bg-card/60">
-        <div className="max-w-6xl mx-auto px-4 py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-1">
               <BrandMark />
