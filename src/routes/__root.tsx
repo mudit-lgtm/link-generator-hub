@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "LinkKit",
-          url: "/",
+          url: "https://shortlink.businestools.online/",
           description: "Free link generators for marketers, developers and businesses.",
         }),
       },
