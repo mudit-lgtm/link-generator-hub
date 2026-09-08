@@ -5,6 +5,7 @@ import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
+import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/premium-link-generator"]?.keywords ?? [];
@@ -61,6 +62,8 @@ function Page() {
         heading="Related link generators"
         links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "related link generator."}, {"to": "/mega-link-generator", "anchor": "MEGA Link Generator", "blurb": "related link generator."}, {"to": "/magnet-link-generator", "anchor": "Magnet Link Generator", "blurb": "related link generator."}]}
       />
+
+      <ShareAndGuestbook path="/premium-link-generator" title={TITLE} />
 
       <BackToHomeLink />
     </ToolLayout>
