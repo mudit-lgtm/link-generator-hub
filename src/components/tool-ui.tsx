@@ -213,6 +213,25 @@ export function Breadcrumbs({ trail }: { trail: { label: string; to?: string }[]
 
 type Faq = { q: string; a: string };
 
+export const SITE_URL = "https://shortlink.businestools.online";
+
+function absoluteUrl(path: string) {
+  return new URL(path, `${SITE_URL}/`).href;
+}
+
+function absoluteSchemaUrls(value: unknown, key?: string): unknown {
+  if (typeof value === "string" && value.startsWith("/") && ["url", "item", "target"].includes(key ?? "")) {
+    return absoluteUrl(value);
+  }
+  if (Array.isArray(value)) return value.map((item) => absoluteSchemaUrls(item));
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([childKey, childValue]) => [childKey, absoluteSchemaUrls(childValue, childKey)]),
+    );
+  }
+  return value;
+}
+
 export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra }: {
   name: string; description: string; url: string; faqs: Faq[];
   breadcrumbs?: { name: string; item: string }[];
@@ -227,7 +246,7 @@ export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra 
         name, description,
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "Web",
-        url,
+        url: absoluteUrl(url),
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "184" },
       }),
@@ -249,7 +268,7 @@ export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra 
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name, description, url,
+        name, description, url: absoluteUrl(url),
       }),
     },
   ];
@@ -260,14 +279,14 @@ export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra 
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: breadcrumbs.map((b, i) => ({
-          "@type": "ListItem", position: i + 1, name: b.name, item: b.item,
+           "@type": "ListItem", position: i + 1, name: b.name, item: absoluteUrl(b.item),
         })),
       }),
     });
   }
   if (extra) {
     for (const e of extra) {
-      out.push({ type: "application/ld+json", children: JSON.stringify(e) });
+      out.push({ type: "application/ld+json", children: JSON.stringify(absoluteSchemaUrls(e)) });
     }
   }
   return out;
@@ -284,13 +303,13 @@ export function buildHead({ title, description, path, faqs, name, breadcrumbs, e
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: path },
+      { property: "og:url", content: absoluteUrl(path) },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: absoluteUrl(path) }],
     scripts: buildSchemas({ name, description, url: path, faqs, breadcrumbs, extra: extraSchemas }),
   };
 }
