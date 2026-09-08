@@ -5,6 +5,7 @@ import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
+import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/short-link-generator"]?.keywords ?? [];
@@ -64,6 +65,8 @@ function Page() {
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Marketer in Austin, TX", "how": "Shortens every email CTA so SMS fallbacks fit under 160 chars."}, {"who": "Real estate agent in Miami, FL", "how": "Prints short URLs on yard signs and open-house flyers."}, {"who": "Podcaster in Brooklyn, NY", "how": "Drops a memorable short link in episode show notes."}, {"who": "Recruiter in Chicago, IL", "how": "Shares job-posting URLs in LinkedIn DMs without ugly tracking strings."}]} />
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
       <ContextualLinks heading="Related link generators" links={[{"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/utm-link-generator", "anchor": "UTM Link Generator", "blurb": "related link generator."}, {"to": "/affiliate-link-generator", "anchor": "Affiliate Link Generator", "blurb": "related link generator."}, {"to": "/referral-link-generator", "anchor": "Referral Link Generator", "blurb": "related link generator."}]} />
+      <ShareAndGuestbook path="/short-link-generator" title={TITLE} />
+
       <BackToHomeLink />
     </ToolLayout>
   );

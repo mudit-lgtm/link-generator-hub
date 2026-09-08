@@ -5,6 +5,7 @@ import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
+import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/google-maps-link-generator"]?.keywords ?? [];
@@ -61,6 +62,8 @@ function Page() {
         heading="Related link generators"
         links={[{"to": "/google-review-link-generator", "anchor": "Google Review Link Generator", "blurb": "related link generator."}, {"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
       />
+
+      <ShareAndGuestbook path="/google-maps-link-generator" title={TITLE} />
 
       <BackToHomeLink />
     </ToolLayout>

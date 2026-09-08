@@ -57,6 +57,11 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/mailto-link-generator",
     primary: "mailto link generator",
     keywords: [
+      "gmail compose link generator",
+      "gmail link generator",
+      "gmail prefilled link",
+      "unsubscribe link generator",
+      "email unsubscribe link",
       "mailto link generator", "email link generator", "mailto link with subject and body",
       "html email link", "mailto link with cc and bcc", "gmail link generator", "create email link",
     ],
@@ -115,6 +120,8 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/short-link-generator",
     primary: "short link generator",
     keywords: [
+      "tinyurl link generator",
+      "short link generator",
       "short link generator", "generate short link", "tiny link generator",
       "url link generator", "shortened link generator", "bitly link generator",
       "free short link generator", "custom short link",
@@ -473,21 +480,6 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/calendly-link-generator",
     primary: "calendly link generator",
     keywords: ["calendly link generator", "calendly booking link", "calendly with utm", "calendly embed link", "custom calendly url"],
-  },
-  "/tinyurl-link-generator": {
-    path: "/tinyurl-link-generator",
-    primary: "tinyurl link generator",
-    keywords: ["tinyurl link generator", "tinyurl alias", "free tinyurl shortener", "tinyurl api", "short link generator"],
-  },
-  "/gmail-compose-link-generator": {
-    path: "/gmail-compose-link-generator",
-    primary: "gmail compose link generator",
-    keywords: ["gmail compose link generator", "gmail link generator", "mail.google.com compose url", "gmail prefilled link", "compose gmail url"],
-  },
-  "/unsubscribe-link-generator": {
-    path: "/unsubscribe-link-generator",
-    primary: "unsubscribe link generator",
-    keywords: ["unsubscribe link generator", "list-unsubscribe header", "one-click unsubscribe", "email unsubscribe link", "gmail unsubscribe button"],
   },
 };
 

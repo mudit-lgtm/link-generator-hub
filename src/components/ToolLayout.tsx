@@ -117,12 +117,6 @@ export const TOOLS: Tool[] = [
     blurb: "$Cashtag pay URLs.", accent: "from-green-500 to-lime-600" },
   { to: "/calendly-link-generator", label: "Calendly Link Generator", short: "Calendly", icon: "\ud83d\udcc6",
     blurb: "Booking URLs with UTM attribution.", accent: "from-blue-500 to-indigo-600" },
-  { to: "/tinyurl-link-generator", label: "TinyURL Link Generator", short: "TinyURL", icon: "\ud83d\udd17",
-    blurb: "Free TinyURL shortening API.", accent: "from-cyan-500 to-sky-700" },
-  { to: "/gmail-compose-link-generator", label: "Gmail Compose Link Generator", short: "Gmail Compose", icon: "\ud83d\udce7",
-    blurb: "Gmail composer pre-fill URLs.", accent: "from-red-500 to-rose-600" },
-  { to: "/unsubscribe-link-generator", label: "Unsubscribe Link Generator", short: "Unsubscribe", icon: "\u270b",
-    blurb: "RFC List-Unsubscribe header builder.", accent: "from-zinc-500 to-slate-700" },
 ];
 
 export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
@@ -141,11 +135,11 @@ function BrandMark() {
 const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   {
     title: "Marketing & Tracking",
-    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator","/play-store-link-generator","/deep-link-generator","/tinyurl-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/utm-link-generator","/affiliate-link-generator","/referral-link-generator","/short-link-generator","/qr-code-link-generator","/slug-generator","/google-review-link-generator","/app-store-link-generator","/play-store-link-generator","/deep-link-generator"].includes(t.to)),
   },
   {
     title: "Social & Messaging",
-    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/pinterest-share-link-generator","/sms-link-generator","/gmail-compose-link-generator","/unsubscribe-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/whatsapp-link-generator","/mailto-link-generator","/instagram-link-generator","/facebook-share-link-generator","/telegram-link-generator","/linkedin-link-generator","/discord-invite-link-generator","/youtube-link-generator","/tiktok-link-generator","/twitter-share-link-generator","/reddit-share-link-generator","/pinterest-share-link-generator","/sms-link-generator"].includes(t.to)),
   },
   {
     title: "Meetings & Payments",
@@ -272,11 +266,11 @@ export function ToolLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border/60 bg-card/85 backdrop-blur-md sticky top-0 z-30 relative">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto px-4 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-4">
           <Link to="/" className="flex items-center" aria-label="LinkKit home">
             <BrandMark />
           </Link>
-          <nav className="flex items-center gap-5">
+          <nav className="flex items-center justify-center gap-5">
             <Link to="/" activeOptions={{ exact: true }} className="hidden sm:inline text-sm font-semibold text-foreground hover:text-primary transition" activeProps={{ className: "text-primary" }}>
               Hub
             </Link>
@@ -288,6 +282,7 @@ export function ToolLayout({ children }: { children: ReactNode }) {
             </Link>
             <MegaMenu />
           </nav>
+          <span aria-hidden />
         </div>
       </header>
       <main className="max-w-3xl mx-auto px-4 py-10">{children}</main>
