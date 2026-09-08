@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/play-store-link-generator", "anchor": "Play Store Link Generator", "blurb": "related link generator."}, {"to": "/deep-link-generator", "anchor": "Deep Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/app-store-link-generator", "anchor": "Play Store Link Generator", "blurb": "related link generator."}, {"to": "/app-store-link-generator", "anchor": "Deep Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
       />
 
       <BackToHomeLink />

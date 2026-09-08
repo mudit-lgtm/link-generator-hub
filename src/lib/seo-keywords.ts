@@ -415,12 +415,7 @@ export const SEO: Record<string, PageKeywords> = {
   "/reddit-share-link-generator": {
     path: "/reddit-share-link-generator",
     primary: "reddit share link generator",
-    keywords: ["reddit share link generator", "reddit submit link", "share on reddit url", "subreddit share link", "reddit post link generator"],
-  },
-  "/pinterest-share-link-generator": {
-    path: "/pinterest-share-link-generator",
-    primary: "pinterest share link generator",
-    keywords: ["pinterest share link generator", "pin it link generator", "pinterest pin link", "share on pinterest url", "pin button link"],
+    keywords: ["pinterest share link generator", "pin it link generator", "pinterest pin link", "share on pinterest url", "pin button link", "reddit share link generator", "reddit submit link", "share on reddit url", "subreddit share link", "reddit post link generator"],
   },
   "/sms-link-generator": {
     path: "/sms-link-generator",
@@ -440,22 +435,42 @@ export const SEO: Record<string, PageKeywords> = {
   "/app-store-link-generator": {
     path: "/app-store-link-generator",
     primary: "app store link generator",
-    keywords: ["app store link generator", "apple app store link", "apps.apple.com link generator", "ios app link generator", "app store url generator"],
-  },
-  "/play-store-link-generator": {
-    path: "/play-store-link-generator",
-    primary: "google play store link generator",
-    keywords: ["google play store link generator", "play store link", "android app link generator", "play store referrer link", "custom play store url"],
-  },
-  "/deep-link-generator": {
-    path: "/deep-link-generator",
-    primary: "deep link generator",
-    keywords: ["deep link generator", "app deep link", "custom url scheme generator", "mobile deep link", "universal link generator"],
+    keywords: ["deep link generator", "app deep link", "custom url scheme generator", "mobile deep link", "universal link generator", "google play store link generator", "play store link", "android app link generator", "play store referrer link", "custom play store url", "app store link generator", "apple app store link", "apps.apple.com link generator", "ios app link generator", "app store url generator"],
   },
   "/calendly-link-generator": {
     path: "/calendly-link-generator",
     primary: "calendly link generator",
     keywords: ["calendly link generator", "calendly booking link", "calendly with utm", "calendly embed link", "custom calendly url"],
+  },
+  "/html-link-generator": {
+    path: "/html-link-generator",
+    primary: "html link generator",
+    keywords: ["html link generator", "clickable link generator", "markdown link generator", "bbcode link generator", "hyperlink generator", "anchor tag generator"],
+  },
+  "/iframe-embed-link-generator": {
+    path: "/iframe-embed-link-generator",
+    primary: "iframe link generator",
+    keywords: ["iframe link generator", "embed link generator", "iframe embed code", "website embed generator", "youtube embed link generator"],
+  },
+  "/tel-link-generator": {
+    path: "/tel-link-generator",
+    primary: "tel link generator",
+    keywords: ["tel link generator", "click to call link generator", "phone number link generator", "call link generator", "tel: html link"],
+  },
+  "/anchor-link-generator": {
+    path: "/anchor-link-generator",
+    primary: "anchor link generator",
+    keywords: ["anchor link generator", "jump link generator", "html anchor generator", "link to section of page", "#section link generator"],
+  },
+  "/upi-link-generator": {
+    path: "/upi-link-generator",
+    primary: "upi link generator",
+    keywords: ["upi link generator", "upi payment link generator", "gpay link generator", "phonepe payment link", "upi qr link generator"],
+  },
+  "/email-signature-link-generator": {
+    path: "/email-signature-link-generator",
+    primary: "email signature link generator",
+    keywords: ["email signature link generator", "html email signature generator", "signature link generator", "email footer link generator", "clickable email signature"],
   },
 };
 
