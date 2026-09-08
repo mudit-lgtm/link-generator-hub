@@ -212,6 +212,23 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/payment-link-generator",
     primary: "payment link generator",
     keywords: [
+      "paypal.me link generator",
+      "paypal link generator",
+      "paypal payment link generator",
+      "custom paypal.me link",
+      "paypal me url generator",
+      "free paypal link generator",
+      "paypal request link",
+      "cash app link generator",
+      "cashapp link generator",
+      "$cashtag link",
+      "cash.app pay url",
+      "cash app payment link",
+      "venmo link generator",
+      "venmo payment link",
+      "venmo pay link",
+      "venmo charge link",
+      "venmo deep link",
       "payment link generator",
       "stripe payment link generator",
       "online payment link generator",
@@ -219,19 +236,6 @@ export const SEO: Record<string, PageKeywords> = {
       "invoice payment link",
       "free payment link generator",
       "accept payment link"
-    ],
-  },
-  "/paypal-me-link-generator": {
-    path: "/paypal-me-link-generator",
-    primary: "paypal.me link generator",
-    keywords: [
-      "paypal.me link generator",
-      "paypal link generator",
-      "paypal payment link generator",
-      "custom paypal.me link",
-      "paypal me url generator",
-      "free paypal link generator",
-      "paypal request link"
     ],
   },
   "/instagram-link-generator": {
@@ -297,45 +301,6 @@ export const SEO: Record<string, PageKeywords> = {
       "gdrive direct link generator",
       "convert google drive link to direct",
       "free google drive direct link generator"
-    ],
-  },
-  "/dropbox-direct-link-generator": {
-    path: "/dropbox-direct-link-generator",
-    primary: "dropbox direct link generator",
-    keywords: [
-      "dropbox direct link generator",
-      "dropbox direct download link",
-      "dropbox hot link generator",
-      "dropbox raw link generator",
-      "convert dropbox link to direct",
-      "free dropbox direct link generator",
-      "dropbox image direct link"
-    ],
-  },
-  "/onedrive-direct-link-generator": {
-    path: "/onedrive-direct-link-generator",
-    primary: "onedrive direct link generator",
-    keywords: [
-      "onedrive direct link generator",
-      "onedrive direct download link",
-      "onedrive embed link generator",
-      "sharepoint direct link",
-      "convert onedrive link to direct",
-      "free onedrive direct link generator",
-      "onedrive image direct link"
-    ],
-  },
-  "/mega-link-generator": {
-    path: "/mega-link-generator",
-    primary: "mega link generator",
-    keywords: [
-      "mega link generator",
-      "mega.nz link generator",
-      "mega download link generator",
-      "mega folder link generator",
-      "free mega link generator",
-      "mega cloud link generator",
-      "mega share link generator"
     ],
   },
   "/pdf-link-generator": {
@@ -407,6 +372,27 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/direct-download-link-generator",
     primary: "direct download link generator",
     keywords: [
+      "mega link generator",
+      "mega.nz link generator",
+      "mega download link generator",
+      "mega folder link generator",
+      "free mega link generator",
+      "mega cloud link generator",
+      "mega share link generator",
+      "onedrive direct link generator",
+      "onedrive direct download link",
+      "onedrive embed link generator",
+      "sharepoint direct link",
+      "convert onedrive link to direct",
+      "free onedrive direct link generator",
+      "onedrive image direct link",
+      "dropbox direct link generator",
+      "dropbox direct download link",
+      "dropbox hot link generator",
+      "dropbox raw link generator",
+      "convert dropbox link to direct",
+      "free dropbox direct link generator",
+      "dropbox image direct link",
       "direct download link generator",
       "direct link generator",
       "force download link",
@@ -439,12 +425,12 @@ export const SEO: Record<string, PageKeywords> = {
   "/sms-link-generator": {
     path: "/sms-link-generator",
     primary: "sms link generator",
-    keywords: ["sms link generator", "click to text link", "sms:// link generator", "text message link", "sms link with body"],
-  },
-  "/facetime-link-generator": {
-    path: "/facetime-link-generator",
-    primary: "facetime link generator",
-    keywords: ["facetime link generator", "facetime: link", "facetime audio link", "facetime web link", "apple facetime url"],
+    keywords: [
+      "facetime link generator",
+      "facetime: link",
+      "facetime audio link",
+      "facetime web link",
+      "apple facetime url","sms link generator", "click to text link", "sms:// link generator", "text message link", "sms link with body"],
   },
   "/spotify-link-generator": {
     path: "/spotify-link-generator",
@@ -465,16 +451,6 @@ export const SEO: Record<string, PageKeywords> = {
     path: "/deep-link-generator",
     primary: "deep link generator",
     keywords: ["deep link generator", "app deep link", "custom url scheme generator", "mobile deep link", "universal link generator"],
-  },
-  "/venmo-link-generator": {
-    path: "/venmo-link-generator",
-    primary: "venmo link generator",
-    keywords: ["venmo link generator", "venmo payment link", "venmo pay link", "venmo charge link", "venmo deep link"],
-  },
-  "/cashapp-link-generator": {
-    path: "/cashapp-link-generator",
-    primary: "cash app link generator",
-    keywords: ["cash app link generator", "cashapp link generator", "$cashtag link", "cash.app pay url", "cash app payment link"],
   },
   "/calendly-link-generator": {
     path: "/calendly-link-generator",
