@@ -176,6 +176,62 @@ export function GeoBlock({ heading = "Real-world USA use cases", items, keywords
   );
 }
 
+/* Worked example: concrete input -> concrete output rows, unique per tool */
+export function WorkedExample({
+  heading = "Worked example",
+  intro,
+  rows,
+  note,
+}: {
+  heading?: string;
+  intro?: string;
+  rows: { input: string; output: string }[];
+  note?: string;
+}) {
+  return (
+    <section className="mt-10">
+      <h2 className="text-xl md:text-2xl font-bold mb-3">{heading}</h2>
+      {intro && <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-4">{intro}</p>}
+      <div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-card">
+        <table className="w-full text-left text-xs md:text-sm">
+          <thead className="bg-accent/50">
+            <tr>
+              <th className="px-4 py-2 font-semibold">What you enter</th>
+              <th className="px-4 py-2 font-semibold">What you get</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r, i) => (
+              <tr key={i} className="border-t border-border align-top">
+                <td className="px-4 py-3 text-foreground/80">{r.input}</td>
+                <td className="px-4 py-3 font-mono break-all text-foreground">{r.output}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {note && <p className="mt-3 text-xs md:text-sm text-muted-foreground leading-relaxed">{note}</p>}
+    </section>
+  );
+}
+
+/* Tool-specific gotchas — deliberately different copy on every page */
+export function Pitfalls({ heading = "Mistakes that break this link", items }: { heading?: string; items: { problem: string; fix: string }[] }) {
+  return (
+    <section className="mt-10">
+      <h2 className="text-xl md:text-2xl font-bold mb-4">{heading}</h2>
+      <ul className="space-y-3">
+        {items.map((it, i) => (
+          <li key={i} className="rounded-xl border border-border bg-card p-4 shadow-card">
+            <p className="text-sm md:text-base font-semibold text-foreground mb-1">{it.problem}</p>
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{it.fix}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export function ContextualLinks({ heading = "Related link generators", links }: { heading?: string; links: { to: string; anchor: string; blurb: string }[] }) {
   return (
     <section className="mt-12 rounded-2xl border border-border bg-card p-5 md:p-6 shadow-card">
