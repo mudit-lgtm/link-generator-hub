@@ -86,7 +86,12 @@ function Page() {
       return `https://lnk.kit/${hash}`;
     }
     return input.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
-  }, [input, mode]);
+  }, [input, mode, waMessage]);
+
+  const handleModeChange = (next: HeroMode) => {
+    setMode(next);
+    setInput(MODE_FIELD[next].placeholder);
+  };
 
   return (
     <ToolLayout>
