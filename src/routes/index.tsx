@@ -5,6 +5,7 @@ import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   SeoLongform, AeoBlock, GeoBlock, Breadcrumbs, buildHead,
 } from "@/components/tool-ui";
+import { buildWhatsAppLink } from "@/lib/link-builders";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/"].keywords;
@@ -59,12 +60,23 @@ export const Route = createFileRoute("/")({
   component: Page,
 });
 
+type HeroMode = "whatsapp" | "drive" | "short" | "slug";
+
+const MODE_FIELD: Record<HeroMode, { label: string; placeholder: string }> = {
+  whatsapp: { label: "Phone number (with country code)", placeholder: "+1 555 123 4567" },
+  drive: { label: "Source URL or title", placeholder: "https://drive.google.com/file/d/1AbCDefGhIjKlMnOpQ/view?usp=sharing" },
+  short: { label: "Source URL or title", placeholder: "https://example.com/a-very-long-url" },
+  slug: { label: "Source URL or title", placeholder: "10 Best Link Generators in 2026" },
+};
+
 function Page() {
-  const [input, setInput] = useState("https://drive.google.com/file/d/1AbCDefGhIjKlMnOpQ/view?usp=sharing");
-  const [mode, setMode] = useState<"drive" | "short" | "slug">("drive");
+  const [mode, setMode] = useState<HeroMode>("whatsapp");
+  const [input, setInput] = useState("+1 555 123 4567");
+  const [waMessage, setWaMessage] = useState("");
 
   const output = useMemo(() => {
     if (!input.trim()) return "";
+    if (mode === "whatsapp") return buildWhatsAppLink(input, waMessage);
     if (mode === "drive") {
       const m = input.match(/\/d\/([a-zA-Z0-9_-]+)/) || input.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -75,7 +87,12 @@ function Page() {
       return `https://lnk.kit/${hash}`;
     }
     return input.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
-  }, [input, mode]);
+  }, [input, mode, waMessage]);
+
+  const handleModeChange = (next: HeroMode) => {
+    setMode(next);
+    setInput(MODE_FIELD[next].placeholder);
+  };
 
   return (
     <ToolLayout>
@@ -89,15 +106,35 @@ function Page() {
 
       <ToolCard>
         <Field label="What kind of link do you want to generate?">
-          <select value={mode} onChange={(e) => setMode(e.target.value as never)} className={inputCls}>
+          <select value={mode} onChange={(e) => handleModeChange(e.target.value as HeroMode)} className={inputCls}>
+            <option value="whatsapp">WhatsApp Link Generator</option>
             <option value="drive">Google Drive direct download link</option>
             <option value="short">Short link (custom hash)</option>
             <option value="slug">SEO URL slug</option>
           </select>
         </Field>
-        <Field label="Source URL or title" hint="Paste a Google Drive share link, any URL to shorten, or a title to slug-ify.">
-          <input className={inputCls} value={input} onChange={(e) => setInput(e.target.value)} />
+        <Field
+          label={MODE_FIELD[mode].label}
+          hint="Enter a phone number with country code for WhatsApp, paste a Google Drive share link, any URL to shorten, or a title to slug-ify."
+        >
+          <input
+            className={inputCls}
+            type={mode === "whatsapp" ? "tel" : "text"}
+            placeholder={MODE_FIELD[mode].placeholder}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
         </Field>
+        {mode === "whatsapp" && (
+          <Field label="Pre-filled message (optional)">
+            <input
+              className={inputCls}
+              placeholder="Hi! I'd like to know more about…"
+              value={waMessage}
+              onChange={(e) => setWaMessage(e.target.value)}
+            />
+          </Field>
+        )}
         <div>
           <span className="block text-sm font-semibold mb-1.5">Generated link</span>
           <OutputBlock value={output} />

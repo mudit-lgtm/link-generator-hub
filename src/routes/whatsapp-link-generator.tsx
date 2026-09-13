@@ -6,6 +6,7 @@ import {
   ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
+import { buildWhatsAppLink } from "@/lib/link-builders";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/whatsapp-link-generator"]?.keywords ?? [];
@@ -38,7 +39,7 @@ function Page() {
 
       <ToolForm
         fields={[{"name": "phone", "label": "Phone number with country code", "type": "tel", "placeholder": "15551234567", "hint": "Digits only, including country code."}, {"name": "msg", "label": "Pre-filled message (optional)", "type": "textarea", "placeholder": "Hi! I'd like to know more about…"}]}
-        build={(v) => { const p=(v.phone||'').replace(/\D/g,''); if(!p) return ''; const m=v.msg?'?text='+encodeURIComponent(v.msg):''; return `https://wa.me/${p}${m}`; }}
+        build={(v) => buildWhatsAppLink(v.phone || "", v.msg)}
         
       />
 
