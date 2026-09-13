@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/instagram-link-generator", "anchor": "Instagram Link Generator", "blurb": "related link generator."}, {"to": "/linkedin-link-generator", "anchor": "LinkedIn Link Generator", "blurb": "related link generator."}, {"to": "/telegram-link-generator", "anchor": "Telegram Link Generator", "blurb": "related link generator."}, {"to": "/utm-link-generator", "anchor": "UTM Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/instagram-link-generator", "anchor": "Instagram Link Generator", "blurb": "Profile, DM and story-share Instagram URLs."}, {"to": "/linkedin-link-generator", "anchor": "LinkedIn Link Generator", "blurb": "Profile, company & share LinkedIn URLs."}, {"to": "/telegram-link-generator", "anchor": "Telegram Link Generator", "blurb": "t.me channel, group & bot invite URLs."}, {"to": "/utm-link-generator", "anchor": "UTM Link Generator", "blurb": "Build Google Analytics UTM campaign tracking links."}]}
       />
 
       <BackToHomeLink />

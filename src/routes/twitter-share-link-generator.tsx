@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/facebook-share-link-generator", "anchor": "Facebook Share Link Generator", "blurb": "related link generator."}, {"to": "/linkedin-link-generator", "anchor": "LinkedIn Link Generator", "blurb": "related link generator."}, {"to": "/reddit-share-link-generator", "anchor": "Reddit Share Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/facebook-share-link-generator", "anchor": "Facebook Share Link Generator", "blurb": "Facebook share dialog URLs for any page."}, {"to": "/linkedin-link-generator", "anchor": "LinkedIn Link Generator", "blurb": "Profile, company & share LinkedIn URLs."}, {"to": "/reddit-share-link-generator", "anchor": "Reddit Share Link Generator", "blurb": "reddit.com/submit pre-fill links."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]}
       />
 
       <BackToHomeLink />

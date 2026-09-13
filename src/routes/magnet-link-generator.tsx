@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "related link generator."}, {"to": "/premium-link-generator", "anchor": "Premium Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "MEGA Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "Force-download URLs for any hosted file."},  {"to": "/direct-download-link-generator", "anchor": "MEGA Link Generator", "blurb": "Force-download URLs for any hosted file."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]}
       />
 
       <BackToHomeLink />

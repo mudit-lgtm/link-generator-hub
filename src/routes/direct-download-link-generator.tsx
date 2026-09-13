@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/pdf-link-generator", "anchor": "PDF Link Generator", "blurb": "related link generator."}, {"to": "/google-drive-direct-link-generator", "anchor": "Google Drive Direct Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "Dropbox Direct Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/pdf-link-generator", "anchor": "PDF Link Generator", "blurb": "Build direct download links for PDF files."}, {"to": "/google-drive-direct-link-generator", "anchor": "Google Drive Direct Link Generator", "blurb": "Convert Google Drive shares to direct downloads."}, {"to": "/direct-download-link-generator", "anchor": "Dropbox Direct Link Generator", "blurb": "Force-download URLs for any hosted file."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]}
       />
 
       <BackToHomeLink />

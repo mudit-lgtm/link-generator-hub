@@ -48,7 +48,7 @@ function Page() {
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
-      <ContextualLinks heading="Related link generators" links={[{"to": "/anchor-link-generator", "anchor": "Anchor Link Generator", "blurb": "related link generator."}, {"to": "/iframe-embed-link-generator", "anchor": "Iframe Embed Link Generator", "blurb": "related link generator."}, {"to": "/slug-generator", "anchor": "Slug Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]} />
+      <ContextualLinks heading="Related link generators" links={[{"to": "/anchor-link-generator", "anchor": "Anchor Link Generator", "blurb": "Jump links and #section anchors for long pages."}, {"to": "/iframe-embed-link-generator", "anchor": "Iframe Embed Link Generator", "blurb": "Responsive iframe embed code for any URL."}, {"to": "/slug-generator", "anchor": "Slug Generator", "blurb": "Clean WordPress-friendly permalinks & SEO URL slugs."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]} />
 
       <BackToHomeLink />
     </ToolLayout>
