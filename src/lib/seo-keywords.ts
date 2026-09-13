@@ -461,6 +461,11 @@ export const SEO: Record<string, PageKeywords> = {
     primary: "email signature link generator",
     keywords: ["email signature link generator", "html email signature generator", "signature link generator", "email footer link generator", "clickable email signature"],
   },
+  "/about": {
+    path: "/about",
+    primary: "about businestools links",
+    keywords: ["about businestools links", "who makes these url tools", "free url builder tools"],
+  },
 };
 
 export const ALL_PATHS = Object.keys(SEO);

@@ -6,7 +6,7 @@ const BASE_URL = "https://shortlink.businestools.online";
 
 const PRIORITY: Record<string, string> = {
   "/": "1.0",
-  "/premium-link-generator": "0.9",
+  "/about": "0.5",
 };
 
 export const Route = createFileRoute("/sitemap.xml")({
