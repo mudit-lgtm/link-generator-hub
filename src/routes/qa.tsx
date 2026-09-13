@@ -5,7 +5,7 @@ import { buildHead } from "@/components/tool-ui";
 
 export const Route = createFileRoute("/qa")({
   head: () => buildHead({
-    title: "QA Status — LinkKit",
+    title: "QA Status — Businestools Links",
     description: "Internal QA dashboard listing every link generator tool and its registration status.",
     path: "/qa",
     name: "QA Status",

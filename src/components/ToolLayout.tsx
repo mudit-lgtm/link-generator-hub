@@ -22,8 +22,6 @@ export const HUB: Tool = {
 };
 
 export const TOOLS: Tool[] = [
-  { to: "/premium-link-generator", label: "Premium Link Generator", short: "Premium Link", icon: "★",
-    blurb: "Rapidgator, Turbobit, Nitroflare, Filejoker, K2S & 8 more hosts.", accent: "from-amber-400 to-orange-500" },
   { to: "/short-link-generator", label: "Short Link Generator", short: "Short Link", icon: "✂️",
     blurb: "Free short link & tiny URL generator with custom alias.", accent: "from-cyan-400 to-sky-500" },
   { to: "/qr-code-link-generator", label: "QR Code Link Generator", short: "QR Code Link", icon: "▦",
@@ -116,9 +114,9 @@ export const ALL_TOOLS: Tool[] = [HUB, ...TOOLS];
 function BrandMark() {
   return (
     <span className="inline-flex items-center gap-2">
-      <span aria-hidden className="grid place-items-center w-8 h-8 rounded-lg bg-gradient-sunset text-white font-display font-extrabold text-base shadow-warm">K</span>
+      <span aria-hidden className="grid place-items-center w-8 h-8 rounded-lg bg-gradient-sunset text-white font-display font-extrabold text-base shadow-warm">B</span>
       <span className="font-display font-extrabold tracking-tight text-xl">
-        <span className="text-gradient-sunset">Link</span><span className="text-foreground">Kit</span>
+        <span className="text-gradient-sunset">Businestools</span><span className="text-foreground"> Links</span>
       </span>
     </span>
   );
@@ -139,7 +137,7 @@ const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   },
   {
     title: "Files & Downloads",
-    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/premium-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator","/spotify-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator","/spotify-link-generator"].includes(t.to)),
   },
 ];
 
@@ -259,15 +257,15 @@ export function ToolLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border/60 bg-card/85 backdrop-blur-md sticky top-0 z-30 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-4">
-          <Link to="/" className="flex items-center" aria-label="LinkKit home">
+          <Link to="/" className="flex items-center" aria-label="Businestools Links home">
             <BrandMark />
           </Link>
           <nav className="flex items-center justify-center gap-1 rounded-full border border-border/70 bg-background/60 px-1.5 py-1 mx-auto w-fit shadow-sm">
             <Link to="/" activeOptions={{ exact: true }} className="hidden sm:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
               Hub
             </Link>
-            <Link to="/premium-link-generator" className="hidden md:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
-              Premium
+            <Link to="/whatsapp-link-generator" className="hidden md:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
+              WhatsApp
             </Link>
             <Link to="/short-link-generator" className="hidden md:inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-accent transition" activeProps={{ className: "!text-primary bg-accent" }}>
               Short Link
@@ -285,7 +283,7 @@ export function ToolLayout({ children }: { children: ReactNode }) {
             <div className="md:col-span-1">
               <BrandMark />
               <p className="mt-3 text-xs text-muted-foreground leading-relaxed">
-                Free, premium-quality link generators for marketers, developers and businesses across the USA. No signup, no tracking, no limits.
+                Businestools Links builds ready-to-paste URLs for marketers, developers and small businesses in the USA. No signup, no tracking, no limits.
               </p>
             </div>
             <div>
@@ -311,7 +309,7 @@ export function ToolLayout({ children }: { children: ReactNode }) {
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-foreground mb-3">Power</p>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/premium-link-generator" className="text-foreground/70 hover:text-primary">Premium Link</Link></li>
+                <li><Link to="/about" className="text-foreground/70 hover:text-primary">About us</Link></li>
                 <li><Link to="/youtube-link-generator" className="text-foreground/70 hover:text-primary">YouTube Link</Link></li>
                 <li><Link to="/referral-link-generator" className="text-foreground/70 hover:text-primary">Referral Link</Link></li>
                 <li><Link to="/rickroll-link-generator" className="text-foreground/70 hover:text-primary">Rick Roll Link</Link></li>
@@ -319,7 +317,7 @@ export function ToolLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row gap-3 items-start md:items-center justify-between">
-            <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} LinkKit. Free utility link generators for the USA.</p>
+            <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Businestools Links — part of businestools.online. Free URL utilities.</p>
             <p className="text-xs text-muted-foreground">Built for marketers, developers & small business owners.</p>
           </div>
         </div>
@@ -364,11 +362,9 @@ export function IconToolGrid({ tools = TOOLS, heading }: { tools?: Tool[]; headi
 export function BackToHomeLink() {
   return (
     <p className="mt-10 text-sm text-foreground/80">
-      Need more URL tools? Explore the full{" "}
-      <Link to="/" className="text-primary font-semibold hover:underline">Link Generator</Link>{" "}
-      hub, or grab a free{" "}
-      <Link to="/premium-link-generator" className="text-primary font-semibold hover:underline">Premium Link Generator</Link>{" "}
-      for Rapidgator, Turbobit, Nitroflare and 9 more file hosts.
+      Need another URL tool? Browse the full{" "}
+      <Link to="/" className="text-primary font-semibold hover:underline">tool hub</Link>, or read{" "}
+      <Link to="/about" className="text-primary font-semibold hover:underline">who builds these tools</Link>.
     </p>
   );
 }

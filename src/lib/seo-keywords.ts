@@ -25,17 +25,6 @@ export const SEO: Record<string, PageKeywords> = {
       "custom link generator",
     ],
   },
-  "/premium-link-generator": {
-    path: "/premium-link-generator",
-    primary: "premium link generator",
-    keywords: [
-      "premium link generator", "rapidgator premium link generator", "turbobit premium link generator",
-      "filejoker premium link generator", "nitroflare premium link generator", "hitfile premium link generator",
-      "fastfile.cc premium link generator", "keep2share premium link generator", "k2s premium link generator",
-      "ddownload premium link generator", "uploadhaven premium link generator", "katfile premium link generator",
-      "filesfly premium link generator", "free premium link generator", "best premium link generator",
-    ],
-  },
   "/whatsapp-link-generator": {
     path: "/whatsapp-link-generator",
     primary: "whatsapp link generator",
