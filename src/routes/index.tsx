@@ -105,15 +105,35 @@ function Page() {
 
       <ToolCard>
         <Field label="What kind of link do you want to generate?">
-          <select value={mode} onChange={(e) => setMode(e.target.value as never)} className={inputCls}>
+          <select value={mode} onChange={(e) => handleModeChange(e.target.value as HeroMode)} className={inputCls}>
+            <option value="whatsapp">WhatsApp Link Generator</option>
             <option value="drive">Google Drive direct download link</option>
             <option value="short">Short link (custom hash)</option>
             <option value="slug">SEO URL slug</option>
           </select>
         </Field>
-        <Field label="Source URL or title" hint="Paste a Google Drive share link, any URL to shorten, or a title to slug-ify.">
-          <input className={inputCls} value={input} onChange={(e) => setInput(e.target.value)} />
+        <Field
+          label={MODE_FIELD[mode].label}
+          hint="Enter a phone number with country code for WhatsApp, paste a Google Drive share link, any URL to shorten, or a title to slug-ify."
+        >
+          <input
+            className={inputCls}
+            type={mode === "whatsapp" ? "tel" : "text"}
+            placeholder={MODE_FIELD[mode].placeholder}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
         </Field>
+        {mode === "whatsapp" && (
+          <Field label="Pre-filled message (optional)">
+            <input
+              className={inputCls}
+              placeholder="Hi! I'd like to know more about…"
+              value={waMessage}
+              onChange={(e) => setWaMessage(e.target.value)}
+            />
+          </Field>
+        )}
         <div>
           <span className="block text-sm font-semibold mb-1.5">Generated link</span>
           <OutputBlock value={output} />
