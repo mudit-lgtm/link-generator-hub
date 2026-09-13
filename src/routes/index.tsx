@@ -59,12 +59,23 @@ export const Route = createFileRoute("/")({
   component: Page,
 });
 
+type HeroMode = "whatsapp" | "drive" | "short" | "slug";
+
+const MODE_FIELD: Record<HeroMode, { label: string; placeholder: string }> = {
+  whatsapp: { label: "Phone number (with country code)", placeholder: "+1 555 123 4567" },
+  drive: { label: "Source URL or title", placeholder: "https://drive.google.com/file/d/1AbCDefGhIjKlMnOpQ/view?usp=sharing" },
+  short: { label: "Source URL or title", placeholder: "https://example.com/a-very-long-url" },
+  slug: { label: "Source URL or title", placeholder: "10 Best Link Generators in 2026" },
+};
+
 function Page() {
-  const [input, setInput] = useState("https://drive.google.com/file/d/1AbCDefGhIjKlMnOpQ/view?usp=sharing");
-  const [mode, setMode] = useState<"drive" | "short" | "slug">("drive");
+  const [mode, setMode] = useState<HeroMode>("whatsapp");
+  const [input, setInput] = useState("+1 555 123 4567");
+  const [waMessage, setWaMessage] = useState("");
 
   const output = useMemo(() => {
     if (!input.trim()) return "";
+    if (mode === "whatsapp") return buildWhatsAppLink(input, waMessage);
     if (mode === "drive") {
       const m = input.match(/\/d\/([a-zA-Z0-9_-]+)/) || input.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
