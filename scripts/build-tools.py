@@ -88,7 +88,6 @@ add(slug="mega-link-generator", name="MEGA Link Generator", h1="MEGA.nz Share Li
           ("Are there bandwidth limits on MEGA?","Free recipients hit a quota; the uploader can use MEGA's transfer add-on or paid plans for unlimited delivery."),
           ("Is MEGA blocked anywhere?","Some networks block MEGA. Pair the share with a mirror on a second host for reliability.")],
     steps=["In MEGA, right-click the file or folder and choose Share.","Copy the link including the part after `#`.","Paste it above to verify the structure.","Share the validated URL with recipients."],
-    related=["premium-link-generator","direct-download-link-generator","magnet-link-generator","short-link-generator"])
 
 add(slug="magnet-link-generator", name="Magnet Link Generator", h1="BitTorrent Magnet Link Generator",
     intro="Assemble a magnet URI from a BitTorrent info hash, display name and tracker list. No torrent file required.",
@@ -108,7 +107,6 @@ add(slug="magnet-link-generator", name="Magnet Link Generator", h1="BitTorrent M
           ("Is sharing a magnet legal?","Magnet URIs are just identifiers. Legality depends on the content, not the link format."),
           ("Why isn't my client connecting?","Check that the hash is correct and add at least one healthy public tracker.")],
     steps=["Paste the 40-character info hash from your torrent.","Add a display name to help your peers identify the content.","Paste public trackers, one per line.","Copy the assembled magnet URI."],
-    related=["direct-download-link-generator","premium-link-generator","mega-link-generator","short-link-generator"])
 
 # ---- File-upload tools ----
 add(slug="image-link-generator", name="Image Link Generator", h1="Image Link Generator",
@@ -704,7 +702,6 @@ add(slug="linkedin-link-generator", name="LinkedIn Link Generator", h1="LinkedIn
     steps=["Pick personal, company or share.","Paste the slug or URL.","Copy the LinkedIn URL.","Use it in email signatures, websites, or share buttons."],
     related=["facebook-share-link-generator","telegram-link-generator","short-link-generator","utm-link-generator"])
 
-add(slug="premium-link-generator", name="Premium Link Generator", h1="Premium File-Host Direct Link Validator",
     intro="Validate file URLs from the most-requested premium hosts (Rapidgator, Turbobit, Nitroflare and more). This is a structural validator, not a debrid service.",
     fields=[{"name":"host","label":"Host","type":"select","options":[
                 {"value":"rapidgator","label":"Rapidgator"},{"value":"turbobit","label":"Turbobit"},{"value":"nitroflare","label":"Nitroflare"},
