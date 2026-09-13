@@ -5,6 +5,7 @@ import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
   SeoLongform, AeoBlock, GeoBlock, Breadcrumbs, buildHead,
 } from "@/components/tool-ui";
+import { buildWhatsAppLink } from "@/lib/link-builders";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/"].keywords;
