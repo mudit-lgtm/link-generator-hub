@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Event organizer in Las Vegas, NV", "how": "Embeds the link in confirmation emails so attendees one-click RSVP."}, {"who": "Yoga studio in Austin, TX", "how": "Adds class schedule buttons to the website."}, {"who": "Webinar host in San Francisco, CA", "how": "Drops the link in the registration thank-you page."}, {"who": "Sports club in Boston, MA", "how": "Lets parents add practice schedules with one tap."}]}
       />
+
+      <WorkedExample intro={"A webinar invite that adds the correct hour for attendees in every US time zone."} rows={[{"input": "Event 10:00-11:00 on 12 Mar 2026, America/New_York", "output": "dates=20260312T140000Z%2F20260312T150000Z"}, {"input": "Title \"Q1 Product Webinar\" plus a details line", "output": "&text=Q1+Product+Webinar&details=Join+link+inside"}, {"input": "All-day event", "output": "dates=20260312%2F20260313 \u2014 end date is exclusive"}]} note={"Times are written in UTC with a Z suffix, so Google renders them in each attendee's own zone automatically."} />
+
+      <Pitfalls items={[{"problem": "Using local times without conversion", "fix": "An unconverted 10:00 shows as 10:00 in Los Angeles too, putting a third of your audience in the wrong hour."}, {"problem": "Setting an all-day end date to the same day", "fix": "The end date is exclusive; same-day means a zero-length event that many calendars hide."}, {"problem": "Only offering the Google link", "fix": "Roughly half of US business attendees use Outlook. Offer an .ics download alongside."}, {"problem": "Putting the join URL only in the title", "fix": "Titles get truncated in notifications. Keep the meeting link in the details field."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

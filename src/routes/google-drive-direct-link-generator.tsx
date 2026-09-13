@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Online course creator in Austin, TX", "how": "Sends students one-click downloads for PDF workbooks hosted on Drive."}, {"who": "Realtor in Miami, FL", "how": "Embeds Drive listing photos and floor plans as direct previews in email."}, {"who": "Podcaster in Brooklyn, NY", "how": "Shares episode MP3s as direct downloads instead of Drive's preview screen."}, {"who": "Wedding photographer in Denver, CO", "how": "Delivers client gallery ZIPs with a single shareable download URL."}]}
       />
+
+      <WorkedExample intro={"Turning a Drive share link into one that starts the download instead of opening a preview."} rows={[{"input": "https://drive.google.com/file/d/1AbC.../view?usp=sharing", "output": "https://drive.google.com/uc?export=download&id=1AbC..."}, {"input": "An open?id= style link", "output": "Same result \u2014 the file ID is what matters, not the link format"}, {"input": "A folder link", "output": "Not supported: direct download works on single files only"}]} note={"Files above roughly 100 MB show a virus-scan interstitial before downloading; that is Google's behaviour and cannot be bypassed by the link format."} />
+
+      <Pitfalls items={[{"problem": "Sharing set to \"restricted\"", "fix": "The direct link will hit a sign-in wall. Set access to anyone with the link before sharing."}, {"problem": "Using Drive as a CDN for a website", "fix": "Drive applies per-file quotas and will start returning errors on a popular download. Use real hosting for assets."}, {"problem": "Linking Docs, Sheets or Slides", "fix": "Native Google files need an /export?format=pdf style URL instead; uc?export=download is for uploaded files."}, {"problem": "Moving the file afterwards", "fix": "Moving is fine \u2014 the ID is stable \u2014 but re-uploading creates a new ID and breaks every published link."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

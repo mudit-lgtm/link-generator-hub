@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Local plumber in Phoenix, AZ", "how": "Prints a QR linking to the review form on every invoice."}, {"who": "Restaurant in Austin, TX", "how": "Adds a ‘Rate us’ link to the after-meal SMS receipt."}, {"who": "Auto detailer in Miami, FL", "how": "Shares the link via WhatsApp after each appointment."}, {"who": "Dentist in Chicago, IL", "how": "Emails the review link 24 hours after a cleaning."}]}
       />
+
+      <WorkedExample intro={"A dentist in Denver wants patients to land straight on the five-star box, not the business profile."} rows={[{"input": "Place ID ChIJN1t_tDeuEmsRUsoyG83frY4", "output": "https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4"}, {"input": "Same Place ID, share format", "output": "A short g.page/r link you can print on a receipt"}, {"input": "Business name only", "output": "Not enough \u2014 Google needs the Place ID, which you can copy from the Place ID finder"}]} note={"The write-review URL opens the star selector directly, which typically converts better than sending people to the profile page."} />
+
+      <Pitfalls items={[{"problem": "Sending the maps listing URL instead", "fix": "That lands on the profile, where the review button is below the fold on mobile."}, {"problem": "Asking for reviews by bulk SMS blast", "fix": "Google's policy prohibits review gating and incentives; a plain ask after service is both compliant and more effective."}, {"problem": "Using a Place ID from the wrong location", "fix": "Multi-branch businesses have one ID per branch. Reviews land on whichever branch the ID belongs to."}, {"problem": "Only sharing the link by email", "fix": "Printed QR codes at the counter reliably outperform email for walk-in businesses."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Support team in Austin, TX", "how": "Drops 'Email Support' buttons that pre-fill a ticket template."}, {"who": "Recruiter in NYC", "how": "Sends candidates a pre-formatted intro request."}, {"who": "Sales rep in Chicago, IL", "how": "Embeds a one-click 'request a quote' link in proposals."}, {"who": "Designer in San Francisco, CA", "how": "Adds a contact CTA to portfolio sites without a backend."}]}
       />
+
+      <WorkedExample intro={"A support page that opens a pre-addressed email with the ticket template already filled in."} rows={[{"input": "To support@example.com, subject \"Refund request\"", "output": "mailto:support@example.com?subject=Refund%20request"}, {"input": "\u2026plus CC billing@example.com and a two-line body", "output": "&cc=billing%40example.com&body=Order%20number%3A%0AReason%3A"}, {"input": "Two recipients", "output": "mailto:a@example.com,b@example.com \u2014 comma separated, no spaces"}]} note={"The @ in a CC or BCC address must be encoded as %40; the first address after mailto: does not need encoding."} />
+
+      <Pitfalls items={[{"problem": "Publishing a plain address in the page text", "fix": "Scrapers harvest it within days. The mailto link itself is enough; the address does not need to appear as visible text."}, {"problem": "Long bodies", "fix": "Older Outlook builds cut mailto URLs near 2,000 characters. Keep templates to a few prompting lines."}, {"problem": "Assuming a desktop mail client exists", "fix": "On machines with no configured client nothing happens. Show the address as a copyable fallback next to the button."}, {"problem": "Using real line breaks in the body", "fix": "They must be encoded as %0A, otherwise the link breaks at the first newline."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

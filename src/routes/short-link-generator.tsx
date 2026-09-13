@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -63,6 +63,10 @@ function Page() {
       <HowToUse heading={"How to use the short link generator"} steps={STEPS} />
       <AeoBlock question={"How do free URL shorteners work?"} answer={"The shortener stores your long URL in a database and gives you a tiny redirect URL. When someone opens it, the service issues a 301 to the original destination. We use the free is.gd API."} keywords={KW} />
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Marketer in Austin, TX", "how": "Shortens every email CTA so SMS fallbacks fit under 160 chars."}, {"who": "Real estate agent in Miami, FL", "how": "Prints short URLs on yard signs and open-house flyers."}, {"who": "Podcaster in Brooklyn, NY", "how": "Drops a memorable short link in episode show notes."}, {"who": "Recruiter in Chicago, IL", "how": "Shares job-posting URLs in LinkedIn DMs without ugly tracking strings."}]} />
+      <WorkedExample intro={"The same product URL, prepared for a printed postcard and for a paid social ad."} rows={[{"input": "https://shop.example.com/collections/spring/products/linen-shirt?variant=42", "output": "https://exmpl.co/linen (custom alias)"}, {"input": "No alias supplied", "output": "https://exmpl.co/a7Kd2Q (6-character hash)"}, {"input": "Alias \"Spring Sale\"", "output": "spring-sale \u2014 spaces and capitals are normalised"}]} note={"A six-character alphanumeric hash gives roughly 56 billion combinations, so collisions are not a practical concern."} />
+
+      <Pitfalls items={[{"problem": "Using look-alike characters in a printed alias", "fix": "Avoid 0/O and 1/l/I. People retype printed links by hand and mistype those pairs constantly."}, {"problem": "Reusing one short link for every channel", "fix": "One link per channel is the only way to know whether the postcard or the ad drove the visit."}, {"problem": "Shortening an already shortened link", "fix": "Double redirects add latency and some email filters treat chained redirects as suspicious."}, {"problem": "Free branded domains that expire", "fix": "If the domain lapses, every printed link dies. Use a domain you renew yourself for anything offline."}]} />
+
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
       <ContextualLinks heading="Related link generators" links={[{"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "Convert any link to a downloadable QR code PNG."}, {"to": "/utm-link-generator", "anchor": "UTM Link Generator", "blurb": "Build Google Analytics UTM campaign tracking links."}, {"to": "/affiliate-link-generator", "anchor": "Affiliate Link Generator", "blurb": "Amazon, AliExpress & custom affiliate links with your tag."}, {"to": "/referral-link-generator", "anchor": "Referral Link Generator", "blurb": "Custom referral & invite links with tracking codes."}]} />
       <ShareAndGuestbook path="/short-link-generator" title={TITLE} />
