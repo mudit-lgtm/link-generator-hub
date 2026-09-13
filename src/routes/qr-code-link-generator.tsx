@@ -60,7 +60,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}, {"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "related link generator."}, {"to": "/google-review-link-generator", "anchor": "Google Review Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}, {"to": "/whatsapp-link-generator", "anchor": "WhatsApp Link Generator", "blurb": "wa.me click-to-chat link with prefilled message & QR."}, {"to": "/google-review-link-generator", "anchor": "Google Review Link Generator", "blurb": "Google Business 5-star review link for local SEO."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "HTML mailto link with subject, body, CC and BCC."}]}
       />
 
       <ShareAndGuestbook path="/qr-code-link-generator" title={TITLE} />

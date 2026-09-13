@@ -48,7 +48,7 @@ function Page() {
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
-      <ContextualLinks heading="Related link generators" links={[{"to": "/html-link-generator", "anchor": "Html Link Generator", "blurb": "related link generator."}, {"to": "/video-link-generator", "anchor": "Video Link Generator", "blurb": "related link generator."}, {"to": "/youtube-link-generator", "anchor": "Youtube Link Generator", "blurb": "related link generator."}, {"to": "/google-maps-link-generator", "anchor": "Google Maps Link Generator", "blurb": "related link generator."}]} />
+      <ContextualLinks heading="Related link generators" links={[{"to": "/html-link-generator", "anchor": "Html Link Generator", "blurb": "Clickable HTML, Markdown and BBCode link code."}, {"to": "/video-link-generator", "anchor": "Video Link Generator", "blurb": "Direct MP4 / video share URL builder."}, {"to": "/youtube-link-generator", "anchor": "Youtube Link Generator", "blurb": "Subscribe, auto-subscribe & timestamped YouTube links."}, {"to": "/google-maps-link-generator", "anchor": "Google Maps Link Generator", "blurb": "Maps & directions link from address, lat/lng or Place ID."}]} />
 
       <BackToHomeLink />
     </ToolLayout>

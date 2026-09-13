@@ -48,7 +48,7 @@ function Page() {
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
-      <ContextualLinks heading="Related link generators" links={[{"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}, {"to": "/tel-link-generator", "anchor": "Tel Link Generator", "blurb": "related link generator."}, {"to": "/linkedin-link-generator", "anchor": "Linkedin Link Generator", "blurb": "related link generator."}, {"to": "/html-link-generator", "anchor": "Html Link Generator", "blurb": "related link generator."}]} />
+      <ContextualLinks heading="Related link generators" links={[{"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "HTML mailto link with subject, body, CC and BCC."}, {"to": "/tel-link-generator", "anchor": "Tel Link Generator", "blurb": "tel: click-to-call links with extensions."}, {"to": "/linkedin-link-generator", "anchor": "Linkedin Link Generator", "blurb": "Profile, company & share LinkedIn URLs."}, {"to": "/html-link-generator", "anchor": "Html Link Generator", "blurb": "Clickable HTML, Markdown and BBCode link code."}]} />
 
       <BackToHomeLink />
     </ToolLayout>

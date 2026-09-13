@@ -566,7 +566,6 @@ __SEO_SECTIONS__
           { to: "/", anchor: "Link Generator Hub", blurb: "browse every free link generator." },
           { to: "/short-link-generator", anchor: "Short Link Generator", blurb: "shorten the URL above for SMS, bios and QR codes." },
           { to: "/qr-code-link-generator", anchor: "QR Code Link Generator", blurb: "convert your link into a downloadable QR code." },
-          { to: "/premium-link-generator", anchor: "Premium Link Generator", blurb: "Rapidgator, Turbobit and Nitroflare premium downloads." },
         ]}
       />
 

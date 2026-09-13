@@ -60,7 +60,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/google-meet-link-generator", "anchor": "Google Meet Link Generator", "blurb": "related link generator."}, {"to": "/zoom-meeting-link-generator", "anchor": "Zoom Meeting Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/google-meet-link-generator", "anchor": "Google Meet Link Generator", "blurb": "Generate meet.google.com instant meeting links."}, {"to": "/zoom-meeting-link-generator", "anchor": "Zoom Meeting Link Generator", "blurb": "Build shareable Zoom meeting join links."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "HTML mailto link with subject, body, CC and BCC."}, {"to": "/qr-code-link-generator", "anchor": "QR Code Link Generator", "blurb": "Convert any link to a downloadable QR code PNG."}]}
       />
 
       <ShareAndGuestbook path="/add-to-calendar-link-generator" title={TITLE} />

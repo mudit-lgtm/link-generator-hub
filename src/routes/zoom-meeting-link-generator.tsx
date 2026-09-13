@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/google-meet-link-generator", "anchor": "Google Meet Link Generator", "blurb": "related link generator."}, {"to": "/teams-meeting-link-generator", "anchor": "Microsoft Teams Meeting Link Generator", "blurb": "related link generator."}, {"to": "/add-to-calendar-link-generator", "anchor": "Add to Calendar Link Generator", "blurb": "related link generator."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/google-meet-link-generator", "anchor": "Google Meet Link Generator", "blurb": "Generate meet.google.com instant meeting links."}, {"to": "/teams-meeting-link-generator", "anchor": "Microsoft Teams Meeting Link Generator", "blurb": "Microsoft Teams meeting & join URL builder."}, {"to": "/add-to-calendar-link-generator", "anchor": "Add to Calendar Link Generator", "blurb": "Google, Outlook, Yahoo & .ics add-to-calendar links."}, {"to": "/mailto-link-generator", "anchor": "Mailto Link Generator", "blurb": "HTML mailto link with subject, body, CC and BCC."}]}
       />
 
       <BackToHomeLink />

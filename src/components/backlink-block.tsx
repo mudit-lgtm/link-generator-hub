@@ -47,7 +47,7 @@ export function ShareAndGuestbook({ path, title }: { path: string; title: string
         <h2 className="font-display text-lg font-bold mb-1">Share this link generator</h2>
         <p className="text-sm text-muted-foreground mb-4">
           Found it useful? Share it, or link back to{" "}
-          <a href={SITE} className="text-primary font-semibold underline underline-offset-2">LinkKit link generator tools</a>{" "}
+          <a href={SITE} className="text-primary font-semibold underline underline-offset-2">Businestools Links</a>{" "}
           from your own site.
         </p>
         <div className="flex flex-wrap gap-2">

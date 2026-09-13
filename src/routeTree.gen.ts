@@ -67,6 +67,7 @@ import { Route as AppStoreLinkGeneratorRouteImport } from './routes/app-store-li
 import { Route as AnchorLinkGeneratorRouteImport } from './routes/anchor-link-generator'
 import { Route as AffiliateLinkGeneratorRouteImport } from './routes/affiliate-link-generator'
 import { Route as AddToCalendarLinkGeneratorRouteImport } from './routes/add-to-calendar-link-generator'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ZoomMeetingLinkGeneratorRoute =
@@ -376,6 +377,11 @@ const AddToCalendarLinkGeneratorRoute =
     path: '/add-to-calendar-link-generator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -384,6 +390,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
   '/anchor-link-generator': typeof AnchorLinkGeneratorRoute
@@ -445,6 +452,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
   '/anchor-link-generator': typeof AnchorLinkGeneratorRoute
@@ -507,6 +515,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/add-to-calendar-link-generator': typeof AddToCalendarLinkGeneratorRoute
   '/affiliate-link-generator': typeof AffiliateLinkGeneratorRoute
   '/anchor-link-generator': typeof AnchorLinkGeneratorRoute
@@ -570,6 +579,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
     | '/anchor-link-generator'
@@ -631,6 +641,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
     | '/anchor-link-generator'
@@ -692,6 +703,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/add-to-calendar-link-generator'
     | '/affiliate-link-generator'
     | '/anchor-link-generator'
@@ -754,6 +766,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AddToCalendarLinkGeneratorRoute: typeof AddToCalendarLinkGeneratorRoute
   AffiliateLinkGeneratorRoute: typeof AffiliateLinkGeneratorRoute
   AnchorLinkGeneratorRoute: typeof AnchorLinkGeneratorRoute
@@ -1222,6 +1235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AddToCalendarLinkGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -1234,6 +1254,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AddToCalendarLinkGeneratorRoute: AddToCalendarLinkGeneratorRoute,
   AffiliateLinkGeneratorRoute: AffiliateLinkGeneratorRoute,
   AnchorLinkGeneratorRoute: AnchorLinkGeneratorRoute,

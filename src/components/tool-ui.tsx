@@ -248,7 +248,8 @@ export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra 
         operatingSystem: "Web",
         url: absoluteUrl(url),
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "184" },
+        isAccessibleForFree: true,
+        publisher: { "@type": "Organization", name: "Businestools Links", url: SITE_URL + "/" },
       }),
     },
     {

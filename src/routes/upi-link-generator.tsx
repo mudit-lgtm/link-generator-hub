@@ -48,7 +48,7 @@ function Page() {
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
-      <ContextualLinks heading="Related link generators" links={[{"to": "/payment-link-generator", "anchor": "Payment Link Generator", "blurb": "related link generator."}, {"to": "/qr-code-link-generator", "anchor": "Qr Code Link Generator", "blurb": "related link generator."}, {"to": "/whatsapp-link-generator", "anchor": "Whatsapp Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]} />
+      <ContextualLinks heading="Related link generators" links={[{"to": "/payment-link-generator", "anchor": "Payment Link Generator", "blurb": "Build hosted Stripe-style payment request links."}, {"to": "/qr-code-link-generator", "anchor": "Qr Code Link Generator", "blurb": "Convert any link to a downloadable QR code PNG."}, {"to": "/whatsapp-link-generator", "anchor": "Whatsapp Link Generator", "blurb": "wa.me click-to-chat link with prefilled message & QR."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]} />
 
       <BackToHomeLink />
     </ToolLayout>

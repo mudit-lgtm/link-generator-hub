@@ -59,7 +59,7 @@ function Page() {
 
       <ContextualLinks
         heading="Related link generators"
-        links={[{"to": "/audio-link-generator", "anchor": "Audio Link Generator", "blurb": "related link generator."}, {"to": "/youtube-link-generator", "anchor": "YouTube Link Generator", "blurb": "related link generator."}, {"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "related link generator."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "related link generator."}]}
+        links={[{"to": "/audio-link-generator", "anchor": "Audio Link Generator", "blurb": "MP3 & podcast direct download URLs."}, {"to": "/youtube-link-generator", "anchor": "YouTube Link Generator", "blurb": "Subscribe, auto-subscribe & timestamped YouTube links."}, {"to": "/direct-download-link-generator", "anchor": "Direct Download Link Generator", "blurb": "Force-download URLs for any hosted file."}, {"to": "/short-link-generator", "anchor": "Short Link Generator", "blurb": "Free short link & tiny URL generator with custom alias."}]}
       />
 
       <BackToHomeLink />
