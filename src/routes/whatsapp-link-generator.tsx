@@ -6,6 +6,7 @@ import {
   ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
+import { buildWhatsAppLink } from "@/lib/link-builders";
 import { SEO } from "@/lib/seo-keywords";
 
 const KW = SEO["/whatsapp-link-generator"]?.keywords ?? [];
