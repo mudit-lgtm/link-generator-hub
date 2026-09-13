@@ -347,7 +347,7 @@ export function IconToolGrid({ tools = TOOLS, heading }: { tools?: Tool[]; headi
               </span>
               <div className="min-w-0">
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition text-sm md:text-base leading-tight">
-                  {t.label}
+                  {t.short}
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-snug mt-1">{t.blurb}</p>
               </div>
