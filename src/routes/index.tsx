@@ -6,23 +6,19 @@ import {
   SeoLongform, AeoBlock, GeoBlock, Breadcrumbs, buildHead,
 } from "@/components/tool-ui";
 import { buildWhatsAppLink } from "@/lib/link-builders";
-import { SEO } from "@/lib/seo-keywords";
-
-const KW = SEO["/"].keywords;
 
 const FAQS = [
-  { q: "What is a link generator?", a: "A link generator is a free online tool that builds a ready-to-use URL for a specific purpose — a WhatsApp click-to-chat URL, a mailto email link, a Google review link, a Google Maps directions link, an affiliate link with your tag, a calendar event link, a premium download link, or an SEO-friendly slug. Instead of writing the URL by hand and risking encoding errors, the link generator does it in one click." },
-  { q: "Is this online link generator free?", a: "Yes — every link generator on LinkKit is 100% free with no signup, no usage limits and no hidden upsells. All generators run inside your browser so we never see your data." },
-  { q: "What is the best free link generator for marketing?", a: "For marketers in the USA the most-used picks are the WhatsApp link generator (click-to-chat), the Google review link generator (reviews drive local SEO), the mailto link generator (email signatures) and the affiliate link generator (Amazon Associates, AliExpress). All four are linked in the icon grid above." },
-  { q: "Can I use a link generator for a Google Drive direct download link?", a: "Yes. Use the SEO URL Slug Generator's helper or the direct-download converter inside the hub above — paste a Google Drive share link and the generator rewrites it as a direct download URL." },
-  { q: "What's the difference between a link generator and a URL shortener?", a: "A link generator builds a fully-formed, purpose-specific URL (wa.me/…, mailto:…, https://maps.google.com/?cid=…). A URL shortener takes any existing URL and produces a shorter alias (bit.ly/x, t.co/x). LinkKit focuses on link generation; pair it with any shortener if you also need a short alias." },
-  { q: "How does this free link generator help with SEO?", a: "Generated links are clean, properly URL-encoded, contain valid query parameters, and use canonical formats that search engines recognise. Review links boost Google Business profile signals, calendar links increase engagement, and SEO URL slug generation keeps your permalinks crawlable." },
-  { q: "Are these link generators safe to use?", a: "Yes. Every generator on LinkKit runs entirely client-side — the URL is built inside your browser using JavaScript and never sent to a server. We don't track or log your inputs." },
-  { q: "Do you have a custom link generator I can use on my own site?", a: "Not yet as an embeddable widget, but the hub above covers every common custom link generator use case: WhatsApp, mailto, review, maps, calendar, affiliate, referral, slug, premium download and rickroll. Bookmark the hub and use it on demand." },
+  { q: "What does a link generator actually do?", a: "It assembles a URL for you. Each platform expects its own syntax — wa.me needs a digits-only number in E.164 form, mailto: needs percent-encoded subject and body, Google Calendar needs ISO-8601 timestamps in UTC. The tool applies the right format and encoding so the URL works the first time you paste it." },
+  { q: "Is Businestools Links free?", a: "Yes. There is no account, no usage cap and no paid tier. The tools run in your browser, so they cost nothing to serve." },
+  { q: "Does anything I type get uploaded?", a: "No. URLs are built locally in JavaScript. Phone numbers, email addresses, file IDs and messages never reach a server, and nothing is logged." },
+  { q: "How do I turn a Google Drive share link into a direct download?", a: "Paste the share URL into the tool above with \"Google Drive direct download\" selected. It extracts the file ID and rebuilds the URL as drive.google.com/uc?export=download&id=FILE_ID, which skips the Drive preview screen. Files over roughly 100 MB still show a virus-scan confirmation." },
+  { q: "What is the difference between this and a URL shortener?", a: "A shortener takes an existing URL and gives you a shorter alias that redirects through its own domain. These tools build the destination URL itself — wa.me/…, mailto:…, upi://… — and there is no redirect hop in between. You can pair the two: generate the URL here, then shorten it if you need a tidier string." },
+  { q: "Can I use the generated URLs commercially?", a: "Yes. The output is just a URL you assembled — put it on invoices, ads, packaging, email signatures or client sites without restriction or attribution." },
+  { q: "Which tool should I start with?", a: "For customer contact, start with WhatsApp chat links or mailto. For campaign measurement, start with UTM tagging. For local business visibility, start with Google review and Maps URLs. For file delivery, start with the direct download tool." },
 ];
 
-const TITLE = "Link Generator — Free URL Generator Hub for 40+ Utility Tools";
-const DESC = "Free link generator hub. Generate WhatsApp, mailto, Google review, Maps, calendar, affiliate, referral, premium download and SEO URL slug links — no signup.";
+const TITLE = "Link Generator — Free URL Builder Hub for 40+ Utility Tools";
+const DESC = "Build any URL in seconds: WhatsApp chats, mailto emails, QR codes, UTM campaigns, Google reviews, calendar invites and direct downloads. Free, no signup.";
 
 export const Route = createFileRoute("/")({
   head: () => buildHead({
@@ -36,8 +32,9 @@ export const Route = createFileRoute("/")({
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "LinkKit",
+        name: "Businestools Links",
         url: "/",
+        publisher: { "@id": "https://shortlink.businestools.online/#organization" },
         potentialAction: {
           "@type": "SearchAction",
           target: "/?q={search_term_string}",
@@ -47,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        name: "LinkKit Link Generators",
+        name: "Businestools Links URL tools",
         itemListElement: TOOLS.map((t, i) => ({
           "@type": "ListItem",
           position: i + 1,
@@ -66,7 +63,7 @@ const MODE_FIELD: Record<HeroMode, { label: string; placeholder: string }> = {
   whatsapp: { label: "Phone number (with country code)", placeholder: "+1 555 123 4567" },
   drive: { label: "Source URL or title", placeholder: "https://drive.google.com/file/d/1AbCDefGhIjKlMnOpQ/view?usp=sharing" },
   short: { label: "Source URL or title", placeholder: "https://example.com/a-very-long-url" },
-  slug: { label: "Source URL or title", placeholder: "10 Best Link Generators in 2026" },
+  slug: { label: "Source URL or title", placeholder: "10 Best URL Tools in 2026" },
 };
 
 function Page() {
@@ -99,9 +96,8 @@ function Page() {
       <Breadcrumbs trail={[{ label: "Link Generator" }]} />
       <ToolHero
         eyebrow={`Free • No Signup • ${TOOLS.length}+ Tools`}
-        h1="Link Generator — Free URL Generator Hub"
-        intro="LinkKit is a free link generator hub. Generate a wa.me WhatsApp link, mailto email link, Google review link, Google Maps directions link, Amazon affiliate link, calendar event link, premium download link or SEO URL slug — all from one place. Every online link generator on this page is free, no signup."
-        keywords={KW}
+        h1="Link Generator — Free URL Builder Hub"
+        intro="Type what you have, copy the URL you need. Businestools Links turns a phone number into a WhatsApp chat, an email address into a one-click mailto, a campaign name into UTM tracking, a Drive file into a direct download, and a title into a clean permalink slug — all in your browser, nothing stored."
       />
 
       <ToolCard>
@@ -140,16 +136,16 @@ function Page() {
           <OutputBlock value={output} />
         </div>
         <p className="text-xs text-muted-foreground">
-          Need something more specific? Pick a dedicated link generator from the grid below.
+          Need something more specific? Pick a dedicated tool from the grid below.
         </p>
       </ToolCard>
 
       <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { k: "14+", v: "Free generators" },
+          { k: `${TOOLS.length}+`, v: "Free tools" },
           { k: "0", v: "Signup required" },
-          { k: "100%", v: "Client-side" },
-          { k: "USA", v: "Optimised" },
+          { k: "100%", v: "Runs in your browser" },
+          { k: "USA", v: "Formats & examples" },
         ].map((s) => (
           <div key={s.v} className="rounded-2xl border border-border bg-card p-4 text-center shadow-card">
             <div className="text-2xl md:text-3xl font-display font-extrabold text-gradient-sunset">{s.k}</div>
@@ -158,109 +154,77 @@ function Page() {
         ))}
       </div>
 
-      <IconToolGrid heading="All free link generators" tools={TOOLS} />
-
+      <IconToolGrid heading="All tools" tools={TOOLS} />
 
       <HowToUse
-        heading="How to use the link generator hub"
+        heading="How the hub works"
         steps={[
-          "Pick a generator from the icon grid above (premium download, WhatsApp, mailto, Google review, maps, calendar, affiliate, referral, slug or rickroll).",
-          "Fill the form on the dedicated tool page — every field has a hint with an example.",
-          "Click Copy and paste the generated link wherever you need it: website, email signature, Instagram bio, QR code, invoice, ad.",
-          "Bookmark LinkKit to come back next time you need a custom link generator.",
+          "Pick the tool that matches your destination — a chat app, an inbox, a map, a calendar, a payment app or a file.",
+          "Fill the form. Every field carries a worked example, so you can see the expected format before you type.",
+          "Copy the result and paste it into a site, bio, signature, invoice, QR code or ad.",
+          "Bookmark the hub — nothing is saved between visits, by design.",
         ]}
       />
 
       <AeoBlock
         question="What is a link generator?"
-        answer="A link generator is a free online tool that builds a fully-formed URL for a specific use case — WhatsApp click-to-chat, mailto email, Google review, Maps directions, affiliate tag, calendar event, premium download or SEO slug. It handles URL encoding, parameter formatting and platform-specific syntax so the link works correctly on first paste."
-        keywords={KW}
+        answer="A link generator is a browser tool that assembles a complete, correctly encoded URL for a specific destination — a WhatsApp chat, an email draft, a map route, a calendar event, a payment request or a file download. It applies the platform's required syntax and percent-encodes spaces, ampersands, emoji and line breaks so the URL does not silently break when someone taps it."
       />
 
       <GeoBlock
-        heading="How USA businesses use the link generator hub"
-        keywords={KW}
+        heading="How US businesses use the hub"
         items={[
-          { who: "Local dentist in Miami, FL", how: "Pairs the Google review link generator with the WhatsApp link generator to collect 5-star reviews and field new-patient enquiries from the same QR code." },
-          { who: "Shopify store in Austin, TX", how: "Uses the affiliate link generator for influencer partners and the mailto link generator for one-click 'reply to confirm' transactional emails." },
-          { who: "Realtor in Phoenix, AZ", how: "Drops a Google Maps link generator URL into open-house emails and an add-to-calendar link generator event for showings." },
-          { who: "SaaS founder in San Francisco", how: "Combines the referral link generator with the SEO URL slug generator for branded campaign links that rank in Google." },
-          { who: "Restaurant in Brooklyn, NY", how: "Prints a WhatsApp link generator QR code for reservations and a Google review link generator QR for post-meal feedback." },
-          { who: "Power downloader anywhere in the US", how: "Uses the premium link generator for Rapidgator, Turbobit and Nitroflare without paying for a premium account on every host." },
+          { who: "Dentist in Miami, FL", how: "One QR on the reception desk points to a Google review URL; a second on the appointment card opens a WhatsApp chat for rescheduling." },
+          { who: "Shopify store in Austin, TX", how: "Tags every influencer post with UTM parameters so Shopify analytics attributes revenue to the right partner." },
+          { who: "Realtor in Phoenix, AZ", how: "Sends an open-house email containing a Maps route and an add-to-calendar URL that fills the date, time and address automatically." },
+          { who: "SaaS founder in San Francisco", how: "Builds referral URLs with a tracking code and clean slugs for the landing pages behind them." },
+          { who: "Freelance designer in Brooklyn, NY", how: "Delivers final files through a direct download URL instead of a preview page, and signs off with a clickable email signature." },
         ]}
       />
 
       <SeoLongform
-        keywords={KW}
         sections={[
           {
-            h2: "A free link generator for every URL you'll ever need",
+            h2: "One toolkit instead of ten bookmarks",
             paragraphs: [
-              "LinkKit is the free link generator hub built for marketers, developers, freelancers and small business owners in the United States. Whether you need a WhatsApp click-to-chat link, a mailto email link, a Google review link, a Google Maps directions link, a premium download link, an affiliate link or an SEO-friendly URL slug, the online link generator you need is one click away.",
-              "Every generator on this page runs entirely inside your browser. The URL is built locally with JavaScript and never sent to our servers — that means zero tracking, zero rate limits and zero waiting. Paste, click, copy.",
+              "Most URL work is small and annoying: you need a wa.me address for the Instagram bio, a mailto with the subject already filled in, a Drive file that downloads instead of previewing, a QR for a printed flyer. Each one has its own quirks and none of them justify installing software.",
+              "Businestools Links keeps all of them in one place, with the same three-step flow: choose the tool, fill the form, copy the output. Every generator runs locally in JavaScript — nothing is uploaded, nothing is rate-limited, nothing waits on a server.",
             ],
           },
           {
-            h2: "Google Drive direct download link generator",
+            h2: "Drive files that download instead of previewing",
             paragraphs: [
-              "The Google Drive direct download link generator above takes a regular Drive share URL (https://drive.google.com/file/d/FILE_ID/view) and rewrites it as a direct download link (https://drive.google.com/uc?export=download&id=FILE_ID). Visitors who click the generated link skip the Drive preview and start downloading the file immediately.",
-              "This is the most-searched 'direct download link generator' use case in the USA. It works for PDFs, ZIPs, MP4s and any file under Drive's 100 MB virus-scan threshold; larger files trigger a confirmation page that visitors will need to bypass once.",
+              "A standard Google Drive share URL (drive.google.com/file/d/FILE_ID/view) opens a preview screen. The hub tool extracts FILE_ID and rebuilds it as drive.google.com/uc?export=download&id=FILE_ID, so the browser starts the download immediately.",
+              "This works for PDFs, ZIPs and video under Drive's virus-scan threshold of roughly 100 MB. Above that, Google shows a one-time confirmation page that the recipient has to click through — no URL format avoids it.",
             ],
           },
           {
-            h2: "Short link generator and custom URL generator",
+            h2: "Tracking, shortening and slugs",
             paragraphs: [
-              "Need a quick short link generator without signing up for bit.ly? The mini tool above produces a deterministic short hash from any input URL — perfect for one-off campaigns. For branded short URLs that include keywords, use the SEO URL slug generator and combine it with your own domain.",
-              "If you're running referral or affiliate campaigns, swap to the dedicated affiliate link generator and referral link generator — they add the right tracking parameters automatically.",
+              "The hero tool's short-hash mode is a quick deterministic alias for throwaway use. For campaigns you actually measure, use UTM tagging so Google Analytics and Shopify can attribute traffic, or the referral and affiliate tools when the parameters have to survive a redirect chain.",
+              "The slug mode strips accents, punctuation and stop characters from a headline and returns a lowercase, hyphenated permalink that WordPress and most CMSs accept unchanged.",
             ],
           },
           {
-            h2: "The most useful free link generators in 2026",
+            h2: "Why hand-written URLs break",
             paragraphs: [
-              "Below the hero tool, the icon grid lists every dedicated link generator on LinkKit. Each one is keyword-optimised for the way US users actually search Google in 2026:",
-            ],
-            bullets: [
-              "Premium Link Generator — Rapidgator, Turbobit, Nitroflare, Filejoker, Keep2Share, K2S, Hitfile, DDownload, UploadHaven, Katfile, Filesfly, Fastfile.cc",
-              "WhatsApp Link Generator — wa.me click-to-chat link with QR code and prefilled message",
-              "Google Review Link Generator — 5-star Google Business review link from Place ID",
-              "Mailto Link Generator — email link with subject, body, CC and BCC",
-              "Google Maps Link Generator — directions and share-location link",
-              "Add to Calendar Link Generator — Google, Outlook, Yahoo and .ics event link",
-              "Affiliate Link Generator — Amazon, AliExpress and custom affiliate tag link",
-              "Referral Link Generator — custom referral / invite link with tracking code",
-              "SEO URL Slug Generator — WordPress-friendly permalink slug from any title",
-              "Rick Roll Link Generator — disguised prank URL",
-            ],
-          },
-          {
-            h2: "Why use a link generator instead of writing URLs by hand",
-            paragraphs: [
-              "URLs are deceptively complex. Spaces, ampersands, line breaks, emoji and quotes must be percent-encoded. Phone numbers must be in E.164 format for wa.me. Calendar links need ISO-8601 timestamps. Affiliate tags need to survive redirects. Mistakes in any one of these silently break the link — visitors click and nothing happens.",
-              "A purpose-built link generator handles every edge case for you. The result is a single click-tested URL that works on Android, iOS, desktop browsers and in-app webviews.",
-            ],
-          },
-          {
-            h2: "How to pick the right link generator for your use case",
-            paragraphs: [
-              "Selling on social? The WhatsApp link generator and affiliate link generator drive the most conversions. Running a local USA business? The Google review link generator, Google Maps link generator and add to calendar link generator are the local-SEO triple. Publishing content? The SEO URL slug generator and mailto link generator belong in every editorial workflow. Downloading large files? The premium link generator covers all 12 major file hosts.",
-              "If you need more than one, keep this hub open in a tab — it's the fastest way to grab any link, any time.",
+              "Spaces, ampersands, quotes, line breaks and emoji all have to be percent-encoded. WhatsApp rejects numbers containing +, spaces or dashes. Calendar invites need UTC timestamps in ISO-8601 basic format. Mailto bodies need %0A for each new line. Any single mistake produces a URL that looks fine and does nothing when tapped.",
+              "Each tool here encodes its output against the platform's documented format and shows you the finished string, so you can check it before it ships.",
             ],
           },
         ]}
       />
 
-      <FaqSection items={FAQS} keywords={KW} heading="Link generator FAQ" />
+      <FaqSection items={FAQS} heading="Common questions" />
 
       <p className="mt-10 text-sm text-foreground/80">
-        Popular picks today: the{" "}
-        <Link to="/premium-link-generator" className="text-primary font-semibold hover:underline">Premium Link Generator</Link>{" "}
-        for Rapidgator and Turbobit, the{" "}
-        <Link to="/whatsapp-link-generator" className="text-primary font-semibold hover:underline">WhatsApp Link Generator</Link>{" "}
-        for click-to-chat, the{" "}
-        <Link to="/google-review-link-generator" className="text-primary font-semibold hover:underline">Google Review Link Generator</Link>{" "}
-        for local SEO, and the{" "}
-        <Link to="/slug-generator" className="text-primary font-semibold hover:underline">SEO URL Slug Generator</Link>{" "}
-        for clean permalinks.
+        Most used today: the{" "}
+        <Link to="/whatsapp-link-generator" className="text-primary font-semibold hover:underline">WhatsApp chat link tool</Link>,{" "}
+        <Link to="/qr-code-link-generator" className="text-primary font-semibold hover:underline">QR codes</Link>,{" "}
+        <Link to="/google-review-link-generator" className="text-primary font-semibold hover:underline">Google review requests</Link>{" "}
+        and{" "}
+        <Link to="/utm-link-generator" className="text-primary font-semibold hover:underline">UTM campaign tagging</Link>. New here?{" "}
+        <Link to="/about" className="text-primary font-semibold hover:underline">Read about the project</Link>.
       </p>
     </ToolLayout>
   );
