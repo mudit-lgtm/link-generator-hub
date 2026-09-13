@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Growth marketer in San Francisco, CA", "how": "Tags every email and ad creative for full attribution in GA4."}, {"who": "Agency in NYC", "how": "Standardizes UTMs across client campaigns for consistent reporting."}, {"who": "E-commerce brand in Austin, TX", "how": "Tracks which influencer drove a holiday-campaign conversion."}, {"who": "B2B SaaS in Boston, MA", "how": "Maps LinkedIn ads to closed-won deals through the CRM."}]}
       />
+
+      <WorkedExample intro={"One newsletter, two placements, so GA4 can tell the header banner from the footer text link."} rows={[{"input": "source newsletter, medium email, campaign spring_sale", "output": "?utm_source=newsletter&utm_medium=email&utm_campaign=spring_sale"}, {"input": "\u2026plus content header_banner", "output": "&utm_content=header_banner"}, {"input": "Campaign typed as \"Spring Sale\"", "output": "spring_sale \u2014 GA4 treats Spring Sale and spring_sale as two campaigns"}]} note={"Keep every value lowercase with underscores. Case differences are the single most common cause of split campaign rows in GA4."} />
+
+      <Pitfalls items={[{"problem": "Tagging internal links", "fix": "A UTM on a link between your own pages starts a new session and destroys attribution for the original source."}, {"problem": "Putting UTMs on a link that redirects", "fix": "Some redirect services strip query strings. Test the final landing URL, not the short link."}, {"problem": "Using medium for the platform name", "fix": "Medium describes the channel type (email, cpc, social). The platform belongs in source."}, {"problem": "Tagging paid search links twice", "fix": "Google Ads auto-tagging already adds gclid. Manual UTMs on top can override it and hide conversion data."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

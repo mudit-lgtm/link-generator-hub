@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Restaurant in Austin, TX", "how": "Pins ‘Get directions’ on Google Business and the homepage footer."}, {"who": "Realtor in Miami, FL", "how": "Sends listing addresses with one-tap walking directions."}, {"who": "Event venue in Las Vegas, NV", "how": "Drops a directions link inside attendee email confirmations."}, {"who": "Local salon in Brooklyn, NY", "how": "Embeds a transit directions link on the contact page."}]}
       />
+
+      <WorkedExample intro={"A venue page that opens turn-by-turn directions rather than a search results list."} rows={[{"input": "Address 1600 Amphitheatre Pkwy, Mountain View CA", "output": "https://www.google.com/maps/search/?api=1&query=1600+Amphitheatre+Pkwy%2C+Mountain+View+CA"}, {"input": "Same address, directions mode", "output": "\u2026/maps/dir/?api=1&destination=1600+Amphitheatre+Pkwy&travelmode=driving"}, {"input": "Coordinates 37.4220,-122.0841", "output": "query=37.4220%2C-122.0841 \u2014 exact pin, no geocoding guesswork"}]} note={"Coordinates beat addresses for venues in retail parks or new developments, where geocoding often drops the pin at the wrong entrance."} />
+
+      <Pitfalls items={[{"problem": "Copying the long URL from the browser bar", "fix": "Those contain session data and can stop resolving. The api=1 format is the documented, stable one."}, {"problem": "Not setting travelmode", "fix": "Maps defaults to the user's last mode, which may be transit when your visitors drive."}, {"problem": "Embedding an address with a suite number", "fix": "Suite numbers confuse geocoding. Put the street address in the link and the suite in the page text."}, {"problem": "Assuming the app opens on iPhone", "fix": "Without Google Maps installed the link falls back to the browser, which is fine \u2014 but do not label the button \"open in app\"."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

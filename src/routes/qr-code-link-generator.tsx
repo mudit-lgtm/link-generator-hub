@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Restaurant in Austin, TX", "how": "Prints menu QR codes on table tents."}, {"who": "Realtor in Miami, FL", "how": "Adds a QR to yard signs that opens the listing."}, {"who": "Event organizer in Las Vegas, NV", "how": "Distributes scannable check-in codes on badges."}, {"who": "Wedding planner in Charleston, SC", "how": "Shares a photo-album QR on the menu card."}]}
       />
+
+      <WorkedExample intro={"A food truck prints one QR on the window and needs it readable from two metres away."} rows={[{"input": "https://example.com/menu", "output": "PNG, 21x21 modules (version 1), error correction M"}, {"input": "A wa.me chat link (~40 characters)", "output": "PNG, 25x25 modules \u2014 still scans at 3 cm printed size"}, {"input": "A 180-character UTM-tagged URL", "output": "PNG, 45x45 modules \u2014 needs ~5 cm printed to scan reliably"}]} note={"Rule of thumb for print: the QR should be at least one tenth of the scanning distance. Two metres away means a 20 cm code."} />
+
+      <Pitfalls items={[{"problem": "Shrinking the code to fit a design", "fix": "Longer URLs pack in more modules. Shorten the destination first, then the same physical square holds far fewer modules and scans faster."}, {"problem": "Removing the white border", "fix": "Scanners need a quiet zone of four empty modules on every side. A QR flush against artwork often fails."}, {"problem": "Low contrast or inverted colours", "fix": "Dark code on a light background only. Light-on-dark fails on many Android camera apps."}, {"problem": "Printing a link you can never change", "fix": "Point the QR at a short link you control, so the destination can be updated after the flyers are printed."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

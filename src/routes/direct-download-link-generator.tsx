@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Marketer in Austin, TX", "how": "Adds download attributes to lead-magnet links so PDFs save to disk."}, {"who": "Studio in LA, CA", "how": "Delivers WAV stems with a save-to-disk default."}, {"who": "SaaS founder in Boston, MA", "how": "Distributes desktop installers with stable download URLs."}, {"who": "Nonprofit in Chicago, IL", "how": "Shares branded report PDFs that download with a friendly filename."}]}
       />
+
+      <WorkedExample intro={"The same file, hosted three ways, converted to a link that downloads on click."} rows={[{"input": "Dropbox \u2026?dl=0 share link", "output": "Same URL with dl=1 \u2014 downloads instead of opening the preview page"}, {"input": "OneDrive share link", "output": "\u2026?download=1 appended to the share URL"}, {"input": "Your own server", "output": "No URL change needed \u2014 send Content-Disposition: attachment instead"}]} note={"On a host you control, the header is the correct fix; query-string tricks only exist because consumer cloud drives insist on a preview page."} />
+
+      <Pitfalls items={[{"problem": "Expiring share links", "fix": "Consumer drives rotate links when sharing settings change. Re-check any link you printed or emailed in bulk."}, {"problem": "Bandwidth caps", "fix": "Dropbox and OneDrive suspend links that get heavy traffic. Anything above light sharing belongs on real hosting."}, {"problem": "Downloading executables from a share link", "fix": "Browsers and mail filters flag them. Zip the file or publish a checksum alongside."}, {"problem": "Assuming mobile behaves the same", "fix": "iOS Safari opens many file types in a viewer regardless of the link; note that for mobile users."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

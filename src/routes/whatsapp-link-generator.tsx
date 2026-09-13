@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { buildWhatsAppLink } from "@/lib/link-builders";
@@ -56,6 +56,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Realtor in Miami, FL", "how": "Adds a WhatsApp CTA to listing pages so buyers chat in one tap."}, {"who": "Restaurant in Austin, TX", "how": "Lets diners place takeout orders with a pre-filled menu request."}, {"who": "Coach in Los Angeles, CA", "how": "Books discovery calls via Instagram bio link."}, {"who": "Boutique in NYC", "how": "Handles SMS-style customer support without sharing a personal number."}]}
       />
+
+      <WorkedExample intro={"A Chicago bakery wants order enquiries to land in WhatsApp with the order form already typed out."} rows={[{"input": "Phone +1 (555) 123-4567, no message", "output": "https://wa.me/15551234567"}, {"input": "Phone +44 7700 900123, message \"Hi, is the sourdough available today?\"", "output": "https://wa.me/447700900123?text=Hi%2C%20is%20the%20sourdough%20available%20today%3F"}, {"input": "Message with two lines (order + pickup time)", "output": "\u2026?text=Order%3A%202%20loaves%0APickup%3A%204pm"}]} note={"Line breaks become %0A, so a multi-line order template arrives formatted in the chat."} />
+
+      <Pitfalls items={[{"problem": "Leaving the + or leading zeros in the number", "fix": "wa.me accepts digits only. +44 (0)7700 900123 must be sent as 447700900123 \u2014 the national trunk zero is dropped."}, {"problem": "Using api.whatsapp.com links in Instagram bios", "fix": "Some in-app browsers block the api subdomain. wa.me redirects cleanly on both iOS and Android."}, {"problem": "Very long prefilled messages", "fix": "Above roughly 1,000 characters older Android builds truncate the text silently. Keep the template short and let the customer add detail."}, {"problem": "Expecting the message to send itself", "fix": "WhatsApp only pre-types the text. The customer still taps send, which is why a question works better than a statement."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
