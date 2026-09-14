@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"How do I embed a link in an iframe?"} answer={"Use `<iframe src=\"URL\" title=\"...\" loading=\"lazy\"></iframe>`. Sites that send `X-Frame-Options: DENY` cannot be embedded — use a normal link instead."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "SaaS team in San Jose, CA", "how": "Embeds demo videos."}, {"who": "Realtor in Denver, CO", "how": "Embeds a map of listings."}, {"who": "School in Columbus, OH", "how": "Embeds a signup form."}, {"who": "Nonprofit in Atlanta, GA", "how": "Embeds a donation page."}]} />
+
+      <WorkedExample intro={"A YouTube walkthrough embedded on a docs page without wrecking mobile layout."} rows={[{"input": "Video ID dQw4w9WgXcQ", "output": "<iframe src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" \u2026>"}, {"input": "Start at 1:30", "output": "\u2026/embed/ID?start=90"}, {"input": "Responsive wrapper", "output": "A 16:9 aspect-ratio box so the video scales instead of overflowing"}]} note={"youtube-nocookie.com behaves identically but defers tracking cookies until playback, which simplifies consent banners."} />
+
+      <Pitfalls items={[{"problem": "Embedding the watch URL", "fix": "/watch?v= refuses to frame. Only the /embed/ path works inside an iframe."}, {"problem": "Fixed pixel width", "fix": "A 640px iframe overflows a 390px phone screen. Use a percentage width with an aspect-ratio wrapper."}, {"problem": "No loading=\"lazy\"", "fix": "Each embed pulls hundreds of kilobytes on page load and visibly hurts your Core Web Vitals."}, {"problem": "Missing title attribute", "fix": "Screen readers announce \"iframe\" with no context, and it is an accessibility failure."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

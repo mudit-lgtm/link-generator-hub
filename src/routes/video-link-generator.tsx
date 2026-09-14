@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Course creator in Austin, TX", "how": "QA-checks lesson videos before uploading to Teachable."}, {"who": "Wedding videographer in Denver, CO", "how": "Previews highlight reels before delivery."}, {"who": "Marketing team in San Francisco, CA", "how": "Validates product-demo MP4s before embedding on the landing page."}, {"who": "YouTuber in Los Angeles, CA", "how": "Reviews export quality before publishing."}]}
       />
+
+      <WorkedExample intro={"A product demo clip prepared for a page embed and a plain shareable link."} rows={[{"input": "demo.mp4 uploaded", "output": "<video controls playsinline src=\"\u2026/demo.mp4\"></video>"}, {"input": "With a poster frame", "output": "poster=\"\u2026/demo-thumb.jpg\" \u2014 shown before playback"}, {"input": "A .mov from an iPhone", "output": "Convert to MP4/H.264; .mov fails in several browsers"}]} note={"playsinline stops iOS from hijacking the video into fullscreen, which matters for short autoplaying product clips."} />
+
+      <Pitfalls items={[{"problem": "Autoplay with sound", "fix": "Browsers block it outright. Autoplay only works when the video is also muted."}, {"problem": "Serving a 200 MB file", "fix": "Self-hosting big video burns bandwidth and stalls on mobile. Use a video host above ~20 MB."}, {"problem": "No poster image", "fix": "The player shows a black rectangle until the first frame loads."}, {"problem": "No captions", "fix": "Most social and in-page video is watched muted. A caption track is not optional."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

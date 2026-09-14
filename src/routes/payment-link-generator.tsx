@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Freelancer in Austin, TX", "how": "Sends pay-as-you-go invoices with a one-tap link."}, {"who": "Coach in LA, CA", "how": "Embeds a checkout link in the booking confirmation email."}, {"who": "Online store in NYC", "how": "Generates ad-hoc payment requests for custom orders."}, {"who": "Nonprofit in Boston, MA", "how": "Builds donation links with preset amounts."}]}
       />
+
+      <WorkedExample intro={"An invoice request sent by email and the same amount collected in person by QR."} rows={[{"input": "$120.00, memo \"Invoice 1042\"", "output": "A hosted checkout URL with the amount locked"}, {"input": "Amount left open", "output": "A tip or donation page where the payer chooses"}, {"input": "Same link as QR", "output": "Printed on the invoice for tap-to-pay at the counter"}]} note={"Locking the amount removes underpayment disputes; leaving it open is better for tips and donations, where averages rise when people choose."} />
+
+      <Pitfalls items={[{"problem": "Reusing one link for many invoices", "fix": "Payments arrive with no reference. Generate one per invoice and put the number in the memo."}, {"problem": "No expiry on a quoted price", "fix": "A link from six months ago still charges the old price. Set an expiry when the quote has one."}, {"problem": "Collecting card details yourself", "fix": "Always send people to the provider's hosted page; handling card numbers directly pulls you into PCI scope."}, {"problem": "Ignoring the fee on small amounts", "fix": "Fixed per-transaction fees can take a tenth of a $5 payment. Set a sensible minimum."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

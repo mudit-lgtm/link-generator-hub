@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Podcaster in Brooklyn, NY", "how": "QA-checks episode MP3s before pushing to Buzzsprout."}, {"who": "Music producer in Atlanta, GA", "how": "Shares rough mixes with collaborators in Discord."}, {"who": "Voice-over artist in Chicago, IL", "how": "Sends demo reels to casting directors as direct links."}, {"who": "Audiobook narrator in Nashville, TN", "how": "Validates chapter audio files before uploading to ACX."}]}
       />
+
+      <WorkedExample intro={"A podcast episode prepared for a website player and a plain shareable download."} rows={[{"input": "episode-12.mp3 uploaded", "output": "<audio controls src=\"\u2026/episode-12.mp3\"></audio>"}, {"input": "Same file, share link", "output": "A direct .mp3 URL that plays in the browser tab"}, {"input": "A .wav master", "output": "Works, but roughly 10x the file size \u2014 convert to MP3 or AAC for the web"}]} note={"MP3 and AAC play everywhere. OGG and FLAC fail on Safari, which is still most iPhone traffic."} />
+
+      <Pitfalls items={[{"problem": "Linking a file behind a login", "fix": "The player shows a broken control with no error. Host audio on a public URL."}, {"problem": "Missing preload settings", "fix": "preload=\"none\" keeps a long episode from eating mobile data before anyone presses play."}, {"problem": "No transcript on the page", "fix": "Search engines cannot hear audio. A transcript is what actually gets the episode found."}, {"problem": "Hotlinking someone else's file", "fix": "It can break without warning and it uses their bandwidth. Host your own copy."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

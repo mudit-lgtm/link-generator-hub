@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Band in Nashville, TN", "how": "Adds a Spotify track link to email signatures."}, {"who": "Podcaster in Brooklyn, NY", "how": "Pins a Spotify show link in episode notes."}, {"who": "Music marketer in LA, CA", "how": "Builds release-day playlist URLs."}, {"who": "Bar in Austin, TX", "how": "Cross-promotes the venue's playlist via QR code."}]}
       />
+
+      <WorkedExample intro={"A track link for a bio, and the app deep link for a mobile campaign."} rows={[{"input": "Track ID 4cOdK2wGLETKBW3PvgPWqT", "output": "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT"}, {"input": "App deep link", "output": "spotify:track:4cOdK2wGLETKBW3PvgPWqT"}, {"input": "Copied share link", "output": "Strip ?si=\u2026 \u2014 that suffix is a share-tracking token, not part of the link"}]} note={"open.spotify.com links open the app automatically when it is installed, so there is rarely a reason to use the spotify: scheme on the web."} />
+
+      <Pitfalls items={[{"problem": "Leaving the ?si= token in a public link", "fix": "It ties every play back to your own share session and clutters printed URLs."}, {"problem": "Linking a track that is region-locked", "fix": "Licensing varies by country; check the release is live in your main markets."}, {"problem": "Using the spotify: scheme in an email", "fix": "Many clients refuse non-http schemes and show it as plain text."}, {"problem": "Pointing new listeners at a single track", "fix": "An artist or playlist link keeps them listening longer and counts more monthly listeners."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

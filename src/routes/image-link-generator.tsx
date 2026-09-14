@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Open-source maintainer in Seattle, WA", "how": "Generates README badge previews before pushing to GitHub."}, {"who": "Designer in Brooklyn, NY", "how": "Drops mockups into Slack and Notion as quick image links."}, {"who": "Email marketer in Austin, TX", "how": "Validates hero-banner URLs before sending an MJML template."}, {"who": "Forum moderator in Chicago, IL", "how": "Checks signature graphics render correctly on every device."}]}
       />
+
+      <WorkedExample intro={"One product photo prepared as a hosted link, an HTML tag and a clickable banner."} rows={[{"input": "photo.jpg uploaded", "output": "A direct https URL ending in .jpg"}, {"input": "HTML output", "output": "<img src=\"\u2026/photo.jpg\" alt=\"Linen shirt in oat\" width=\"800\">"}, {"input": "Clickable version", "output": "<a href=\"/products/linen-shirt\"><img \u2026></a>"}]} note={"Setting width and height on the tag reserves the space before the image loads, which stops the page jumping and improves layout scores."} />
+
+      <Pitfalls items={[{"problem": "Empty alt text on meaningful images", "fix": "Describe what the image shows. Leave alt empty only for purely decorative graphics."}, {"problem": "Uploading a 4000px camera file", "fix": "Resize to roughly twice the displayed width. A 6 MB hero image is the most common mobile slowdown."}, {"problem": "Hotlinking from someone else's site", "fix": "It can be blocked or swapped for another picture at any moment, and it is using their bandwidth."}, {"problem": "PNG for photographs", "fix": "Use JPEG or WebP; PNG is for flat graphics and transparency, and triples the file size on photos."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

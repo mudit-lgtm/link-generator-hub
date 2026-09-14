@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Blogger in Austin, TX", "how": "Generates permalinks before publishing in WordPress."}, {"who": "Headless CMS dev in San Francisco, CA", "how": "Slugifies titles in a content pipeline."}, {"who": "Marketer in NYC", "how": "Cleans up exported product names for landing-page URLs."}, {"who": "SEO consultant in Chicago, IL", "how": "Standardizes client-site URL hygiene."}]}
       />
+
+      <WorkedExample intro={"Three article titles turned into URLs that read well and stay stable."} rows={[{"input": "\"How We Cut Load Time by 60%\"", "output": "how-we-cut-load-time-by-60"}, {"input": "\"Caf\u00e9 & Bar: 2026 Guide\"", "output": "cafe-bar-2026-guide \u2014 accents folded, symbols dropped"}, {"input": "\"  Multiple   spaces  \"", "output": "multiple-spaces \u2014 trimmed and collapsed"}]} note={"Short slugs of three to five meaningful words are easier to share and hold up better when a headline is later rewritten."} />
+
+      <Pitfalls items={[{"problem": "Putting the date in the slug", "fix": "Evergreen articles look stale by next year. Keep dates out unless the content really is time-bound."}, {"problem": "Changing a published slug", "fix": "Every existing link and ranking breaks. If you must, add a 301 redirect from the old path."}, {"problem": "Stop words padding the URL", "fix": "Drop the, a and of. They add length without adding meaning."}, {"problem": "Non-Latin characters left raw", "fix": "They become percent-encoded gibberish when copied. Transliterate instead."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

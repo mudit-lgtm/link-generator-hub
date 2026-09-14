@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Enterprise team in Boston, MA", "how": "Standardizes the meeting link copied into project status decks."}, {"who": "HR in Chicago, IL", "how": "Sends interview Teams links in calendar invites."}, {"who": "Consultant in San Francisco, CA", "how": "Drops Teams links in client engagement emails."}, {"who": "Hybrid team in Austin, TX", "how": "Pins Teams links in channel descriptions."}]}
       />
+
+      <WorkedExample intro={"A Teams join link shared with people outside the organisation."} rows={[{"input": "Meeting URL from the calendar", "output": "https://teams.microsoft.com/l/meetup-join/\u2026"}, {"input": "Chat with one person", "output": "https://teams.microsoft.com/l/chat/0/0?users=dana@example.com"}, {"input": "External guest", "output": "Same link \u2014 they join through the browser without a Teams account"}]} note={"Teams join links are long and contain a context token; shortening them for print is fine, but never edit the query string by hand."} />
+
+      <Pitfalls items={[{"problem": "Trimming the join URL", "fix": "Removing the context parameter makes the link unusable. Copy it whole."}, {"problem": "Lobby settings left strict", "fix": "External guests wait indefinitely if no one admits them. Set who can bypass the lobby before the call."}, {"problem": "Assuming guests can share screen", "fix": "Browser guests have limited controls; ask them to install the app if they are presenting."}, {"problem": "Reusing a link from a deleted event", "fix": "Deleting the calendar item invalidates the meeting; the link then errors for everyone."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

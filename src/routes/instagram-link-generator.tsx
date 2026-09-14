@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Boutique in NYC", "how": "Adds a DM link to the website footer for customer questions."}, {"who": "Influencer in LA, CA", "how": "Sends collab requests via ig.me/m links in email."}, {"who": "Realtor in Miami, FL", "how": "Embeds an Instagram profile QR on yard signs."}, {"who": "Coffee shop in Austin, TX", "how": "Cross-links the menu to their Reels."}]}
       />
+
+      <WorkedExample intro={"A bio link that opens the app rather than a logged-out web page."} rows={[{"input": "Username acmestudio", "output": "https://instagram.com/acmestudio"}, {"input": "App deep link", "output": "instagram://user?username=acmestudio"}, {"input": "Direct message", "output": "https://ig.me/m/acmestudio \u2014 opens a DM thread"}]} note={"ig.me/m/ is the DM equivalent of wa.me and is the quickest route from an ad to a conversation."} />
+
+      <Pitfalls items={[{"problem": "Using the app scheme on desktop", "fix": "instagram:// does nothing in a desktop browser. Use the https link unless you detect mobile."}, {"problem": "Expecting clickable links in captions", "fix": "Only the bio and story links are tappable. Captions show the URL as plain text."}, {"problem": "Changing your handle", "fix": "Every printed link breaks instantly and the old handle can be claimed by someone else."}, {"problem": "Sending cold traffic to a profile", "fix": "Point campaigns at a specific post or DM link; a profile grid gives no next step."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

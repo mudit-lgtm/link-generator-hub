@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Dev team in San Francisco, CA", "how": "Drops rickrolls in the office Slack on April 1st."}, {"who": "Streamer in LA, CA", "how": "Disguises ‘bonus content’ links during live streams."}, {"who": "Friend group anywhere in the USA", "how": "Shares it in group texts for a laugh."}, {"who": "Office prankster in NYC", "how": "Sends a ‘meeting agenda’ link to coworkers."}]}
       />
+
+      <WorkedExample intro={"A harmless office prank link, disguised as a document share."} rows={[{"input": "No options", "output": "A short link that lands on the famous 1987 video"}, {"input": "Custom alias \"q3-budget\"", "output": "A link that reads like a spreadsheet share"}, {"input": "Autoplay start", "output": "\u2026?autoplay=1&t=43 \u2014 opens straight at the chorus"}]} note={"Keep it to friends and group chats. The same trick in a work email or a customer message stops being funny fast."} />
+
+      <Pitfalls items={[{"problem": "Using it in marketing", "fix": "Bait-and-switch links raise complaint rates and can get a sending domain blocked."}, {"problem": "Sending it to a client", "fix": "Never disguise a prank as a business document. It reads as a phishing test gone wrong."}, {"problem": "Autoplay in a quiet office", "fix": "Funny once, then it is your colleague's speakers at full volume in a meeting."}, {"problem": "Posting it in a support channel", "fix": "Many platforms treat deceptive links as spam and will remove the account, not just the post."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

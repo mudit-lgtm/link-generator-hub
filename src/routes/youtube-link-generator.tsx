@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "YouTuber in LA, CA", "how": "Adds a one-click subscribe link to every video description."}, {"who": "Course creator in Austin, TX", "how": "Sends students timestamped lesson links."}, {"who": "Podcast clip editor in Brooklyn, NY", "how": "Shares specific moments via timestamped URLs."}, {"who": "Marketing team in San Francisco, CA", "how": "Embeds autoplay video URLs on landing pages."}]}
       />
+
+      <WorkedExample intro={"One video, linked three ways: at a timestamp, as an embed, and with a subscribe prompt."} rows={[{"input": "Video ID + start 1:30", "output": "https://youtu.be/VIDEOID?t=90"}, {"input": "Embed form", "output": "https://www.youtube.com/embed/VIDEOID?start=90"}, {"input": "Subscribe prompt", "output": "https://www.youtube.com/@channel?sub_confirmation=1"}]} note={"The t= parameter takes seconds in a youtu.be link but the embed path wants start=; mixing them is why timestamps often fail."} />
+
+      <Pitfalls items={[{"problem": "Using watch?v= in an iframe", "fix": "It refuses to frame. Only /embed/ works as an embed source."}, {"problem": "Timestamps written as 1:30", "fix": "The parameter takes seconds (90), or the 1m30s form. A colon is ignored."}, {"problem": "Copying a link with a playlist id", "fix": "Viewers get pulled into a whole playlist instead of the one video you meant."}, {"problem": "Autoplay embeds", "fix": "Blocked unless muted, and it hurts page performance scores either way."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

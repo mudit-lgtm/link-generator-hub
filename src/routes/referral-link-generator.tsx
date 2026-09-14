@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "SaaS founder in San Francisco, CA", "how": "Powers a launch referral leaderboard from a landing page."}, {"who": "Course creator in Austin, TX", "how": "Lets students earn a discount for each friend they invite."}, {"who": "Crypto exchange in Miami, FL", "how": "Pays signup bonuses tracked via `?ref=` codes."}, {"who": "DTC brand in Brooklyn, NY", "how": "Powers a give-$10-get-$10 program through email."}]}
       />
+
+      <WorkedExample intro={"A member-get-member link that credits the right person and survives signup."} rows={[{"input": "Code DANA20", "output": "https://example.com/signup?ref=DANA20"}, {"input": "Landing on a content page", "output": "https://example.com/blog/post?ref=DANA20 \u2014 the code follows through to signup"}, {"input": "Code with spaces", "output": "dana20 \u2014 normalised to lowercase, no spaces"}]} note={"Store the referral code in a first-party cookie on arrival; most signups happen on a later visit, not the first click."} />
+
+      <Pitfalls items={[{"problem": "Relying on the query string at signup", "fix": "People browse first, then register. Without a stored cookie the credit is lost."}, {"problem": "No self-referral check", "fix": "The first thing a determined user tries is referring themselves from a second email."}, {"problem": "Unreadable codes", "fix": "Names and short words get shared verbally. Random strings do not."}, {"problem": "No expiry or cap", "fix": "Set a window and a per-user limit before launch; changing the terms afterwards annoys your best advocates."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

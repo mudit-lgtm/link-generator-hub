@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Plumber in Houston, TX", "how": "Adds 'Text us' to Google Business listing."}, {"who": "Restaurant in NYC", "how": "Lets diners text for reservations."}, {"who": "Tutor in Boston, MA", "how": "Allows parents to SMS with one tap."}, {"who": "Salon in Phoenix, AZ", "how": "Sends appointment confirmations."}]}
       />
+
+      <WorkedExample intro={"A poster CTA that opens the messages app with the keyword already typed."} rows={[{"input": "Number +15551234567, body \"JOIN\"", "output": "sms:+15551234567?&body=JOIN"}, {"input": "iOS-safe form", "output": "The &amp; after ? is what makes older iOS keep the body"}, {"input": "Body with a line break", "output": "Encoded as %0A; some Android clients strip it"}]} note={"The ?& quirk is real: iOS historically dropped the body without the extra ampersand, and it does no harm on Android."} />
+
+      <Pitfalls items={[{"problem": "Desktop visitors", "fix": "Nothing happens without a paired messages app. Show the number as text alongside the button."}, {"problem": "Long prefilled messages", "fix": "Anything over 160 characters becomes a multipart message and may be charged as several."}, {"problem": "Assuming delivery is free", "fix": "The sender pays their normal rate. Say so next to any shortcode-style CTA."}, {"problem": "Skipping the country code", "fix": "A local-format number fails for anyone roaming or abroad."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

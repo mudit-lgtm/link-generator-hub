@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Crypto project in Miami, FL", "how": "Distributes its t.me channel in social bios."}, {"who": "Community manager in Austin, TX", "how": "Embeds bot deep-links in product onboarding."}, {"who": "Newsletter in Brooklyn, NY", "how": "Adds a ‘Share on Telegram’ button to articles."}, {"who": "Game studio in Seattle, WA", "how": "Sends Telegram channel invites in patch notes."}]}
       />
+
+      <WorkedExample intro={"A support handle link, a channel invite and a bot start command with a payload."} rows={[{"input": "Username acmesupport", "output": "https://t.me/acmesupport"}, {"input": "Private channel", "output": "https://t.me/+AbCdEf\u2026 \u2014 the invite hash form"}, {"input": "Bot with payload", "output": "https://t.me/acmebot?start=ref_dana"}]} note={"The ?start= payload arrives with the first bot message, which is how referral tracking works inside Telegram."} />
+
+      <Pitfalls items={[{"problem": "Sharing a private invite publicly", "fix": "Anyone who sees it joins. Revoke and regenerate the invite if it leaks."}, {"problem": "Assuming a username is permanent", "fix": "Released usernames can be taken by someone else, including impersonators."}, {"problem": "Payload longer than 64 characters", "fix": "Telegram silently drops it. Use a short code and look up the detail server-side."}, {"problem": "Using tg:// in emails", "fix": "Custom schemes are stripped by most mail clients. Always use the https t.me form."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

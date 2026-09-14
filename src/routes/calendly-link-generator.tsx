@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Coach in Denver, CO", "how": "Embeds a Calendly link in welcome emails."}, {"who": "Sales rep in Austin, TX", "how": "Tracks bookings by UTM source."}, {"who": "Recruiter in NYC", "how": "Shares interview slots via Calendly URL."}, {"who": "Consultant in San Francisco, CA", "how": "Adds Calendly to LinkedIn bio."}]}
       />
+
+      <WorkedExample intro={"A sales booking link that arrives with the prospect's details already filled in."} rows={[{"input": "calendly.com/acme/30min", "output": "The plain booking page"}, {"input": "\u2026plus name and email prefill", "output": "?name=Dana%20Lee&email=dana%40example.com"}, {"input": "Hide the cookie banner and details", "output": "&hide_gdpr_banner=1&hide_event_type_details=1"}]} note={"Prefilling name and email typically removes two form fields, which is where most booking drop-off happens."} />
+
+      <Pitfalls items={[{"problem": "Prefilling from an unverified source", "fix": "Anyone can edit a query string. Never trust prefilled values as confirmed identity."}, {"problem": "Embedding without a height", "fix": "The iframe collapses on mobile. Give it a fixed height of at least 700px or use their responsive embed."}, {"problem": "Sending a link to a full calendar", "fix": "Check availability before a campaign; an empty week reads as an abandoned business."}, {"problem": "One link for every campaign", "fix": "Add a utm_source so you know which email or ad produced the meeting."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

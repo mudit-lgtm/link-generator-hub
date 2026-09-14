@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Consultant in Boston, MA", "how": "Sends pre-built join links in calendar invites."}, {"who": "Yoga studio in Austin, TX", "how": "Distributes class Zoom links via email."}, {"who": "Teacher in Chicago, IL", "how": "Posts the meeting URL in the LMS each week."}, {"who": "Sales team in San Francisco, CA", "how": "Standardizes Zoom links across all booked demos."}]}
       />
+
+      <WorkedExample intro={"A webinar join link that does not force every attendee to type a passcode."} rows={[{"input": "Meeting ID 123 4567 8901", "output": "https://zoom.us/j/12345678901"}, {"input": "With embedded passcode", "output": "\u2026/j/12345678901?pwd=<encrypted> \u2014 joins in one click"}, {"input": "Vanity domain", "output": "https://acme.zoom.us/j/\u2026 for paid accounts"}]} note={"The pwd parameter is the hashed passcode Zoom generates, not the numeric code you see in the invite; copy the whole link rather than building it."} />
+
+      <Pitfalls items={[{"problem": "Retyping the pwd value", "fix": "It is not the passcode digits. Hand-built pwd values always fail."}, {"problem": "Posting a join link publicly", "fix": "Zoombombing is still common. Use registration or a waiting room for anything public."}, {"problem": "Personal Meeting ID for external calls", "fix": "Your PMI never changes, so anyone who ever had it can drop into a later meeting."}, {"problem": "No dial-in for phone attendees", "fix": "Include one number and the ID for people joining from a car or a weak connection."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

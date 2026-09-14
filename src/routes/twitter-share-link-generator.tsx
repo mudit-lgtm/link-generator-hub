@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Indie hacker in Austin, TX", "how": "Adds Share-on-X buttons to launch pages."}, {"who": "Author in Brooklyn, NY", "how": "Embeds tweet templates in blog posts."}, {"who": "Nonprofit in DC", "how": "Lets supporters tweet pre-written advocacy messages."}, {"who": "Conference in San Francisco, CA", "how": "Provides speaker-share tweet URLs."}]}
       />
+
+      <WorkedExample intro={"A share button that opens the composer with the post title, link and one hashtag."} rows={[{"input": "Text + URL", "output": "https://twitter.com/intent/tweet?text=How%20we%20cut%20load%20time&url=https%3A%2F%2Fexample.com%2Fpost"}, {"input": "Plus a mention and hashtag", "output": "&via=acmestudio&hashtags=webperf"}, {"input": "x.com domain", "output": "Both twitter.com and x.com intent URLs still work"}]} note={"The URL counts as a fixed 23 characters regardless of its real length, so budget the text around that, not around the raw link."} />
+
+      <Pitfalls items={[{"problem": "Putting the URL inside the text parameter", "fix": "It gets double-counted and encoded oddly. Use the separate url parameter."}, {"problem": "Three or more hashtags", "fix": "Engagement drops. One or two relevant tags outperform a list."}, {"problem": "hashtags with a # prefix", "fix": "The parameter takes bare words, comma separated. A # becomes %23 and breaks the tag."}, {"problem": "Relying on the preview card", "fix": "Cards only render if the destination has twitter:card tags and has been crawled."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

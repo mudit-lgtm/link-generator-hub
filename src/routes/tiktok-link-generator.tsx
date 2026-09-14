@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Creator in LA, CA", "how": "Pins TikTok profile link in every bio."}, {"who": "DTC brand in Austin, TX", "how": "Cross-promotes campaign videos from email."}, {"who": "Music label in Nashville, TN", "how": "Drops sound IDs into press kits."}, {"who": "Restaurant in Miami, FL", "how": "Embeds viral menu videos on the site."}]}
       />
+
+      <WorkedExample intro={"A profile link for a bio, plus the in-app version for paid traffic."} rows={[{"input": "Username acmestudio", "output": "https://www.tiktok.com/@acmestudio"}, {"input": "Single video", "output": "https://www.tiktok.com/@acmestudio/video/7123456789012345678"}, {"input": "Copied share link", "output": "vm.tiktok.com/\u2026 \u2014 fine to share, but it expires and cannot be printed safely"}]} note={"The @ is required in profile URLs; without it the link 404s rather than redirecting."} />
+
+      <Pitfalls items={[{"problem": "Printing a vm.tiktok.com short link", "fix": "Those are session share links and can stop resolving. Use the full canonical URL."}, {"problem": "Forgetting the @", "fix": "tiktok.com/acmestudio is a dead page. The handle always carries the @."}, {"problem": "Linking a video that gets deleted", "fix": "Profile links are safer for anything printed or embedded long-term."}, {"problem": "Expecting desktop parity", "fix": "Many features open only in the app; on desktop the link lands on the web player."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
