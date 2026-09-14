@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Community manager in Austin, TX", "how": "Posts a stable vanity invite on the website."}, {"who": "Game dev in Seattle, WA", "how": "Drops invites in YouTube descriptions and Twitter bios."}, {"who": "Streamer in LA, CA", "how": "Shares the server invite in stream overlays."}, {"who": "Open-source maintainer anywhere in the USA", "how": "Adds a contributor Discord invite to the README."}]}
       />
+
+      <WorkedExample intro={"A public community invite that will not expire halfway through a launch week."} rows={[{"input": "Invite code aB3dEf", "output": "https://discord.gg/aB3dEf"}, {"input": "Vanity URL (level 3 servers)", "output": "https://discord.gg/yourbrand"}, {"input": "Default settings", "output": "Expires in 7 days, 0 max uses \u2014 set both to never for a website link"}]} note={"Discord defaults every new invite to 7 days. A link printed on a site or video needs expiry explicitly set to never."} />
+
+      <Pitfalls items={[{"problem": "Posting a temporary invite publicly", "fix": "It dies in a week and the traffic hits a \"invite invalid\" screen with no recovery path."}, {"problem": "Inviting straight into a busy channel", "fix": "Point the invite at a rules or welcome channel so new arrivals know what to do first."}, {"problem": "Temporary membership left on", "fix": "That setting kicks people when they disconnect; most server owners enable it by accident."}, {"problem": "No verification level", "fix": "A public invite with no verification attracts spam bots within hours. Require a verified email at minimum."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

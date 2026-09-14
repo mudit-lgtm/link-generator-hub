@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Recruiter in NYC", "how": "Sends candidates a one-tap profile preview."}, {"who": "Founder in San Francisco, CA", "how": "Pins the company-page link in the email signature."}, {"who": "B2B marketer in Boston, MA", "how": "Adds Share-on-LinkedIn buttons to blog articles."}, {"who": "Career coach in Austin, TX", "how": "Drops their LinkedIn vanity in every podcast bio."}]}
       />
+
+      <WorkedExample intro={"A share button for a company blog post, and a prefilled connection message for outreach."} rows={[{"input": "Article URL", "output": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexample.com%2Fpost"}, {"input": "Company page", "output": "https://www.linkedin.com/company/acme"}, {"input": "Profile, clean form", "output": "linkedin.com/in/danalee \u2014 drop everything after the slug"}]} note={"LinkedIn reads the destination's Open Graph tags for the preview; there is no supported way to prefill the post text."} />
+
+      <Pitfalls items={[{"problem": "Sharing a link with no og:image", "fix": "The post appears as a grey box and gets noticeably less engagement."}, {"problem": "Copying a profile URL with tracking junk", "fix": "Trim ?originalSubdomain= and similar; the clean /in/ slug is stable and shorter."}, {"problem": "Stale preview after an edit", "fix": "Use LinkedIn's Post Inspector to refresh the cached preview before sharing again."}, {"problem": "Outbound links in the post body", "fix": "Reach is lower for posts with external links. Many teams put the link in the first comment."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

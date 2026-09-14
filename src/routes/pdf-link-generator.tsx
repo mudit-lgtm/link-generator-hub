@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Lawyer in NYC", "how": "Sends engagement letters as inline-viewable PDFs."}, {"who": "Realtor in Phoenix, AZ", "how": "Shares property fact sheets via SMS with one-tap preview."}, {"who": "B2B SaaS marketer in Austin, TX", "how": "Gates whitepapers behind a download CTA on the landing page."}, {"who": "Course creator in Denver, CO", "how": "Embeds PDF handouts inline in the LMS lesson page."}]}
       />
+
+      <WorkedExample intro={"A 40-page manual linked so support can send customers straight to the right page."} rows={[{"input": "manual.pdf, page 12", "output": "https://example.com/manual.pdf#page=12"}, {"input": "Open zoomed to fit width", "output": "#page=12&zoom=page-width"}, {"input": "Force a download", "output": "Serve with Content-Disposition: attachment"}]} note={"The #page= fragment is honoured by Chrome, Edge, Firefox and Acrobat, but ignored by some mobile in-app viewers."} />
+
+      <Pitfalls items={[{"problem": "Scanned PDFs with no text layer", "fix": "They are invisible to search and to screen readers. Run OCR before publishing."}, {"problem": "Publishing a PDF instead of a page", "fix": "PDFs rank worse and read badly on phones. Use one for print-ready documents only."}, {"problem": "Huge uncompressed files", "fix": "A 30 MB brochure will not open on a weak connection. Downsample images to 150 dpi for screen use."}, {"problem": "Metadata left in the file", "fix": "Author names, file paths and revision history travel inside the PDF. Strip them before publishing."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

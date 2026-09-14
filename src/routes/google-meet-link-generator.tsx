@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Marketer in Austin, TX", "how": "Adds an instant-meeting link to the email signature."}, {"who": "Teacher in Chicago, IL", "how": "Posts class Meet codes in Google Classroom."}, {"who": "Therapist in Brooklyn, NY", "how": "Sends tele-health links via SMS reminders."}, {"who": "Designer in San Francisco, CA", "how": "Drops a Meet link into Figma comments for live review."}]}
       />
+
+      <WorkedExample intro={"A recurring standup link that does not need a new invite every morning."} rows={[{"input": "Existing meeting code abc-defg-hij", "output": "https://meet.google.com/abc-defg-hij"}, {"input": "Instant meeting", "output": "https://meet.google.com/new \u2014 creates a fresh code on open"}, {"input": "Dial-in needed", "output": "Add the PIN line from the calendar event; codes alone do not carry phone access"}]} note={"Meeting codes tied to a calendar event stay valid for the whole series, which is why standups should link the event, not a one-off room."} />
+
+      <Pitfalls items={[{"problem": "Sharing a /new link", "fix": "It creates a different room for each person who clicks. Share the generated code instead."}, {"problem": "External guests hitting \"ask to join\"", "fix": "Add them to the calendar event so they are admitted automatically."}, {"problem": "No personal Google account", "fix": "Guests without an account can join only if the host is present. Say so in the invite."}, {"problem": "Assuming recording is on", "fix": "Recording needs a paid Workspace tier and must be started manually each time."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"How do I add clickable links to an email signature?"} answer={"Use real anchor tags: `mailto:` for email, `tel:` for phone and a full `https://` URL for your site. Inline styles are required because email clients strip stylesheets."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Sales rep in Charlotte, NC", "how": "Links a booking page."}, {"who": "Recruiter in Chicago, IL", "how": "Adds LinkedIn to every email."}, {"who": "Founder in Austin, TX", "how": "Drives traffic to the site."}, {"who": "Consultant in Denver, CO", "how": "Makes the phone tap-to-call."}]} />
+
+      <WorkedExample intro={"A signature block that works in Gmail, Outlook and Apple Mail without breaking."} rows={[{"input": "Name, role, phone, site", "output": "A table-based HTML block with a tel: and https: link"}, {"input": "Booking link added", "output": "An inline text link, not a button image"}, {"input": "Logo image", "output": "Must be an absolute https URL \u2014 attachments show as a red X for many recipients"}]} note={"Outlook's renderer ignores flexbox and most modern CSS; signatures survive only as simple tables with inline styles."} />
+
+      <Pitfalls items={[{"problem": "Using a hosted image for the whole signature", "fix": "Images are blocked by default in many clients, leaving a blank signature with no contact details."}, {"problem": "Social icons with no alt text", "fix": "Blocked-image mode shows nothing at all. Alt text keeps the links usable."}, {"problem": "Bare tracking links", "fix": "Spam filters score redirect chains in signatures harshly. Link to your own domain."}, {"problem": "A five-line disclaimer", "fix": "It inflates every reply in a thread. Keep it short or link to the policy page."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"How do I make a clickable link in HTML?"} answer={"Wrap the anchor text in an `<a href=\"URL\">` tag. Add `target=\"_blank\" rel=\"noopener\"` to open a new tab safely, and `rel=\"nofollow\"` for paid or untrusted links."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Blogger in Austin, TX", "how": "Pastes Markdown links into posts."}, {"who": "Forum mod in Chicago, IL", "how": "Shares BBCode links."}, {"who": "Agency in Miami, FL", "how": "Marks sponsored links nofollow."}, {"who": "Developer in Seattle, WA", "how": "Adds README links fast."}]} />
+
+      <WorkedExample intro={"The same link written for a web page, a README and a forum post."} rows={[{"input": "HTML, opens in a new tab", "output": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener\">Example</a>"}, {"input": "Markdown", "output": "[Example](https://example.com)"}, {"input": "BBCode", "output": "[url=https://example.com]Example[/url]"}]} note={"rel=\"noopener\" is not optional on target=\"_blank\": without it the opened page can manipulate the tab it came from."} />
+
+      <Pitfalls items={[{"problem": "\"Click here\" as the anchor text", "fix": "Screen readers list links out of context, and search engines learn nothing. Describe the destination."}, {"problem": "Adding nofollow to internal links", "fix": "It wastes crawl signals inside your own site. Reserve nofollow for untrusted or paid outbound links."}, {"problem": "Opening every link in a new tab", "fix": "It breaks the back button and confuses mobile users. Reserve it for PDFs and third-party tools."}, {"problem": "Unescaped ampersands in href", "fix": "Write &amp; in HTML; a bare & can break validation and some parsers."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

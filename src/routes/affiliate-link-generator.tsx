@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { ShareAndGuestbook } from "@/components/backlink-block";
 import { SEO } from "@/lib/seo-keywords";
@@ -55,6 +55,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Tech blogger in Brooklyn, NY", "how": "Tags every product mention with the post slug as ascsubtag."}, {"who": "Home-cook YouTuber in Austin, TX", "how": "Builds a kitchen-gear page that funnels to Amazon Associates."}, {"who": "Affiliate marketer in Phoenix, AZ", "how": "Tracks AliExpress conversions per landing page with sub-IDs."}, {"who": "SEO consultant in Chicago, IL", "how": "Adds tagged buy buttons to client comparison posts."}]}
       />
+
+      <WorkedExample intro={"One product page, tagged for three different affiliate placements so payouts can be told apart."} rows={[{"input": "Amazon product URL + tag acme-20", "output": "https://www.amazon.com/dp/B0XXXX?tag=acme-20"}, {"input": "Generic program, sub-id \"newsletter\"", "output": "?ref=acme&subid=newsletter"}, {"input": "Link already carrying ?ref=", "output": "The existing ref is replaced, not appended twice"}]} note={"Sub-IDs are the only reliable way to see which placement earned a commission; most networks report them for 60-90 days."} />
+
+      <Pitfalls items={[{"problem": "Cloaking links behind a redirect without disclosure", "fix": "Most programs require a visible affiliate disclosure; hiding the destination can end the partnership."}, {"problem": "Losing the tag through a shortener", "fix": "Some shorteners strip query strings. Always open the short link and confirm the tag survives to the landing page."}, {"problem": "Putting the tag on a deep category page", "fix": "Amazon in particular pays on the session, but a broken or expired product URL earns nothing. Check the product is still live."}, {"problem": "Emailing Amazon affiliate links", "fix": "Their operating agreement forbids it. Link to a page on your own site instead and put the affiliate link there."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

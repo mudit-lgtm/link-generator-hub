@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Publisher in NYC", "how": "Adds Share buttons under every article."}, {"who": "E-commerce brand in Austin, TX", "how": "Sends Facebook share CTAs in post-purchase emails."}, {"who": "Nonprofit in Chicago, IL", "how": "Asks supporters to share fundraising pages."}, {"who": "SaaS in San Francisco, CA", "how": "Lets users share milestone achievements."}]}
       />
+
+      <WorkedExample intro={"A share button for a blog post, plus the tags that decide what the post looks like once shared."} rows={[{"input": "https://example.com/blog/post", "output": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fblog%2Fpost"}, {"input": "Page with og:image 1200x630", "output": "A large image card"}, {"input": "Page with no og tags", "output": "A bare link with the domain name and no picture"}]} note={"Facebook no longer accepts a prefilled quote or message; everything shown comes from the destination page's Open Graph tags."} />
+
+      <Pitfalls items={[{"problem": "Expecting to prefill the caption", "fix": "The quote parameter was removed years ago. Control the preview through og:title and og:description instead."}, {"problem": "A stale preview after editing the page", "fix": "Facebook caches aggressively. Re-scrape the URL in their Sharing Debugger to refresh it."}, {"problem": "og:image under 600px wide", "fix": "It renders as a tiny thumbnail. Use 1200x630 for the full-width card."}, {"problem": "Sharing a URL with UTMs", "fix": "Each variant caches separately and can fragment your share counts."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

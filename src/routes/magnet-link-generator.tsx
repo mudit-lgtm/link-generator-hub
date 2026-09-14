@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Linux distro mirror in Raleigh, NC", "how": "Publishes magnet URIs alongside ISO downloads for resilient delivery."}, {"who": "Open-data archivist in San Francisco, CA", "how": "Distributes academic dataset bundles via magnet so peers cache copies."}, {"who": "Game modder in Austin, TX", "how": "Ships large texture packs to community via magnet links on a forum."}, {"who": "Software publisher in Seattle, WA", "how": "Offers magnet downloads as a fallback when CDN traffic spikes."}]}
       />
+
+      <WorkedExample intro={"A magnet URI assembled from an info hash for a file you are distributing yourself."} rows={[{"input": "Info hash 40 hex characters", "output": "magnet:?xt=urn:btih:<hash>"}, {"input": "Plus display name", "output": "&dn=ubuntu-24.04-desktop-amd64.iso"}, {"input": "Plus tracker", "output": "&tr=udp%3A%2F%2Ftracker.example.org%3A6969"}]} note={"Without at least one tracker or DHT enabled in the client, a magnet link finds no peers and appears to hang."} />
+
+      <Pitfalls items={[{"problem": "Sharing copyrighted material", "fix": "Only distribute files you own or that carry a licence permitting it. This tool is for your own releases and open-source images."}, {"problem": "Hash in the wrong format", "fix": "btih accepts 40-character hex or 32-character base32. Mixed or truncated hashes fail silently."}, {"problem": "No display name", "fix": "The download shows as the raw hash in the client, which looks like malware to most people."}, {"problem": "Dead trackers", "fix": "Include two or three current public trackers; a single stale one leaves the torrent stuck at 0%."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

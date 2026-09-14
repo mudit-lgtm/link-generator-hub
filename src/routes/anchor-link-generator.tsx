@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"How do I link to a specific part of a page?"} answer={"Give the heading an `id` and append `#id` to the URL. If you can't edit the page, use a text fragment: `#:~:text=your%20phrase`, supported in Chrome and Edge."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Docs writer in San Francisco, CA", "how": "Links readers to one section."}, {"who": "Support team in Tampa, FL", "how": "Sends customers to an exact FAQ."}, {"who": "Publisher in NYC", "how": "Builds a table of contents."}, {"who": "SEO in Nashville, TN", "how": "Earns jump-to sitelinks."}]} />
+
+      <WorkedExample intro={"A long pricing guide that needs shareable links straight to each section."} rows={[{"input": "Heading \"Annual plans\"", "output": "id=\"annual-plans\" and href=\"#annual-plans\""}, {"input": "Same page, absolute form", "output": "https://example.com/pricing#annual-plans"}, {"input": "Heading with an ampersand: \"Fees & refunds\"", "output": "fees-refunds \u2014 symbols are dropped, not encoded"}]} note={"Chrome also supports text fragments (#:~:text=annual%20plans) when you cannot edit the page to add an id."} />
+
+      <Pitfalls items={[{"problem": "Duplicate ids on one page", "fix": "Only the first match wins. Suffix repeats (-2) or the jump silently lands in the wrong place."}, {"problem": "A sticky header covering the target", "fix": "Add scroll-margin-top to the heading equal to the header height, otherwise the title hides behind the bar."}, {"problem": "Renaming a heading later", "fix": "The id changes and every shared link breaks. Keep the original id even if the wording changes."}, {"problem": "Using spaces or capitals in an id", "fix": "Stick to lowercase and hyphens; mixed case behaves inconsistently across browsers and analytics tools."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

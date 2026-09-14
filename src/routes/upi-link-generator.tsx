@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"What is a UPI payment link?"} answer={"`upi://pay?pa=vpa&pn=name&am=amount&cu=INR` is a deep link that opens any UPI app with the payment pre-filled. It works on Android and iOS where a UPI app is installed."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "Freelancer billing US clients", "how": "Collects INR payouts."}, {"who": "Etsy seller shipping to the USA", "how": "Takes UPI from Indian buyers."}, {"who": "Tutor with NRI students", "how": "Shares a fixed-amount link."}, {"who": "Creator on a US platform", "how": "Adds a UPI tip link."}]} />
+
+      <WorkedExample intro={"A fixed invoice amount and an open tip jar, both as UPI deep links."} rows={[{"input": "VPA acme@okhdfcbank, \u20b9499", "output": "upi://pay?pa=acme@okhdfcbank&pn=Acme&am=499&cu=INR"}, {"input": "Amount left blank", "output": "The payer types any amount \u2014 right for tips"}, {"input": "With a note", "output": "&tn=Invoice%201042 \u2014 shows in the payer's history and yours"}]} note={"cu=INR is mandatory; UPI rejects the request without a currency even though rupees are the only option."} />
+
+      <Pitfalls items={[{"problem": "Sharing the link to desktop users", "fix": "Nothing opens without a UPI app. Pair every UPI link with a QR code."}, {"problem": "Typos in the VPA", "fix": "The money can reach a real stranger's handle. Send yourself \u20b91 before publishing."}, {"problem": "No transaction note", "fix": "Reconciling a day of identical \u20b9499 payments becomes guesswork."}, {"problem": "Trusting the app's success screen alone", "fix": "Confirm against your bank statement; app status can lag or show pending as done."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

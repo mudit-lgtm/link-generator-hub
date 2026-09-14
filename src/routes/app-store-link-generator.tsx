@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "App studio in San Francisco, CA", "how": "Generates locale-specific links for global launches."}, {"who": "Marketing team in NYC", "how": "Builds affiliate App Store URLs."}, {"who": "YouTuber in LA, CA", "how": "Adds App Store links to video descriptions."}, {"who": "Startup in Austin, TX", "how": "Shares iOS links in press kits."}]}
       />
+
+      <WorkedExample intro={"One campaign, two stores, so installs can be attributed per platform."} rows={[{"input": "App ID 310633997, US store", "output": "https://apps.apple.com/us/app/id310633997"}, {"input": "Android package com.example.app", "output": "https://play.google.com/store/apps/details?id=com.example.app"}, {"input": "Play link + campaign tag", "output": "&referrer=utm_source%3Dnewsletter%26utm_campaign%3Dspring"}]} note={"Leaving the country code out of an App Store link sends everyone to the US store, which can show \"not available in your region\"."} />
+
+      <Pitfalls items={[{"problem": "Using a country-locked link in global ads", "fix": "Use /app/idXXXX without a locale, or detect the region and pick the matching store."}, {"problem": "Expecting UTMs to work on iOS", "fix": "Apple ignores query strings; use Apple's campaign token (ct=) in App Analytics links instead."}, {"problem": "Linking the developer page, not the app", "fix": "Visitors have to search again, and a large share drop off at that step."}, {"problem": "One button for both platforms", "fix": "Show both, or route by user agent. A Play link on an iPhone is a dead end."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -45,6 +45,10 @@ function Page() {
       <AeoBlock question={"What is a tel: link?"} answer={"`tel:+15555550123` tells a phone, tablet or desktop calling app to dial that number when tapped. Always use E.164 (country code + number, no spaces)."} keywords={KW} />
 
       <GeoBlock heading={"USA use cases"} keywords={KW} items={[{"who": "HVAC company in Dallas, TX", "how": "Adds tap-to-call to mobile ads."}, {"who": "Clinic in Portland, OR", "how": "Lets patients dial reception."}, {"who": "Law firm in Boston, MA", "how": "Routes callers to an extension."}, {"who": "Towing service in Las Vegas, NV", "how": "Puts a call button in every listing."}]} />
+
+      <WorkedExample intro={"A contact page button that dials reception and jumps straight to an extension."} rows={[{"input": "+1 (555) 123-4567", "output": "tel:+15551234567"}, {"input": "Extension 204", "output": "tel:+15551234567,204 \u2014 the comma is a two-second pause"}, {"input": "Longer IVR path", "output": "tel:+15551234567,,204 \u2014 two commas for slower menus"}]} note={"A comma is a pause; a p also works on many handsets. Extensions dialled with no pause almost always miss the menu."} />
+
+      <Pitfalls items={[{"problem": "Formatting the href like the display text", "fix": "Spaces, brackets and dashes belong in the visible label, never inside tel:."}, {"problem": "No country code", "fix": "The number fails for anyone calling from abroad or on a foreign SIM."}, {"problem": "A call button on desktop with no fallback", "fix": "Show the number as selectable text so it can be copied."}, {"problem": "Tracking numbers swapped by script", "fix": "If a script rewrites numbers, make sure it rewrites the href too, not just the label."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 

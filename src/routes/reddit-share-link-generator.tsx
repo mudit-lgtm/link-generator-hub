@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolLayout } from "@/components/ToolLayout";
 import {
   ToolHero, ToolCard, Field, inputCls, OutputBlock, HowToUse, FaqSection,
-  ContextualLinks, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
+  ContextualLinks, WorkedExample, Pitfalls, BackToHomeLink, Breadcrumbs, buildHead, AeoBlock, GeoBlock, ToolForm,
 } from "@/components/tool-ui";
 import { SEO } from "@/lib/seo-keywords";
 
@@ -54,6 +54,10 @@ function Page() {
         keywords={KW}
         items={[{"who": "Indie maker in Seattle, WA", "how": "Posts launches to /r/SideProject with one click."}, {"who": "Game studio in Austin, TX", "how": "Lets fans cross-post patch notes."}, {"who": "Researcher in Boston, MA", "how": "Promotes papers to /r/science."}, {"who": "News site in NYC", "how": "Adds Share-on-Reddit buttons."}]}
       />
+
+      <WorkedExample intro={"A submit link that opens Reddit with the title and URL already filled in."} rows={[{"input": "URL + title", "output": "https://www.reddit.com/submit?url=\u2026&title=How%20we%20cut%20load%20time"}, {"input": "Targeting a subreddit", "output": "https://www.reddit.com/r/webdev/submit?url=\u2026"}, {"input": "Text post", "output": "\u2026/submit?selftext=true&title=\u2026&text=\u2026"}]} note={"Pointing at /r/<sub>/submit skips the community picker, which is the step most people abandon."} />
+
+      <Pitfalls items={[{"problem": "Encouraging link drops in strict subs", "fix": "Many communities auto-remove self-promotion. Read the sidebar rules before pushing a share button at them."}, {"problem": "Title over 300 characters", "fix": "Reddit rejects the submission outright rather than truncating."}, {"problem": "Unencoded titles", "fix": "An & or # in the title truncates the prefill at that character."}, {"problem": "Expecting the post to submit itself", "fix": "Reddit only prefills the form; the user still chooses the community and presses post."}]} />
 
       <FaqSection items={FAQS} keywords={KW} heading={"FAQ"} />
 
