@@ -46,9 +46,6 @@ export const TOOLS: Tool[] = [
     blurb: "Custom referral & invite links with tracking codes.", accent: "from-pink-400 to-fuchsia-500" },
   { to: "/slug-generator", label: "SEO URL Slug Generator", short: "SEO Slug", icon: "🔡",
     blurb: "Clean WordPress-friendly permalinks & SEO URL slugs.", accent: "from-teal-400 to-cyan-500" },
-  { to: "/rickroll-link-generator", label: "Rick Roll Link Generator", short: "Rickroll", icon: "🎵",
-    blurb: "Custom rickroll, prank and fake link generator.", accent: "from-indigo-400 to-purple-500" },
-
   { to: "/discord-invite-link-generator", label: "Discord Invite Link Generator", short: "Discord Invite", icon: "🟣",
     blurb: "Custom Discord server invite links with vanity codes.", accent: "from-indigo-500 to-purple-600" },
   { to: "/zoom-meeting-link-generator", label: "Zoom Meeting Link Generator", short: "Zoom Link", icon: "🎥",
@@ -137,7 +134,7 @@ const MENU_GROUPS: { title: string; tools: Tool[] }[] = [
   },
   {
     title: "Files & Downloads",
-    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/rickroll-link-generator","/spotify-link-generator"].includes(t.to)),
+    tools: TOOLS.filter((t) => ["/google-drive-direct-link-generator","/pdf-link-generator","/image-link-generator","/audio-link-generator","/video-link-generator","/magnet-link-generator","/direct-download-link-generator","/spotify-link-generator"].includes(t.to)),
   },
 ];
 
@@ -312,7 +309,6 @@ export function ToolLayout({ children }: { children: ReactNode }) {
                 <li><Link to="/about" className="text-foreground/70 hover:text-primary">About us</Link></li>
                 <li><Link to="/youtube-link-generator" className="text-foreground/70 hover:text-primary">YouTube Link</Link></li>
                 <li><Link to="/referral-link-generator" className="text-foreground/70 hover:text-primary">Referral Link</Link></li>
-                <li><Link to="/rickroll-link-generator" className="text-foreground/70 hover:text-primary">Rick Roll Link</Link></li>
               </ul>
             </div>
           </div>
