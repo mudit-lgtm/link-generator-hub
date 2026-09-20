@@ -349,17 +349,20 @@ export function buildSchemas({ name, description, url, faqs, breadcrumbs, extra 
   return out;
 }
 
-export function buildHead({ title, description, path, faqs, name, breadcrumbs, extraSchemas }: {
+export function buildHead({ title, description, path, faqs, name, breadcrumbs, extraSchemas, ogTitle, ogSiteName }: {
   title: string; description: string; path: string; faqs: Faq[]; name: string;
   breadcrumbs?: { name: string; item: string }[];
   extraSchemas?: object[];
+  ogTitle?: string;
+  ogSiteName?: string;
 }) {
   return {
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
+      { property: "og:title", content: ogTitle ?? title },
       { property: "og:description", content: description },
+      ...(ogSiteName ? [{ property: "og:site_name", content: ogSiteName }] : []),
       { property: "og:url", content: absoluteUrl(path) },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
